@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyBase : stats {
+public abstract class EnemyBase : stats {
 
     protected NavMeshAgent agent;
 

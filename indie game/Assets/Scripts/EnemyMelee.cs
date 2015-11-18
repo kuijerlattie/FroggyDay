@@ -18,7 +18,7 @@ public class EnemyMelee : EnemyBase {
         }
         else
         {
-            agent.SetDestination(target.transform.position);    
+            //agent.SetDestination(target.transform.position);    
         }
 	}
 

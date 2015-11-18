@@ -17,10 +17,10 @@ public class playerMovementSmart : MonoBehaviour {
         if (playerCamera == null)
             return;
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(1))
         {
             RaycastHit hit;
-            LayerMask layermask = ~(1 << 8);
+            LayerMask layermask = ~((1 << 8) | (1<<9));
             if (Physics.Raycast(playerCamera.ScreenPointToRay(Input.mousePosition), out hit, 100, layermask))
             {
                 if ((hit.point - transform.position).magnitude > 0.5f)

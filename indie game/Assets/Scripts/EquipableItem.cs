@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EquipableItem : Item {
 
-    public Stats stats;
+    public stats _stats;
 
 
 }

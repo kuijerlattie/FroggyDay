@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Stats : MonoBehaviour {
+public class stats : MonoBehaviour {
 
     private int _health;
-    public int health { get { return _health; } set { _health = value > 0 ? (value <= maxhealth? value : maxhealth) : 0; } }
+    public int health { get { return _health; } set { _health = value > 0 ? (value <= maxhealth? value : maxhealth) : 0; Debug.Log(_health); } }
     public int maxhealth;
 
     private int _mana;

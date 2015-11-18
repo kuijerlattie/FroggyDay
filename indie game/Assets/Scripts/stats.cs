@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class stats : MonoBehaviour {
+public class Stats : MonoBehaviour {
 
     private int _health;
     public int health { get { return _health; } set { _health = value > 0 ? (value <= maxhealth? value : maxhealth) : 0; } }
@@ -12,8 +12,9 @@ public class stats : MonoBehaviour {
     public int maxmana;
 
 
+    
+    public int attack { get; set; }
     /*
-    int attack { get; set; }
     int defense { get; set; }
     int movespeed { get; set; }
     int attackspeed { get; set; }

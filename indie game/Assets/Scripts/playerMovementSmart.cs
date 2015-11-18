@@ -6,7 +6,6 @@ public class playerMovementSmart : MonoBehaviour {
     NavMeshAgent agent;
 
     [SerializeField] Camera playerCamera;
-    [SerializeField] Transform playerTransform;
 
 	// Use this for initialization
 	void Start () {
@@ -21,16 +20,14 @@ public class playerMovementSmart : MonoBehaviour {
         if (Input.GetMouseButton(0))
         {
             RaycastHit hit;
-            if (Physics.Raycast(playerCamera.ScreenPointToRay(Input.mousePosition), out hit, 100))
+            LayerMask layermask = ~(1 << 8);
+            if (Physics.Raycast(playerCamera.ScreenPointToRay(Input.mousePosition), out hit, 100, layermask))
             {
-                if ((hit.point - playerTransform.position).magnitude > 0.5f)
+                if ((hit.point - transform.position).magnitude > 0.5f)
                 {
                     agent.destination = hit.point;
                 }
             }
         }
-
-        
-
 	}
 }

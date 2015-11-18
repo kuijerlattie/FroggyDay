@@ -14,6 +14,8 @@ public abstract class EnemyBase : stats {
 	protected void Start () {
         agent = gameObject.GetComponent<NavMeshAgent>();
         target = GameObject.Find("Player");
+        maxhealth = 10;
+        health = 10;
 	}
 	
 	// Update is called once per frame
@@ -22,6 +24,7 @@ public abstract class EnemyBase : stats {
         agent.SetDestination(target.transform.position);
 	}
 
+    /*
     public void Hit(int dmg)
     {
         health -= dmg;
@@ -29,7 +32,7 @@ public abstract class EnemyBase : stats {
         {
             Die();
         }
-    }
+    }*/
 
     protected virtual void Die()
     {

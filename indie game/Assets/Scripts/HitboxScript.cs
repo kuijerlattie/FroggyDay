@@ -6,25 +6,18 @@ public class HitboxScript : MonoBehaviour {
 
     SphereCollider _collider;
 
-    void Start()
-    {
-        
-    }
-
 	public void Activated()
     {
-        Debug.Log("attacked");
         _collider = GetComponent<SphereCollider>();
         Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, _collider.radius);
-       //ebug.Log(colliders.Length);
         
         foreach(Collider col in colliders)
         {
-            if(col.gameObject.GetComponentInChildren<EnemyBase>() != null)
+          if(col.gameObject.layer != gameObject.layer)
             {
-                Debug.Log(true);
+                col.gameObject.GetComponent<stats>().Hit(1);
             }
         }
-        //is.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

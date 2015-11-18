@@ -8,6 +8,7 @@ public class EnemyBase : stats {
     protected float movespeed;
     protected int difficulty;
     protected GameObject target;
+    protected float attackrange;
 
 	// Use this for initialization
 	protected void Start () {

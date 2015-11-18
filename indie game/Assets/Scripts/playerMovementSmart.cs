@@ -5,13 +5,9 @@ public class playerMovementSmart : MonoBehaviour {
 
     NavMeshAgent agent;
 
-    [SerializeField]
-    Camera camera;
-    private Vector3 targetPos;
-    private Vector3 directionVector;
-    private float movementSpeed = 0.3f;
-    [SerializeField]
-    Transform movementTransform;
+    [SerializeField] Camera playerCamera;
+    [SerializeField] Transform playerTransform;
+
 	// Use this for initialization
 	void Start () {
         agent = GetComponent<NavMeshAgent>();
@@ -19,19 +15,17 @@ public class playerMovementSmart : MonoBehaviour {
 	
 	// Update is called onc e per frame
 	void Update () {
-        if (camera == null)
+        if (playerCamera == null)
             return;
 
         if (Input.GetMouseButton(0))
         {
             RaycastHit hit;
-            int walkLayerMask = 1 << LayerMask.NameToLayer("Walkable");
-            if (Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out hit, 100, walkLayerMask))
+            if (Physics.Raycast(playerCamera.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
-                if ((hit.point - movementTransform.position).magnitude > 0.5f)
+                if ((hit.point - playerTransform.position).magnitude > 0.5f)
                 {
-                    targetPos = hit.point;
-                    agent.destination = targetPos;
+                    agent.destination = hit.point;
                 }
             }
         }

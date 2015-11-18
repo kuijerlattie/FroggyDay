@@ -1,27 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyBase : MonoBehaviour {
+public class EnemyBase : stats {
+
+    protected NavMeshAgent agent;
 
     protected float movespeed;
-    protected float hitpoints;
     protected int difficulty;
     protected GameObject target;
 
 	// Use this for initialization
-	void Start () {
-	   
+	protected void Start () {
+        agent = gameObject.GetComponent<NavMeshAgent>();
+        target = GameObject.Find("Player");
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	    
+    protected void Update()
+    {
+        agent.SetDestination(target.transform.position);
 	}
 
-    public void Hit(float dmg)
+    public void Hit(int dmg)
     {
-        hitpoints -= dmg;
-        if (hitpoints <= 0)
+        health -= dmg;
+        if (health <= 0)
         {
             Die();
         }

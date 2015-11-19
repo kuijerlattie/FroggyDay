@@ -25,10 +25,24 @@ public class stats : MonoBehaviour {
         }
     }
 
-    public int attack { get; set; }
+    public void HitOverTime(int dmg, int seconds)
+    {
+        StartCoroutine(HitPerSecond(dmg, seconds));
+    }
+
+    private IEnumerator HitPerSecond(int dmg, int seconds)
+    {
+        for (int i = 0; i < seconds; i++)
+        {
+            Hit(dmg);
+            yield return new WaitForSeconds(1);
+        }
+    }
+
     /*
+    int attack { get; set; }
     int defense { get; set; }
     int movespeed { get; set; }
-    int attackspeed { get; set; }
     */
+    
 }

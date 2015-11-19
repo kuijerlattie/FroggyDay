@@ -12,7 +12,7 @@ public class AttackCollider{
         _gameObject.GetComponent<HitboxScript>().Spawn(0, 0.5f);
     }
 
-    public static void MakeSpell2(GameObject gameObject, Vector3 position, float radius, Transform attacker)
+    public static void MakeSpellBasic(GameObject gameObject, Vector3 position, float radius, Transform attacker)
     {
         Vector3 _forward = new Vector3(attacker.forward.x, attacker.forward.y, attacker.forward.z); ;
         RaycastHit hit;

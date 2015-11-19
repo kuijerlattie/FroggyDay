@@ -17,6 +17,10 @@ public class PlayerScript : stats {
 	void Update () {
 	    if(Input.GetKeyDown(KeyCode.Q))
         {
+            GetComponent<AttackScript>().BasicSpell();
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
             if (mana >= qCost)
             {
                 mana -= qCost;
@@ -28,5 +32,34 @@ public class PlayerScript : stats {
                 Debug.Log("Not enough mana");
             }
         }
-	}
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (mana >= qCost)
+            {
+                mana -= qCost;
+                GetComponent<AttackScript>().MageAttack();
+                Debug.Log("mana left");
+            }
+            else
+            {
+                Debug.Log("Not enough mana");
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (mana >= qCost)
+            {
+                mana -= qCost;
+                GetComponent<AttackScript>().MageAttack();
+                Debug.Log("mana left");
+            }
+            else
+            {
+                Debug.Log("Not enough mana");
+            }
+        }
+
+    }
 }

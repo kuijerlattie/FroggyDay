@@ -28,6 +28,8 @@ public abstract class EnemyBase : stats {
     public override void Hit(int dmg)
     {
         health -= dmg;
+        Debug.Log(gameObject.name + "'s health: " + health);
+
         if (health <= 0)
         {
             Die();

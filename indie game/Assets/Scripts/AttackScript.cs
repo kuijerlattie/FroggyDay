@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class AttackScript : MonoBehaviour {
 
-    [SerializeField]
-    GameObject meleeHitbox;
+    
+
     [SerializeField]
     GameObject HitboxPrefab;
     private float cooldown = 1;
@@ -35,16 +36,12 @@ public class AttackScript : MonoBehaviour {
         if (currentCooldown == 0)
         {
             currentCooldown = cooldown;
-            AttackCollider.MakeSpell2(HitboxPrefab, gameObject.transform.position + gameObject.transform.up, 3, gameObject.transform);
+            AttackCollider.MakeSpellBasic(HitboxPrefab, gameObject.transform.position + gameObject.transform.up, 3, gameObject.transform);
         }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            BasicSpell();
-        }
         if(currentCooldown > 0)
         {
             currentCooldown -= Time.deltaTime;

@@ -15,7 +15,7 @@ public class stats : MonoBehaviour {
     public void Hit(int dmg)
     {
         health -= dmg;
-        Debug.Log(health);
+        Debug.Log(gameObject.name + "'s health: " + health);
         if (health <= 0)
         {
             

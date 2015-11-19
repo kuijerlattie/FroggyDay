@@ -5,14 +5,16 @@ public class stats : MonoBehaviour {
 
     private int _health;
     public int health { get { return _health; } set { _health = value > 0 ? (value <= maxhealth? value : maxhealth) : 0; } }
+    [HideInInspector]
     public int maxhealth;
 
     private int _mana;
     public int mana { get { return _mana; } set { _mana = value > 0 ? (value <= maxmana ? value : maxmana) : 0; } }
+    [HideInInspector]
     public int maxmana;
 
 
-    public void Hit(int dmg)
+    public virtual void Hit(int dmg)
     {
         health -= dmg;
         Debug.Log(gameObject.name + "'s health: " + health);

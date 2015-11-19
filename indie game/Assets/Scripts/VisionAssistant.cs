@@ -20,7 +20,7 @@ public class VisionAssistant : MonoBehaviour {
             disabledWall.SetActive(true);
             disabledWall = null;
         }
-        LayerMask layermask = (1 << 4);
+        LayerMask layermask = (1 << 10);
         //if (Physics.Raycast(Camera.main.ScreenPointToRay(player.transform.position), out hit, 100, layermask))
         if (Physics.Raycast(Camera.main.transform.position, (player.transform.position - Camera.main.transform.position), out hit, 100, layermask))
         {

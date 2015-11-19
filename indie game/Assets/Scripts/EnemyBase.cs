@@ -24,15 +24,15 @@ public abstract class EnemyBase : stats {
         agent.SetDestination(target.transform.position);
 	}
 
-    /*
-    public void Hit(int dmg)
+    
+    public override void Hit(int dmg)
     {
         health -= dmg;
         if (health <= 0)
         {
             Die();
         }
-    }*/
+    }
 
     protected virtual void Die()
     {

@@ -18,7 +18,7 @@ public class AttackScript : MonoBehaviour {
         if (currentCooldown == 0)
         {
             currentCooldown = cooldown;
-            AttackCollider.MakeAttack(HitboxPrefab, gameObject.transform.position + gameObject.transform.forward, 3, gameObject.transform);
+            AttackCollider.MakeAttack(HitboxPrefab, gameObject.transform.position + gameObject.transform.forward *2 + gameObject.transform.up, 3, gameObject.transform);
         }
     }
 
@@ -27,18 +27,12 @@ public class AttackScript : MonoBehaviour {
         if (currentCooldown == 0)
         {
             currentCooldown = cooldown;
-            AttackCollider.MakeSpell(HitboxPrefab, gameObject.transform.position + gameObject.transform.forward, 3, gameObject.transform);
+            AttackCollider.MakeSpell(HitboxPrefab, gameObject.transform.position + gameObject.transform.forward *2 + gameObject.transform.up, 3, gameObject.transform);
         }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //MeleeAttack();
-            MageAttack();
-            
-        }
         if(currentCooldown > 0)
         {
             currentCooldown -= Time.deltaTime;

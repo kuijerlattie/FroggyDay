@@ -19,11 +19,12 @@ public class HitboxScript : MonoBehaviour {
     {
         yield return new WaitForSeconds(delay);
         gameObject.GetComponent<MeshRenderer>().enabled = true;
-        _collider = GetComponent<SphereCollider>();
-        colliders = Physics.OverlapSphere(gameObject.transform.position, _collider.radius);
+        float radius = gameObject.transform.localScale.x * 0.5f;
+        colliders = Physics.OverlapSphere(transform.position, radius);
         CheckCollisions();
 
     }
+
     private void CheckCollisions()
     {
         foreach (Collider col in colliders)

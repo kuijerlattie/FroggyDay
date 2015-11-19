@@ -1,0 +1,174 @@
+fileFormatVersion: 2
+guid: ff59e510fcb359b4791c19aae3317a6a
+timeCreated: 1447859928
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: transform1
+    100002: transform10
+    100004: transform11
+    100006: transform12
+    100008: transform13
+    100010: transform14
+    100012: transform15
+    100014: transform16
+    100016: transform17
+    100018: transform18
+    100020: transform19
+    100022: transform2
+    100024: transform20
+    100026: transform21
+    100028: transform22
+    100030: transform23
+    100032: transform24
+    100034: transform3
+    100036: transform4
+    100038: transform5
+    100040: transform6
+    100042: transform7
+    100044: transform8
+    100046: transform9
+    100048: Wall_3_single1
+    100050: Wall_3_single12
+    100052: Wall_3_single13
+    100054: Wall_3_single14
+    100056: Wall_3_single15
+    100058: Wall_3_single16
+    100060: Wall_3_single17
+    100062: Wall_3_single18
+    100064: Wall_3_single19
+    100066: Wall_3_single2
+    100068: Wall_3_single20
+    100070: Wall_3_single21
+    100072: Wall_3_single22
+    100074: Wall_3_single23
+    100076: Wall_3_single24
+    100078: Wall_3_single25
+    100080: Wall_3_single26
+    100082: Wall_3_single27
+    100084: Wall_3_single28
+    100086: Wall_3_single29
+    100088: Wall_3_single30
+    100090: Wall_3_single31
+    100092: Wall_3_single32
+    100094: Wall_3_single33
+    100096: Wall_3_single5
+    100098: //RootNode
+    400000: transform1
+    400002: transform10
+    400004: transform11
+    400006: transform12
+    400008: transform13
+    400010: transform14
+    400012: transform15
+    400014: transform16
+    400016: transform17
+    400018: transform18
+    400020: transform19
+    400022: transform2
+    400024: transform20
+    400026: transform21
+    400028: transform22
+    400030: transform23
+    400032: transform24
+    400034: transform3
+    400036: transform4
+    400038: transform5
+    400040: transform6
+    400042: transform7
+    400044: transform8
+    400046: transform9
+    400048: Wall_3_single1
+    400050: Wall_3_single12
+    400052: Wall_3_single13
+    400054: Wall_3_single14
+    400056: Wall_3_single15
+    400058: Wall_3_single16
+    400060: Wall_3_single17
+    400062: Wall_3_single18
+    400064: Wall_3_single19
+    400066: Wall_3_single2
+    400068: Wall_3_single20
+    400070: Wall_3_single21
+    400072: Wall_3_single22
+    400074: Wall_3_single23
+    400076: Wall_3_single24
+    400078: Wall_3_single25
+    400080: Wall_3_single26
+    400082: Wall_3_single27
+    400084: Wall_3_single28
+    400086: Wall_3_single29
+    400088: Wall_3_single30
+    400090: Wall_3_single31
+    400092: Wall_3_single32
+    400094: Wall_3_single33
+    400096: Wall_3_single5
+    400098: //RootNode
+    2300000: Wall_3_single33
+    3300000: Wall_3_single33
+    4300000: Wall_3_single33
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

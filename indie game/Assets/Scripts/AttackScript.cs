@@ -20,7 +20,9 @@ public class AttackScript : MonoBehaviour {
     {
         if (currentCooldown == 0)
         {
+            CheckSpellManager();
             currentCooldown = cooldown;
+            spellmanager.MakeSpell(spellmanager.spellslist[4], gameObject.transform);
 
         }
     }
@@ -29,13 +31,22 @@ public class AttackScript : MonoBehaviour {
     {
         if (currentCooldown == 0)
         {
+            CheckSpellManager();
             currentCooldown = cooldown;
             spellmanager.MakeSpell(spellmanager.spellslist[index], gameObject.transform);
+        }
+    }
+    void CheckSpellManager()
+    {
+        if (spellmanager == null)
+        {
+            spellmanager = GameObject.FindObjectOfType<Spells>();
         }
     }
   
     void Update()
     {
+       
         if(currentCooldown > 0)
         {
             currentCooldown -= Time.deltaTime;

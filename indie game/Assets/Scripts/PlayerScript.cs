@@ -17,14 +17,14 @@ public class PlayerScript : stats {
 	void Update () {
 	    if(Input.GetKeyDown(KeyCode.Q))
         {
-            GetComponent<AttackScript>().BasicSpell();
+            GetComponent<AttackScript>().MageAttack(0);
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
             if (mana >= qCost)
             {
                 mana -= qCost;
-                GetComponent<AttackScript>().MageAttack();
+                GetComponent<AttackScript>().MageAttack(1);
                 Debug.Log("mana left");
             }
             else
@@ -38,7 +38,7 @@ public class PlayerScript : stats {
             if (mana >= qCost)
             {
                 mana -= qCost;
-                GetComponent<AttackScript>().MageAttack();
+                GetComponent<AttackScript>().MageAttack(2);
                 Debug.Log("mana left");
             }
             else
@@ -52,7 +52,7 @@ public class PlayerScript : stats {
             if (mana >= qCost)
             {
                 mana -= qCost;
-                GetComponent<AttackScript>().MageAttack();
+                GetComponent<AttackScript>().MageAttack(3);
                 Debug.Log("mana left");
             }
             else

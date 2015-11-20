@@ -25,6 +25,19 @@ public class stats : MonoBehaviour {
         }
     }
 
+    public void ApplySlow(float percentage, float seconds)
+    {
+        float _movespeed = movespeed;
+        movespeed += (1 - percentage);
+        StartCoroutine(RemoveSlow(movespeed - _movespeed, seconds));
+    }
+
+    private IEnumerator RemoveSlow(float slow, float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        movespeed += slow;
+    }
+
     public void HitOverTime(int dmg, int seconds)
     {
         StartCoroutine(HitPerSecond(dmg, seconds));
@@ -42,7 +55,9 @@ public class stats : MonoBehaviour {
     /*
     int attack { get; set; }
     int defense { get; set; }
-    int movespeed { get; set; }
     */
+    public float movespeed { get { return GetComponent<NavMeshAgent>().speed; }
+                             set { GetComponent<NavMeshAgent>().speed = value; } }
+    
     
 }

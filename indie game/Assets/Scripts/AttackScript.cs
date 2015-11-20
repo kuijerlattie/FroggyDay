@@ -8,8 +8,7 @@ public class AttackScript : MonoBehaviour {
 
     [SerializeField]
     GameObject HitboxPrefab;
-    [SerializeField]
-    Spells spellmanager;
+    public Spells spellmanager;
     private float cooldown = 1;
     private float _currentCooldown = 0;
     private float currentCooldown {

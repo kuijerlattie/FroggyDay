@@ -37,6 +37,11 @@ public class PlayerScript : stats {
         rImageSlot = GameObject.Find("SpellR").GetComponent<Image>();
 
         attackscript = GetComponent<AttackScript>();
+
+        SetSpell(SpellSlots.qSpell, 0);
+        SetSpell(SpellSlots.wSpell, 1);
+        SetSpell(SpellSlots.eSpell, 2);
+        SetSpell(SpellSlots.rSpell, 3);
 	}
 	
 	// Update is called once per frame
@@ -90,21 +95,24 @@ public class PlayerScript : stats {
     }
 
 
-    public void SetSpell(int spellid, SpellSlots spellslot)
+    public void SetSpell(SpellSlots spellslot, int spellid)
     {
         switch (spellslot)
         {
             case SpellSlots.qSpell:
                 //set a image to the hud slot
-                //qImageSlot = 
+                qImageSlot.sprite = attackscript.spellmanager.spellslist[qSpell].icon;
                 break;
             case SpellSlots.wSpell:
                 wSpell = spellid;
+                wImageSlot.sprite = attackscript.spellmanager.spellslist[wSpell].icon;
                 break;
             case SpellSlots.eSpell:
+                eImageSlot.sprite = attackscript.spellmanager.spellslist[eSpell].icon;
                 eSpell = spellid;
                 break;
             case SpellSlots.rSpell:
+                rImageSlot.sprite = attackscript.spellmanager.spellslist[rSpell].icon;
                 rSpell = spellid;
                 break;
             default:

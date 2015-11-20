@@ -8,7 +8,7 @@ public class Spells : MonoBehaviour {
     [SerializeField]
     GameObject hitballprefab;
     [SerializeField]
-    Texture2D icon1;
+    Sprite[] spellIcons;
 
     public void MakeSpell(Spells.SpellInfo spell, Transform caster)
     {
@@ -51,7 +51,7 @@ public class Spells : MonoBehaviour {
     {
         spellslist = new List<SpellInfo>();
 
-        spellslist.Add(new SpellInfo(icon1, 0, 3, "basic spell", "description1",
+        spellslist.Add(new SpellInfo(spellIcons[0], 0, 3, "basic spell", "description1",
             new HitBall[] {
                 new HitBall(new Vector3(0,0,2), 0.2f, 1.0f, 3.0f),
                 new HitBall(new Vector3(0,0,4), 0.4f, 1.0f, 3.0f),
@@ -61,7 +61,7 @@ public class Spells : MonoBehaviour {
             }
             , 1, 0, 0, 50, 5));
 
-        spellslist.Add(new SpellInfo(icon1, 10, 3, "spell1", "description1",
+        spellslist.Add(new SpellInfo(spellIcons[1], 10, 3, "spell1", "description1",
             new HitBall[] {
                 new HitBall(new Vector3(0,0,8), 0.0f, 1.0f, 5.0f),
                 new HitBall(new Vector3(3,0,7), 0.0f, 1.0f, 4.0f),
@@ -71,7 +71,7 @@ public class Spells : MonoBehaviour {
             }
             , 1, 0, 0, 0, 0));
 
-        spellslist.Add(new SpellInfo(icon1, 10, 3, "spell2", "description2",
+        spellslist.Add(new SpellInfo(spellIcons[2], 10, 3, "spell2", "description2",
          new HitBall[] {
                 new HitBall(new Vector3(0,0,8), 0.0f, 1.0f, 4.0f),
 
@@ -88,13 +88,13 @@ public class Spells : MonoBehaviour {
          }
          , 1, 0, 0, 0 ,0));
 
-        spellslist.Add(new SpellInfo(icon1, 10, 3, "spell3", "description2",
+        spellslist.Add(new SpellInfo(spellIcons[3], 10, 3, "spell3", "description2",
          new HitBall[] {
                 new HitBall(new Vector3(0,0,0), 0.0f, 1.0f, 25.0f)
          }
          , 1, 0, 0, 0, 0));
 
-        spellslist.Add(new SpellInfo(icon1, 0, 3, "melee attack", "description melee",
+        spellslist.Add(new SpellInfo(spellIcons[0], 0, 3, "melee attack", "description melee",
          new HitBall[] {
                 new HitBall(new Vector3(0,0,1), 0.0f, 0.5f, 3.0f)
          }
@@ -120,7 +120,7 @@ public class Spells : MonoBehaviour {
     }
     public class SpellInfo
     {
-        public Texture2D icon;
+        public Sprite icon;
         public string name;
         public string description;
         public int dmg;
@@ -134,7 +134,7 @@ public class Spells : MonoBehaviour {
 
        public  List<HitBall> hitballlist = new List<HitBall>();
 
-        public SpellInfo(Texture2D picon, int pmanacost, int pcooldown, string pname, string pdestription, HitBall[] hitballs,
+        public SpellInfo(Sprite picon, int pmanacost, int pcooldown, string pname, string pdestription, HitBall[] hitballs,
                          int pdmg, int pdmgovertime = 0, int pdmgovertimeseconds = 0, float pslowpercentage = 0, float pslowseconds = 0)
         {
             icon = picon;

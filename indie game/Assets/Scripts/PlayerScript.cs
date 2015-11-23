@@ -48,14 +48,14 @@ public class PlayerScript : stats {
 	void Update () {
 	    if(Input.GetKeyDown(KeyCode.Q))
         {
-            GetComponent<AttackScript>().MageAttack(qSpell);
+            GetComponent<AttackScript>().MageAttackMouse(qSpell);
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
             if (mana >= attackscript.spellmanager.spellslist[qSpell].manacost)
             {
                 mana -= attackscript.spellmanager.spellslist[qSpell].manacost;
-                GetComponent<AttackScript>().MageAttack(wSpell);
+                GetComponent<AttackScript>().MageAttackMouse(wSpell);
                 Debug.Log("mana left");
             }
             else
@@ -69,7 +69,7 @@ public class PlayerScript : stats {
             if (mana >= attackscript.spellmanager.spellslist[eSpell].manacost)
             {
                 mana -= attackscript.spellmanager.spellslist[eSpell].manacost;
-                GetComponent<AttackScript>().MageAttack(eSpell);
+                GetComponent<AttackScript>().MageAttackMouse(eSpell);
                 Debug.Log("mana left");
             }
             else
@@ -83,7 +83,7 @@ public class PlayerScript : stats {
             if (mana >= attackscript.spellmanager.spellslist[rSpell].manacost)
             {
                 mana -= attackscript.spellmanager.spellslist[rSpell].manacost;
-                GetComponent<AttackScript>().MageAttack(rSpell);
+                GetComponent<AttackScript>().MageAttackMouse(rSpell);
                 Debug.Log("mana left");
             }
             else

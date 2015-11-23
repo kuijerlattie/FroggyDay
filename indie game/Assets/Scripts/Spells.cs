@@ -47,7 +47,7 @@ public class Spells : MonoBehaviour {
         }
     }
 
-    void Start()
+    void Awake()
     {
         spellslist = new List<SpellInfo>();
 

@@ -10,7 +10,7 @@ public class Spells : MonoBehaviour {
     [SerializeField]
     Sprite[] spellIcons;
 
-    public void MakeSpell(Spells.SpellInfo spell, Transform caster)
+    public void MakeSpellMouse(Spells.SpellInfo spell, Transform caster)
     {
         Vector3 _forward = caster.forward;
         Vector3 _right = caster.right;
@@ -30,6 +30,33 @@ public class Spells : MonoBehaviour {
         for (int i = 0; i < spell.hitballlist.Count; i++) {
             HitBall hitball = spell.hitballlist[i];
         
+            GameObject _gameObject = GameObject.Instantiate(hitballprefab);
+            _gameObject.transform.position =
+            caster.position + hitball.position.x * _right + hitball.position.y * _up + hitball.position.z * _forward;
+            _gameObject.transform.localScale = new Vector3(hitball.radius, hitball.radius, hitball.radius);
+            HitboxScript hitboxscript = _gameObject.GetComponent<HitboxScript>();
+            hitboxscript.dmg = spell.dmg;
+            hitboxscript.dmgot = spell.dmgot;
+            hitboxscript.dmgottime = spell.dmgots;
+
+            hitboxscript.slowpercentage = spell.slowpercentage;
+            hitboxscript.slowseconds = spell.slowseconds;
+
+            hitboxscript.layer = caster.gameObject.layer;
+            hitboxscript.Spawn(hitball.spawndelay, hitball.duration);
+        }
+    }
+
+    public void MakeSpellForward(Spells.SpellInfo spell, Transform caster, Vector3 forward)
+    {
+        Vector3 _forward = new Vector3(forward.x, 0, forward.z);
+        Vector3 _right = new Vector3(-_forward.z, 0, _forward.x);
+        Vector3 _up = caster.up;
+
+        for (int i = 0; i < spell.hitballlist.Count; i++)
+        {
+            HitBall hitball = spell.hitballlist[i];
+
             GameObject _gameObject = GameObject.Instantiate(hitballprefab);
             _gameObject.transform.position =
             caster.position + hitball.position.x * _right + hitball.position.y * _up + hitball.position.z * _forward;

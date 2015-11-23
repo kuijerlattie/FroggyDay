@@ -7,7 +7,7 @@ public abstract class EnemyBase : stats {
 
     protected NavMeshAgent agent;
 
-    protected float movespeed;
+    //protected float movespeed;
     protected int difficulty;
     protected GameObject target;
     protected float attackrange;

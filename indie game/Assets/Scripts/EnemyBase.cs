@@ -18,8 +18,9 @@ public abstract class EnemyBase : stats {
         target = GameObject.Find("Player");
         maxhealth = 10;
         health = 10;
-        manager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
-	}
+       
+        manager = GameObject.FindObjectOfType<EnemyManager>();
+    }
 	
 	// Update is called once per frame
     protected void Update()

@@ -3,6 +3,8 @@ using System.Collections;
 
 public abstract class EnemyBase : stats {
 
+    protected EnemyManager manager;
+
     protected NavMeshAgent agent;
 
     //protected float movespeed;
@@ -16,6 +18,7 @@ public abstract class EnemyBase : stats {
         target = GameObject.Find("Player");
         maxhealth = 10;
         health = 10;
+        manager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
 	}
 	
 	// Update is called once per frame
@@ -38,6 +41,7 @@ public abstract class EnemyBase : stats {
 
     protected virtual void Die()
     {
+        manager.RemoveEnemy();
         GameObject.Destroy(gameObject);
     }
 }

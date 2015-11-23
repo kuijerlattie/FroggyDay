@@ -6,11 +6,17 @@ public class HitboxScript : MonoBehaviour {
 
     SphereCollider _collider;
     Collider[] colliders;
+
+    public Vector3 velocity;
     private float _duration = 0;
     public int layer = 0;
     public int dmg = 0;
     public int dmgot = 0;
     public int dmgottime = 0;
+    bool spawned = false;
+    bool startedDestroy = false;
+
+    private float radius;
 
     public float slowpercentage = 0;
     public float slowseconds = 0;
@@ -24,32 +30,80 @@ public class HitboxScript : MonoBehaviour {
     private IEnumerator StartSpawn(float delay)
     {
         yield return new WaitForSeconds(delay);
+        spawned = true;
         gameObject.GetComponent<MeshRenderer>().enabled = true;
-        float radius = gameObject.transform.localScale.x * 0.5f;
-        colliders = Physics.OverlapSphere(transform.position, radius);
-        CheckCollisions();
+        radius = gameObject.transform.localScale.x * 0.5f;
+        
+        if (velocity.magnitude > 0)
+        {
 
+            Rigidbody _body = gameObject.AddComponent<Rigidbody>();
+            _body.useGravity = false;
+            //_body.velocity = velocity;
+            _body.AddForce(velocity * 10);
+        }
+        else
+        {
+            colliders = Physics.OverlapSphere(transform.position, radius);
+            CheckCollisions();  //only do it once
+        }
+
+    }
+
+    void Update()
+    {
+        if(velocity.magnitude > 0 && spawned)
+        {
+            colliders = Physics.OverlapSphere(transform.position, radius);
+            CheckCollisions();
+        }
     }
 
     private void CheckCollisions()
     {
+        Collider tempcollider = null;
+
         foreach (Collider col in colliders)
         {
+          
             if (col.gameObject.layer != layer && col.gameObject.GetComponent<stats>() != null)
             {
-                col.gameObject.GetComponent<stats>().Hit(1);
+                tempcollider = col;
+                col.gameObject.GetComponent<stats>().Hit(dmg);
                 if (dmgot != 0)
                 {
                     col.gameObject.GetComponent<stats>().HitOverTime(dmgot, dmgottime);
                 }
+                if(velocity.magnitude > 0)
+                {
+                    break;
+                }
             }
         }
-        StartCoroutine(DestroySelf());
+        if (!startedDestroy)
+        {
+            StartCoroutine(DestroySelf());
+        }
+        else
+        {
+            if(tempcollider != null)
+            {
+                DestroySelfNow();
+            }
+        }
+        
+    }
+
+    private void DestroySelfNow()
+    {
+        Debug.Log("destroyedd");
+        //gameObject.transform.parent = null;
+        GameObject.Destroy(this.gameObject);
     }
 
     private IEnumerator DestroySelf()
     {
-        gameObject.transform.parent = null;
+        startedDestroy = true;
         yield return new WaitForSeconds(_duration);
         GameObject.Destroy(this.gameObject);
     }

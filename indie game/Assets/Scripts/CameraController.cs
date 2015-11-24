@@ -46,7 +46,7 @@ public class CameraController : MonoBehaviour {
         LayerMask layermask = (1 << 10); //layer 10 = Hideablewall
         if (Physics.Raycast(player.transform.position, -(player.transform.position - Camera.main.transform.position), out hit, zoomDistance + 1, layermask))
         {
-            if (zoomDistance > hit.distance - 1)
+            if (zoomDistance > hit.distance)
             {
                 if (zoomDistance > targetZoomDistance)
                 {
@@ -56,12 +56,11 @@ public class CameraController : MonoBehaviour {
                 {
                     oldZoomDistance = targetZoomDistance;
                 }
-                zoomDistance = hit.distance - 1;
+                zoomDistance = hit.distance;
             }
         }
         else
         {
-
             if (targetZoomDistance > zoomDistance)
                 zoomDistance += 1;
             else

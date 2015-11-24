@@ -26,6 +26,7 @@ public class EnemyManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         spawnlocations = GameObject.FindGameObjectsWithTag("EnemySpawn");
+        Debug.Log("spawn locations found: " + spawnlocations.Length);
 	}
 
     void SpawnEnemy()
@@ -46,7 +47,7 @@ public class EnemyManager : MonoBehaviour {
 
     Vector3 GetSpawnLocation()
     {
-        Vector3 location = spawnlocations[Random.Range(0, 2)].transform.position;
+        Vector3 location = spawnlocations[Random.Range(0, spawnlocations.Length-1)].transform.position;
         return location;
     }
 	

@@ -140,18 +140,10 @@ public class Spells : MonoBehaviour {
             "R",       //spell name
             "description2", //spell description
             new HitBall[] {
-                new HitBall(new Vector3(0,0,1), 0.0f, 0.5f, 4.0f, Vector3.forward * 100),  //front
-                new HitBall(new Vector3(0,0,-1), 0.0f, 0.5f, 4.0f, -Vector3.forward * 100),  //behind
-
-                new HitBall(new Vector3(1,0,0), 0.0f, 0.5f, 4.0f, Vector3.right * 100),  //right
-                new HitBall(new Vector3(-1,0,0), 0.0f, 0.5f, 4.0f, -Vector3.right * 100),  //left
-                
-
-                new HitBall(new Vector3(1,0,1), 0.5f, 0.5f, 4.0f, new Vector3(1,0,1).normalized * 100),  
-                new HitBall(new Vector3(1,0,-1), 0.5f, 0.5f, 4.0f, new Vector3(1,0,-1).normalized * 100), 
-
-                new HitBall(new Vector3(-1,0,1), 0.5f, 0.5f, 4.0f, new Vector3(-1,0,1).normalized * 100),  
-                new HitBall(new Vector3(-1,0,-1), 0.5f, 0.5f, 4.0f, new Vector3(-1,0,-1).normalized * 100),    
+                new HitBall(new Vector3(0,0,6), 0.0f, 0.5f, 4.0f, Vector3.zero),  //front
+                new HitBall(new Vector3(0,0,12), 0.2f, 0.5f, 8.0f, Vector3.zero),  //front
+                new HitBall(new Vector3(0,0,18), 0.4f, 0.5f, 12.0f, Vector3.zero),  //front
+                   
          }
           , 30,   //dmg
           0,     //dmg over time

@@ -12,7 +12,6 @@ public class CameraController : MonoBehaviour {
 
     RaycastHit hit;
     GameObject player;
-    GameObject disabledWall;
 
 	// Use this for initialization
 	void Start () {
@@ -31,22 +30,24 @@ public class CameraController : MonoBehaviour {
         {
             rotation -= rotationspeed;
         }
-        zoomDistance += Input.GetAxis("Mouse ScrollWheel");
+        zoomDistance -= Input.GetAxis("Mouse ScrollWheel");
         if (zoomDistance < minZoomDistance)
             zoomDistance = minZoomDistance;
         if (zoomDistance > maxZoomDistance)
             zoomDistance = maxZoomDistance;
 
+        Debug.Log(zoomDistance);
 
         rotation = rotation * Time.deltaTime;
 
         Camera.main.transform.RotateAround(transform.position, Vector3.up, rotation);
 
-        if (disabledWall != null)
-        {
-            disabledWall.SetActive(true);
-            disabledWall = null;
-        }
+        //Vector3 newcameraposition = (transform.position - Camera.main.transform.position).normalized;
+        //newcameraposition *= zoomDistance / 10;
+
+        //Camera.main.transform.position = newcameraposition; //makes camera zoom in somewhere... not at the place where i want it tho
+
+
         LayerMask layermask = (1 << 10);
         //if (Physics.Raycast(Camera.main.ScreenPointToRay(player.transform.position), out hit, 100, layermask))
         if (Physics.Raycast(player.transform.position, (Camera.main.transform.position - player.transform.position), out hit, 100, layermask))

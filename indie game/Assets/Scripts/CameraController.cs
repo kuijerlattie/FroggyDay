@@ -37,11 +37,11 @@ public class CameraController : MonoBehaviour {
             oldZoomDistance = 0;
         }
 
-        zoomDistance -= Input.GetAxis("Mouse ScrollWheel");
-        if (zoomDistance < minZoomDistance)
-            zoomDistance = minZoomDistance;
-        if (zoomDistance > maxZoomDistance)
-            zoomDistance = maxZoomDistance;
+        targetZoomDistance -= Input.GetAxis("Mouse ScrollWheel");
+        if (targetZoomDistance < minZoomDistance)
+            targetZoomDistance = minZoomDistance;
+        if (targetZoomDistance > maxZoomDistance)
+            targetZoomDistance = maxZoomDistance;
 
         LayerMask layermask = (1 << 10); //layer 10 = Hideablewall
         if (Physics.Raycast(player.transform.position, -(player.transform.position - Camera.main.transform.position), out hit, zoomDistance + 1, layermask))
@@ -58,7 +58,6 @@ public class CameraController : MonoBehaviour {
                 }
                 zoomDistance = hit.distance - 1;
             }
-            //set camera at that distance
         }
         else
         {

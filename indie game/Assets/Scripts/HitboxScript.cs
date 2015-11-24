@@ -13,6 +13,7 @@ public class HitboxScript : MonoBehaviour {
     public int dmg = 0;
     public int dmgot = 0;
     public int dmgottime = 0;
+    public float stunseconds = 0;
     bool spawned = false;
     bool startedDestroy = false;
 
@@ -65,9 +66,17 @@ public class HitboxScript : MonoBehaviour {
 
         foreach (Collider col in colliders)
         {
-          
             if (col.gameObject.layer != layer && col.gameObject.GetComponent<stats>() != null)
             {
+                if(stunseconds > 0)
+                {
+                    Debug.Log("STUNNED");
+                    col.gameObject.GetComponent<EnemyBase>().Stun(stunseconds);
+                }
+                if(slowpercentage > 0 && slowseconds > 0)
+                {
+                    col.gameObject.GetComponent<stats>().ApplySlow(slowpercentage, slowseconds);
+                }
                 tempcollider = col;
                 col.gameObject.GetComponent<stats>().Hit(dmg);
                 if (dmgot != 0)
@@ -96,8 +105,6 @@ public class HitboxScript : MonoBehaviour {
 
     private void DestroySelfNow()
     {
-        Debug.Log("destroyedd");
-        //gameObject.transform.parent = null;
         GameObject.Destroy(this.gameObject);
     }
 

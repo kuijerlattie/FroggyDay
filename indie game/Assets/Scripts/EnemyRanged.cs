@@ -26,7 +26,12 @@ public class EnemyRanged : EnemyBase {
     // Update is called once per frame
     void Update()
     {
-        if(thinktimer >= thinktime)
+        if (stunnedSeconds > 0)
+        {
+            stunnedSeconds -= Time.deltaTime;
+            return;
+        }
+        if (thinktimer >= thinktime)
         {
             Think();
             thinktimer = 0;
@@ -74,6 +79,6 @@ public class EnemyRanged : EnemyBase {
     protected void Attack()
     {
         currentcooldown = cooldown;
-        GetComponent<AttackScript>().MageAttackForward(0, _forward);
+        GetComponent<AttackScript>().MageAttackForward(0, -_forward);
     }
 }

@@ -5,14 +5,25 @@ public class EnemyMelee : EnemyBase {
 
     private float cooldown = 2;
     private float currentcooldown = 0;
+  
+
 
 	// Use this for initialization
 	void Start () {
         base.Start();
 	}
+
+   
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.Log("movespeed enemy: " + GetComponent<NavMeshAgent>().speed);
+        if(stunnedSeconds > 0)
+        {
+            agent.SetDestination(transform.position);
+            stunnedSeconds -= Time.deltaTime;
+            return;
+        }
 
         if (Vector3.Distance(transform.position, target.transform.position) <= GetComponent<NavMeshAgent>().stoppingDistance)
         {

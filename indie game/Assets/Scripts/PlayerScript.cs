@@ -14,6 +14,8 @@ public class PlayerScript : stats {
     Image eImageSlot;
     Image rImageSlot;
 
+    
+
     public enum SpellSlots
     {
         qSpell,
@@ -46,50 +48,51 @@ public class PlayerScript : stats {
 	
 	// Update is called once per frame
 	void Update () {
+        //Debug.Log("health: " + health + " mana: " + mana);
 	    if(Input.GetKeyDown(KeyCode.Q))
         {
             GetComponent<AttackScript>().MageAttackMouse(qSpell);
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            if (mana >= attackscript.spellmanager.spellslist[qSpell].manacost)
-            {
-                mana -= attackscript.spellmanager.spellslist[qSpell].manacost;
+           // if (mana >= attackscript.spellmanager.spellslist[qSpell].manacost)
+           // {
+             //   mana -= attackscript.spellmanager.spellslist[qSpell].manacost;
                 GetComponent<AttackScript>().MageAttackMouse(wSpell);
-                Debug.Log("mana left");
-            }
-            else
-            {
-                Debug.Log("Not enough mana");
-            }
+              //  Debug.Log("mana left");
+           // }
+           // else
+            //{
+           //     Debug.Log("Not enough mana");
+            //}
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (mana >= attackscript.spellmanager.spellslist[eSpell].manacost)
-            {
-                mana -= attackscript.spellmanager.spellslist[eSpell].manacost;
+           // if (mana >= attackscript.spellmanager.spellslist[eSpell].manacost)
+            //{
+           //     mana -= attackscript.spellmanager.spellslist[eSpell].manacost;
                 GetComponent<AttackScript>().MageAttackMouse(eSpell);
-                Debug.Log("mana left");
-            }
-            else
-            {
-                Debug.Log("Not enough mana");
-            }
+            //    Debug.Log("mana left");
+           // }
+           // else
+           // {
+            //    Debug.Log("Not enough mana");
+            //}
         }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (mana >= attackscript.spellmanager.spellslist[rSpell].manacost)
-            {
-                mana -= attackscript.spellmanager.spellslist[rSpell].manacost;
+           // if (mana >= attackscript.spellmanager.spellslist[rSpell].manacost)
+           // {
+           //     mana -= attackscript.spellmanager.spellslist[rSpell].manacost;
                 GetComponent<AttackScript>().MageAttackMouse(rSpell);
-                Debug.Log("mana left");
-            }
-            else
-            {
-                Debug.Log("Not enough mana");
-            }
+            //    Debug.Log("mana left");
+            //}
+           // else
+           // {
+            //    Debug.Log("Not enough mana");
+           // }
         }
 
     }

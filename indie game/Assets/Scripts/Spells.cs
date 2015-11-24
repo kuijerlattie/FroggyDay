@@ -45,6 +45,8 @@ public class Spells : MonoBehaviour {
             hitboxscript.slowpercentage = spell.slowpercentage;
             hitboxscript.slowseconds = spell.slowseconds;
 
+            hitboxscript.stunseconds = spell.stunSeconds;
+
             hitboxscript.layer = caster.gameObject.layer;
             hitboxscript.Spawn(hitball.spawndelay, hitball.duration);
         }
@@ -75,6 +77,8 @@ public class Spells : MonoBehaviour {
             hitboxscript.slowpercentage = spell.slowpercentage;
             hitboxscript.slowseconds = spell.slowseconds;
 
+            hitboxscript.stunseconds = spell.stunSeconds;
+
             hitboxscript.layer = caster.gameObject.layer;
             hitboxscript.Spawn(hitball.spawndelay, hitball.duration);
         }
@@ -84,17 +88,22 @@ public class Spells : MonoBehaviour {
     {
         spellslist = new List<SpellInfo>();
 
-        spellslist.Add(new SpellInfo(spellIcons[0], 0, 3, "basic spell", "description1",
+        spellslist.Add(new SpellInfo(spellIcons[0], 0, 2, "Q", "description1",
             new HitBall[] {
-                new HitBall(new Vector3(0,0,2), 0.2f, 1.0f, 3.0f, Vector3.zero),
-                new HitBall(new Vector3(0,0,4), 0.4f, 1.0f, 3.0f, Vector3.zero),
-                new HitBall(new Vector3(0,0,6), 0.6f, 1.0f, 3.0f, Vector3.zero),
-                new HitBall(new Vector3(0,0,8), 0.8f, 1.0f, 3.0f, Vector3.zero),
-                new HitBall(new Vector3(0,0,10), 1.0f, 1.0f, 3.0f, Vector3.zero)
+                new HitBall(new Vector3(0,0,2), 0.0f, 1.0f, 3.0f, Vector3.forward * 100)
+                //new HitBall(new Vector3(0,0,4), 0.4f, 1.0f, 3.0f, Vector3.zero),
+               // new HitBall(new Vector3(0,0,6), 0.6f, 1.0f, 3.0f, Vector3.zero),
+               // new HitBall(new Vector3(0,0,8), 0.8f, 1.0f, 3.0f, Vector3.zero),
+               // new HitBall(new Vector3(0,0,10), 1.0f, 1.0f, 3.0f, Vector3.zero)
             }
-            , 5, 0, 0, 50, 5));
+            , 10,   //dmg
+              0,     //dmg over time
+              0,     //dmg over time seconds
+              0,     //slow percentage
+              0,     //slow seconds
+              0));   //stun seconds
 
-        spellslist.Add(new SpellInfo(spellIcons[1], 10, 3, "spell1", "description1",
+        spellslist.Add(new SpellInfo(spellIcons[1], 5, 3, "W", "description1",
             new HitBall[] {
                 new HitBall(new Vector3(0,0,5).normalized, 0.08f, 1.0f, 2.0f, Vector3.forward * 100),
                 new HitBall(new Vector3(2.5f,0,2.5f).normalized, 0.04f, 1.0f, 2.0f, new Vector3(1,0,1).normalized * 100),
@@ -106,34 +115,52 @@ public class Spells : MonoBehaviour {
                 new HitBall(new Vector3(2.5f,0,-2.5f).normalized, 0.28f, 1.0f, 2.0f, new Vector3(1,0,-1).normalized * 100),
                 new HitBall(new Vector3(-2.5f,0,-2.5f).normalized, 0.20f, 1.0f, 2.0f, new Vector3(-1,0,-1).normalized * 100)
             }
-            , 10, 0, 0, 0, 0));
+            , 20, 0, 0, 0, 0));
 
-        spellslist.Add(new SpellInfo(spellIcons[2], 10, 3, "spell2", "description2",
+        spellslist.Add(new SpellInfo(spellIcons[2], 8, 5, "E", "description2",
          new HitBall[] {
                 new HitBall(new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, Vector3.forward * 100),
+                new HitBall(new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, (Vector3.forward + Vector3.right).normalized * 100),
+                new HitBall(new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, (Vector3.forward - Vector3.right).normalized * 100)
          }
-         , 10, 0, 0, 0 ,0));
+         , 24,   //dmg
+         0,     //dmg over time
+         0,     //dmg over time seconds
+         35,     //slow percentage
+         5,     //slow seconds
+         0));   //stun seconds
 
-        spellslist.Add(new SpellInfo(spellIcons[3], 10, 3, "spell3", "description2",
-         new HitBall[] {
+
+
+
+        spellslist.Add(new SpellInfo(
+            spellIcons[3],  //icon
+            12,             //manacost
+            8,              //cooldown seconds
+            "R",       //spell name
+            "description2", //spell description
+            new HitBall[] {
                 new HitBall(new Vector3(0,0,1), 0.0f, 0.5f, 4.0f, Vector3.forward * 100),  //front
                 new HitBall(new Vector3(0,0,-1), 0.0f, 0.5f, 4.0f, -Vector3.forward * 100),  //behind
 
                 new HitBall(new Vector3(1,0,0), 0.0f, 0.5f, 4.0f, Vector3.right * 100),  //right
                 new HitBall(new Vector3(-1,0,0), 0.0f, 0.5f, 4.0f, -Vector3.right * 100),  //left
-
-
-                new HitBall(new Vector3(1,0,1), 0.5f, 0.5f, 4.0f, new Vector3(1,0,1).normalized * 100),  //front
-                new HitBall(new Vector3(1,0,-1), 0.5f, 0.5f, 4.0f, new Vector3(1,0,-1).normalized * 100),  //behind
-
-                new HitBall(new Vector3(-1,0,1), 0.5f, 0.5f, 4.0f, new Vector3(-1,0,1).normalized * 100),  //right
-                new HitBall(new Vector3(-1,0,-1), 0.5f, 0.5f, 4.0f, new Vector3(-1,0,-1).normalized * 100),  //left
-
-
                 
-         }
-         , 10, 0, 0, 0, 0));
 
+                new HitBall(new Vector3(1,0,1), 0.5f, 0.5f, 4.0f, new Vector3(1,0,1).normalized * 100),  
+                new HitBall(new Vector3(1,0,-1), 0.5f, 0.5f, 4.0f, new Vector3(1,0,-1).normalized * 100), 
+
+                new HitBall(new Vector3(-1,0,1), 0.5f, 0.5f, 4.0f, new Vector3(-1,0,1).normalized * 100),  
+                new HitBall(new Vector3(-1,0,-1), 0.5f, 0.5f, 4.0f, new Vector3(-1,0,-1).normalized * 100),    
+         }
+          , 30,   //dmg
+          0,     //dmg over time
+          0,     //dmg over time seconds
+          0,     //slow percentage
+          0,     //slow seconds
+          5));   //stun seconds
+
+        //melee attack only used by enemies
         spellslist.Add(new SpellInfo(spellIcons[0], 0, 3, "melee attack", "description melee",
          new HitBall[] {
                 new HitBall(new Vector3(0,0,1), 0.0f, 0.5f, 3.0f, Vector3.zero)
@@ -173,6 +200,7 @@ public class Spells : MonoBehaviour {
         public int dmgots;
         public float slowpercentage;
         public float slowseconds;
+        public float stunSeconds;
         private int _cooldown;
         public int cooldown { get { return _cooldown; } }
         public int manacost;
@@ -180,7 +208,7 @@ public class Spells : MonoBehaviour {
        public  List<HitBall> hitballlist = new List<HitBall>();
 
         public SpellInfo(Sprite picon, int pmanacost, int pcooldown, string pname, string pdestription, HitBall[] hitballs,
-                         int pdmg, int pdmgovertime = 0, int pdmgovertimeseconds = 0, float pslowpercentage = 0, float pslowseconds = 0)
+                         int pdmg, int pdmgovertime = 0, int pdmgovertimeseconds = 0, float pslowpercentage = 0, float pslowseconds = 0, float pstunseconds = 0)
         {
             icon = picon;
             manacost = pmanacost;
@@ -192,14 +220,9 @@ public class Spells : MonoBehaviour {
             description = pdestription;
             slowpercentage = pslowpercentage;
             slowseconds = pslowseconds;
+            stunSeconds = pstunseconds;
             hitballlist.AddRange(hitballs);
         }
     }
-
-
-
-
-
-
 
 }

@@ -12,19 +12,31 @@ public abstract class EnemyBase : stats {
     protected GameObject target;
     protected float attackrange;
 
-	// Use this for initialization
-	protected void Start () {
+    protected float stunnedSeconds = 0;
+
+    // Use this for initialization
+    protected void Start () {
         agent = gameObject.GetComponent<NavMeshAgent>();
         target = GameObject.Find("Player");
-        maxhealth = 10;
-        health = 10;
+        maxhealth = 500;
+        health = 100;
        
         manager = GameObject.FindObjectOfType<EnemyManager>();
     }
-	
-	// Update is called once per frame
+
+    public void Stun(float seconds)
+    {
+        stunnedSeconds += seconds;
+    }
+
+    // Update is called once per frame
     protected void Update()
     {
+        if (stunnedSeconds > 0)
+        {
+            stunnedSeconds -= Time.deltaTime;
+            return;
+        }
         agent.SetDestination(target.transform.position);
 	}
 

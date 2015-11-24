@@ -43,12 +43,9 @@ public class CameraController : MonoBehaviour {
         if (zoomDistance > maxZoomDistance)
             zoomDistance = maxZoomDistance;
 
-        LayerMask layermask = (1 << 10);
-        //if (Physics.Raycast(Camera.main.ScreenPointToRay(player.transform.position), out hit, 100, layermask))
-        Debug.DrawRay(player.transform.position, -(player.transform.position - Camera.main.transform.position));
+        LayerMask layermask = (1 << 10); //layer 10 = Hideablewall
         if (Physics.Raycast(player.transform.position, -(player.transform.position - Camera.main.transform.position), out hit, zoomDistance + 1, layermask))
         {
-            Debug.Log("wall spotted");
             if (zoomDistance > hit.distance - 1)
             {
                 if (zoomDistance > targetZoomDistance)

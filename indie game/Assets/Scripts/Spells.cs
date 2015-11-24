@@ -88,7 +88,7 @@ public class Spells : MonoBehaviour {
     {
         spellslist = new List<SpellInfo>();
 
-        spellslist.Add(new SpellInfo(spellIcons[0], 0, 2, "Q", "description1",
+        spellslist.Add(new SpellInfo(spellIcons[0], 0, 0.8f, "Q", "description1",
             new HitBall[] {
                 new HitBall(new Vector3(0,0,2), 0.0f, 1.0f, 3.0f, Vector3.forward * 100)
                 //new HitBall(new Vector3(0,0,4), 0.4f, 1.0f, 3.0f, Vector3.zero),
@@ -96,7 +96,7 @@ public class Spells : MonoBehaviour {
                // new HitBall(new Vector3(0,0,8), 0.8f, 1.0f, 3.0f, Vector3.zero),
                // new HitBall(new Vector3(0,0,10), 1.0f, 1.0f, 3.0f, Vector3.zero)
             }
-            , 10,   //dmg
+            , 100,   //dmg
               0,     //dmg over time
               0,     //dmg over time seconds
               0,     //slow percentage
@@ -193,13 +193,13 @@ public class Spells : MonoBehaviour {
         public float slowpercentage;
         public float slowseconds;
         public float stunSeconds;
-        private int _cooldown;
-        public int cooldown { get { return _cooldown; } }
+        private float _cooldown;
+        public float cooldown { get { return _cooldown; } }
         public int manacost;
 
        public  List<HitBall> hitballlist = new List<HitBall>();
 
-        public SpellInfo(Sprite picon, int pmanacost, int pcooldown, string pname, string pdestription, HitBall[] hitballs,
+        public SpellInfo(Sprite picon, int pmanacost, float pcooldown, string pname, string pdestription, HitBall[] hitballs,
                          int pdmg, int pdmgovertime = 0, int pdmgovertimeseconds = 0, float pslowpercentage = 0, float pslowseconds = 0, float pstunseconds = 0)
         {
             icon = picon;

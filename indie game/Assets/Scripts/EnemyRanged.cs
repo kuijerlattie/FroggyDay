@@ -58,6 +58,8 @@ public class EnemyRanged : EnemyBase {
 
         if (distanceToPlayer <= range * 0.7f)
         {
+            if (distanceToPlayer <= range * 0.2f)
+                MeleeAttack();
             agent.SetDestination(target.transform.position - _forward * range * 3f);
         }
       
@@ -80,5 +82,10 @@ public class EnemyRanged : EnemyBase {
     {
         currentcooldown = cooldown;
         GetComponent<AttackScript>().MageAttackForward(0, -_forward);
+    }
+    protected void MeleeAttack()
+    {
+        currentcooldown = cooldown;
+        GetComponent<AttackScript>().MeleeAttack();
     }
 }

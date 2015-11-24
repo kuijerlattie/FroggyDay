@@ -7,7 +7,7 @@ public class EnemyManager : MonoBehaviour {
     [SerializeField]
     GameObject meleeEnemyPrefab;
     [SerializeField]
-    GameObject player;
+    GameObject rangedEnemyPrefab;
     float timer = 0;
 
     bool waveActive = false;
@@ -36,6 +36,14 @@ public class EnemyManager : MonoBehaviour {
         spawnCount++;
     }
 
+    void SpawnRangedEnemy()
+    {
+        GameObject enemy = (GameObject)GameObject.Instantiate(rangedEnemyPrefab);
+        enemy.transform.position = GetSpawnLocation();
+        enemyCount++;
+        spawnCount++;
+    }
+
     Vector3 GetSpawnLocation()
     {
         Vector3 location = spawnlocations[Random.Range(0, 2)].transform.position;
@@ -44,6 +52,9 @@ public class EnemyManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        Debug.Log(enemyCount);
+
         if (waveActive)
         {
             if (spawnCount >= waveSize)
@@ -53,6 +64,7 @@ public class EnemyManager : MonoBehaviour {
                 if (enemyCount <= 0)
                 {
                     waveActive = false;
+                    timer = 0;
                 }
             }
         }
@@ -69,12 +81,23 @@ public class EnemyManager : MonoBehaviour {
         {
             if (timer >= spawnDelay)
             {
-                SpawnEnemy();
+                int i = Random.Range(1, 3);
+                switch (i)
+                {
+                    case 1:
+                        SpawnEnemy();
+                        break;
+                    case 2:
+                        SpawnRangedEnemy();
+                        break;
+                    default:
+                        SpawnEnemy();
+                        break;
+                }
                 timer = 0;
             }
         }
         timer += Time.deltaTime;
-        Debug.Log(timer);
 	}
 
     void StartNewWave()
@@ -92,8 +115,7 @@ public class EnemyManager : MonoBehaviour {
 
     public void RemoveEnemy()
     {
+        Debug.Log("enemy died");
         enemyCount--;
-
-        Debug.Log("enemies left: " + enemyCount);
     }
 }

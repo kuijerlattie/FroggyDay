@@ -54,7 +54,7 @@ public abstract class EnemyBase : stats {
 
     protected virtual void Die()
     {
-        //manager.RemoveEnemy();
+        manager.RemoveEnemy();
         GameObject.Destroy(gameObject);
     }
 }

@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: 8e49da0798ae7424fb3f2aea0229d531
-timeCreated: 1448023644
+timeCreated: 1448370896
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - meleeEnemyPrefab: {fileID: 121076, guid: 0cd65e12f03b7664d818c911a7ccc355, type: 2}
+  - rangedEnemyPrefab: {fileID: 145096, guid: d6f8f01f1ca6ab346b51f13f165e8dea, type: 2}
+  - player: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

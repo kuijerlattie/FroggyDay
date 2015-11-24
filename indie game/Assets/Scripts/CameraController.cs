@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour {
 
     float rotation;
     float rotationspeed = 90f;
-    float maxZoomDistance = 100f; //max distance away from player
+    float maxZoomDistance = 50f; //max distance away from player
     float minZoomDistance = 10f; //min distance away from player
     float zoomDistance = 100f;
 
@@ -21,14 +21,13 @@ public class CameraController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        rotation = 0;
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            rotation += rotationspeed;
+            rotation -= rotationspeed;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            rotation -= rotationspeed;
+            rotation += rotationspeed;
         }
         zoomDistance -= Input.GetAxis("Mouse ScrollWheel");
         if (zoomDistance < minZoomDistance)
@@ -36,17 +35,19 @@ public class CameraController : MonoBehaviour {
         if (zoomDistance > maxZoomDistance)
             zoomDistance = maxZoomDistance;
 
-        Debug.Log(zoomDistance);
-
         rotation = rotation * Time.deltaTime;
 
-        Camera.main.transform.RotateAround(transform.position, Vector3.up, rotation);
+        Camera.main.transform.position = player.transform.position;
+        Camera.main.transform.RotateAround(player.transform.position, Vector3.up, rotation);
+        Camera.main.transform.position = player.transform.position - Camera.main.transform.forward * zoomDistance;
+        //Vector3 newcameraposition;//
 
-        //Vector3 newcameraposition = (transform.position - Camera.main.transform.position).normalized;
-        //newcameraposition *= zoomDistance / 10;
+        //newcameraposition = (player.transform.position - Camera.main.transform.position).normalized;
+        //newcameraposition *= zoomDistance;
+        
 
         //Camera.main.transform.position = newcameraposition; //makes camera zoom in somewhere... not at the place where i want it tho
-
+               
 
         LayerMask layermask = (1 << 10);
         //if (Physics.Raycast(Camera.main.ScreenPointToRay(player.transform.position), out hit, 100, layermask))

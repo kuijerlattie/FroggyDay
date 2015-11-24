@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: f08790ae96eb39249a80ed4b67c4aa05
-timeCreated: 1447859928
+guid: 10b38627706e2c84e9d9aec4fd009da0
+timeCreated: 1448291317
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Wall_1_single8
+    4300000: Fontain
   materials:
     importMaterials: 1
     materialName: 0

@@ -7,23 +7,36 @@ public abstract class EnemyBase : stats {
 
     protected NavMeshAgent agent;
 
-    protected float movespeed;
+    //protected float movespeed;
     protected int difficulty;
     protected GameObject target;
     protected float attackrange;
 
-	// Use this for initialization
-	protected void Start () {
+    protected float stunnedSeconds = 0;
+
+    // Use this for initialization
+    protected void Start () {
         agent = gameObject.GetComponent<NavMeshAgent>();
         target = GameObject.Find("Player");
-        maxhealth = 10;
-        health = 10;
-        manager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
-	}
-	
-	// Update is called once per frame
+        maxhealth = 500;
+        health = 100;
+       
+        manager = GameObject.FindObjectOfType<EnemyManager>();
+    }
+
+    public void Stun(float seconds)
+    {
+        stunnedSeconds += seconds;
+    }
+
+    // Update is called once per frame
     protected void Update()
     {
+        if (stunnedSeconds > 0)
+        {
+            stunnedSeconds -= Time.deltaTime;
+            return;
+        }
         agent.SetDestination(target.transform.position);
 	}
 
@@ -41,7 +54,7 @@ public abstract class EnemyBase : stats {
 
     protected virtual void Die()
     {
-        manager.RemoveEnemy();
+        //manager.RemoveEnemy();
         GameObject.Destroy(gameObject);
     }
 }

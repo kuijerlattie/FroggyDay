@@ -27,15 +27,18 @@ public class stats : MonoBehaviour {
 
     public void ApplySlow(float percentage, float seconds)
     {
+        Debug.Log("slowed");
         float _movespeed = movespeed;
-        movespeed += (1 - percentage);
-        StartCoroutine(RemoveSlow(movespeed - _movespeed, seconds));
+        movespeed = (movespeed/100) * (100-percentage);
+        GetComponent<NavMeshAgent>().speed = movespeed;
+        StartCoroutine(RemoveSlow(_movespeed - movespeed, seconds));
     }
 
     private IEnumerator RemoveSlow(float slow, float seconds)
     {
         yield return new WaitForSeconds(seconds);
         movespeed += slow;
+        GetComponent<NavMeshAgent>().speed = movespeed;
     }
 
     public void HitOverTime(int dmg, int seconds)

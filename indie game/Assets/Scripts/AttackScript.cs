@@ -9,6 +9,7 @@ public class AttackScript : MonoBehaviour {
     public Spells spellmanager;
 
     float[] cooldowns;
+    public float[] coolDowns { get { return cooldowns; } }
     
     
     void Start()

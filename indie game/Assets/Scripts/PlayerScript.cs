@@ -14,6 +14,13 @@ public class PlayerScript : stats {
     Image eImageSlot;
     Image rImageSlot;
 
+    Image qCooldownOverlay;
+    Image wCooldownOverlay;
+    Image eCooldownOverlay;
+    Image rCooldownOverlay;
+
+    Image healthOverlay;
+    Image manaOverlay;
     
 
     public enum SpellSlots
@@ -38,6 +45,14 @@ public class PlayerScript : stats {
         eImageSlot = GameObject.Find("SpellE").GetComponent<Image>();
         rImageSlot = GameObject.Find("SpellR").GetComponent<Image>();
 
+        qCooldownOverlay = GameObject.Find("CooldownOverlayQ").GetComponent<Image>();
+        wCooldownOverlay = GameObject.Find("CooldownOverlayW").GetComponent<Image>();
+        eCooldownOverlay = GameObject.Find("CooldownOverlayE").GetComponent<Image>();
+        rCooldownOverlay = GameObject.Find("CooldownOverlayR").GetComponent<Image>();
+
+        healthOverlay = GameObject.Find("HealthOverlay").GetComponent<Image>();
+        manaOverlay = GameObject.Find("ManaOverlay").GetComponent<Image>();
+
         attackscript = GetComponent<AttackScript>();
 
         SetSpell(SpellSlots.qSpell, 0);
@@ -49,10 +64,23 @@ public class PlayerScript : stats {
 	// Update is called once per frame
 	void Update () {
         UpdateCooldowns();
+        UpdateHPMana();
         UpdateInput();
     }
 
     void UpdateCooldowns()
+    {
+        qCooldownOverlay.fillAmount = GetComponent<AttackScript>().coolDowns[qSpell] / GetComponent<AttackScript>().spellmanager.spellslist[qSpell].cooldown;
+        wCooldownOverlay.fillAmount = GetComponent<AttackScript>().coolDowns[wSpell] / GetComponent<AttackScript>().spellmanager.spellslist[wSpell].cooldown;
+        eCooldownOverlay.fillAmount = GetComponent<AttackScript>().coolDowns[eSpell] / GetComponent<AttackScript>().spellmanager.spellslist[eSpell].cooldown;
+        rCooldownOverlay.fillAmount = GetComponent<AttackScript>().coolDowns[rSpell] / GetComponent<AttackScript>().spellmanager.spellslist[rSpell].cooldown;
+        Debug.Log("playerhealth: " + health);
+        Debug.Log("playermana: " + mana);
+        healthOverlay.fillAmount = ((float)health / (float)maxhealth);
+        manaOverlay.fillAmount = ((float)mana / (float)maxmana);
+    }
+
+    void UpdateHPMana()
     {
 
     }

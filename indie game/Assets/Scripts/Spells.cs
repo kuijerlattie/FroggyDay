@@ -9,6 +9,12 @@ public class Spells : MonoBehaviour {
     GameObject hitballprefab;
     [SerializeField]
     Sprite[] spellIcons;
+    [SerializeField]
+    AudioClip[] spellSounds;
+    [SerializeField]
+    public AudioClip Cooldown;
+    [SerializeField]
+    public AudioClip lowOnMana;
 
     public void MakeSpellMouse(Spells.SpellInfo spell, Transform caster)
     {
@@ -88,7 +94,7 @@ public class Spells : MonoBehaviour {
     {
         spellslist = new List<SpellInfo>();
 
-        spellslist.Add(new SpellInfo(spellIcons[0], 0, 0.8f, "Q", "description1",
+        spellslist.Add(new SpellInfo(spellIcons[0], spellSounds[0], 0, 0.8f, "Q", "description1",
             new HitBall[] {
                 new HitBall(new Vector3(0,0,2), 0.0f, 1.0f, 3.0f, Vector3.forward * 100)
                 //new HitBall(new Vector3(0,0,4), 0.4f, 1.0f, 3.0f, Vector3.zero),
@@ -103,7 +109,7 @@ public class Spells : MonoBehaviour {
               0,     //slow seconds
               0));   //stun seconds
 
-        spellslist.Add(new SpellInfo(spellIcons[1], 5, 3, "W", "description1",
+        spellslist.Add(new SpellInfo(spellIcons[1], spellSounds[1], 5, 3, "W", "description1",
             new HitBall[] {
                 new HitBall(new Vector3(0,0,5).normalized, 0.08f, 1.0f, 2.0f, Vector3.forward * 100),
                 new HitBall(new Vector3(2.5f,0,2.5f).normalized, 0.04f, 1.0f, 2.0f, new Vector3(1,0,1).normalized * 100),
@@ -117,7 +123,7 @@ public class Spells : MonoBehaviour {
             }
             , 20, 0, 0, 0, 0));
 
-        spellslist.Add(new SpellInfo(spellIcons[2], 8, 5, "E", "description2",
+        spellslist.Add(new SpellInfo(spellIcons[2], spellSounds[2], 8, 5, "E", "description2",
          new HitBall[] {
                 new HitBall(new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, Vector3.forward * 100),
                 new HitBall(new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, (Vector3.forward + Vector3.right).normalized * 100),
@@ -135,6 +141,7 @@ public class Spells : MonoBehaviour {
 
         spellslist.Add(new SpellInfo(
             spellIcons[3],  //icon
+            spellSounds[3], //spell cast sound
             12,             //manacost
             8,              //cooldown seconds
             "R",       //spell name
@@ -153,7 +160,7 @@ public class Spells : MonoBehaviour {
           5));   //stun seconds
 
         //melee attack only used by enemies
-        spellslist.Add(new SpellInfo(spellIcons[0], 0, 3, "melee attack", "description melee",
+        spellslist.Add(new SpellInfo(spellIcons[4], spellSounds[4], 0, 3, "melee attack", "description melee",
          new HitBall[] {
                 new HitBall(new Vector3(0,0,1), 0.0f, 0.5f, 3.0f, Vector3.zero)
          }
@@ -196,10 +203,11 @@ public class Spells : MonoBehaviour {
         private float _cooldown;
         public float cooldown { get { return _cooldown; } }
         public int manacost;
+        public AudioClip spellSound;
 
        public  List<HitBall> hitballlist = new List<HitBall>();
 
-        public SpellInfo(Sprite picon, int pmanacost, float pcooldown, string pname, string pdestription, HitBall[] hitballs,
+       public SpellInfo(Sprite picon, AudioClip pspellsound, int pmanacost, float pcooldown, string pname, string pdestription, HitBall[] hitballs,
                          int pdmg, int pdmgovertime = 0, int pdmgovertimeseconds = 0, float pslowpercentage = 0, float pslowseconds = 0, float pstunseconds = 0)
         {
             icon = picon;
@@ -214,6 +222,7 @@ public class Spells : MonoBehaviour {
             slowseconds = pslowseconds;
             stunSeconds = pstunseconds;
             hitballlist.AddRange(hitballs);
+            spellSound = pspellsound;
         }
     }
 

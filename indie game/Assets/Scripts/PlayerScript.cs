@@ -22,10 +22,6 @@ public class PlayerScript : stats {
     Image healthOverlay;
     Image manaOverlay;
 
-    public AudioClip lowOnMana;
-    public AudioClip cooldownTicToc;
-    AudioSource hudAudio;
-
     public enum SpellSlots
     {
         qSpell,
@@ -57,7 +53,6 @@ public class PlayerScript : stats {
         manaOverlay = GameObject.Find("ManaOverlay").GetComponent<Image>();
 
         attackscript = GetComponent<AttackScript>();
-        hudAudio = GameObject.Find("HUD").GetComponent<AudioSource>();
 
         SetSpell(SpellSlots.qSpell, 0);
         SetSpell(SpellSlots.wSpell, 1);
@@ -91,101 +86,21 @@ public class PlayerScript : stats {
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            int result = GetComponent<AttackScript>().MageAttackMouse(qSpell);
-            switch (result)
-            {
-                case -1:
-                    //spell failed, programmer error
-                    break;
-                case 0:
-                    //spell succes
-                    break;
-                case 1:
-                    //spell failed, low on mana
-                    PlayHudSound(lowOnMana);
-                    break;
-                case 2:
-                    //spell failed, still on cooldown
-                    PlayHudSound(cooldownTicToc);
-                    break;
-                default:
-                    Debug.Log("spell with id: " + qSpell + " returned the following unusual value: " + result );
-                    break;
-            }
+            CastSpell(qSpell);
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            int result = GetComponent<AttackScript>().MageAttackMouse(wSpell);
-            switch (result)
-            {
-                case -1:
-                    //spell failed, programmer error
-                    break;
-                case 0:
-                    //spell succes
-                    break;
-                case 1:
-                    //spell failed, low on mana
-                    PlayHudSound(lowOnMana);
-                    break;
-                case 2:
-                    //spell failed, still on cooldown
-                    PlayHudSound(cooldownTicToc);
-                    break;
-                default:
-                    Debug.Log("spell with id: " + wSpell + " returned the following unusual value: " + result);
-                    break;
-            }
+            CastSpell(wSpell);
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            int result = GetComponent<AttackScript>().MageAttackMouse(eSpell);
-            switch (result)
-            {
-                case -1:
-                    //spell failed, programmer error
-                    break;
-                case 0:
-                    //spell succes
-                    break;
-                case 1:
-                    //spell failed, low on mana
-                    PlayHudSound(lowOnMana);
-                    break;
-                case 2:
-                    //spell failed, still on cooldown
-                    PlayHudSound(cooldownTicToc);
-                    break;
-                default:
-                    Debug.Log("spell with id: " + eSpell + " returned the following unusual value: " + result);
-                    break;
-            }
+            CastSpell(eSpell);
         }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            int result = GetComponent<AttackScript>().MageAttackMouse(rSpell);
-            switch (result)
-            {
-                case -1:
-                    //spell failed, programmer error
-                    break;
-                case 0:
-                    //spell succes
-                    break;
-                case 1:
-                    //spell failed, low on mana
-                    PlayHudSound(lowOnMana);
-                    break;
-                case 2:
-                    //spell failed, still on cooldown
-                    PlayHudSound(cooldownTicToc);
-                    break;
-                default:
-                    Debug.Log("spell with id: " + rSpell + " returned the following unusual value: " + result);
-                    break;
-            }
+            CastSpell(rSpell);
         }
     }
 
@@ -214,18 +129,26 @@ public class PlayerScript : stats {
         }
     }
 
-    void PlayHudSound(AudioClip clip)
+    void CastSpell(int spellId)
     {
-        if (hudAudio.clip != clip)
+        int result = GetComponent<AttackScript>().MageAttackMouse(spellId);
+        switch (result)
         {
-            hudAudio.clip = clip;
-            hudAudio.Play();
-        }
-        else if (!hudAudio.isPlaying)
-        {
-            hudAudio.Play();
+            case -1:
+                //spell failed, programmer error
+                break;
+            case 0:
+                //spell succes
+                break;
+            case 1:
+                //spell failed, low on mana
+                break;
+            case 2:
+                //spell failed, still on cooldown
+                break;
+            default:
+                Debug.Log("spell with id: " + qSpell + " returned the following unusual value: " + result);
+                break;
         }
     }
-
-    
 }

@@ -47,7 +47,7 @@ public class EnemyManager : MonoBehaviour {
 
     Vector3 GetSpawnLocation()
     {
-        Vector3 location = spawnlocations[Random.Range(0, spawnlocations.Length-1)].transform.position;
+        Vector3 location = spawnlocations[Random.Range(0, spawnlocations.Length)].transform.position;
         return location;
     }
 	

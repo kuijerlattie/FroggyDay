@@ -138,6 +138,12 @@ public class PlayerScript : stats {
             }
         }
 
+        /// Pause game
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             int result = GetComponent<AttackScript>().MageAttackMouse(eSpell);

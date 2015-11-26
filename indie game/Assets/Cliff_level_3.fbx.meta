@@ -1,0 +1,153 @@
+fileFormatVersion: 2
+guid: ab0e653c49e3f3b4f9a6a21cf2d01bbf
+timeCreated: 1448452507
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Bridge_1
+    100002: Bridge_2
+    100004: Bridge_3
+    100006: Bridge_4
+    100008: Bridge_5
+    100010: Bridge_6
+    100012: //RootNode
+    100014: Collider_box_invisable2
+    100016: Collider_invisable
+    100018: Collider_invisable1
+    100020: Inside_circle
+    100022: Inside_fence
+    100024: Inside_pillar
+    100026: Middle_circle1
+    100028: Middle_fence_1
+    100030: Middle_fence_2
+    100032: Outside_circle
+    400000: Bridge_1
+    400002: Bridge_2
+    400004: Bridge_3
+    400006: Bridge_4
+    400008: Bridge_5
+    400010: Bridge_6
+    400012: //RootNode
+    400014: Collider_box_invisable2
+    400016: Collider_invisable
+    400018: Collider_invisable1
+    400020: Inside_circle
+    400022: Inside_fence
+    400024: Inside_pillar
+    400026: Middle_circle1
+    400028: Middle_fence_1
+    400030: Middle_fence_2
+    400032: Outside_circle
+    2300000: Bridge_1
+    2300002: Bridge_2
+    2300004: Bridge_3
+    2300006: Bridge_4
+    2300008: Bridge_5
+    2300010: Bridge_6
+    2300012: Collider_box_invisable2
+    2300014: Collider_invisable
+    2300016: Collider_invisable1
+    2300018: Inside_circle
+    2300020: Inside_fence
+    2300022: Inside_pillar
+    2300024: Middle_circle1
+    2300026: Middle_fence_1
+    2300028: Middle_fence_2
+    2300030: Outside_circle
+    3300000: Bridge_1
+    3300002: Bridge_2
+    3300004: Bridge_3
+    3300006: Bridge_4
+    3300008: Bridge_5
+    3300010: Bridge_6
+    3300012: Collider_box_invisable2
+    3300014: Collider_invisable
+    3300016: Collider_invisable1
+    3300018: Inside_circle
+    3300020: Inside_fence
+    3300022: Inside_pillar
+    3300024: Middle_circle1
+    3300026: Middle_fence_1
+    3300028: Middle_fence_2
+    3300030: Outside_circle
+    4300000: Inside_fence
+    4300002: Inside_pillar
+    4300004: Inside_circle
+    4300006: Middle_fence_2
+    4300008: Middle_fence_1
+    4300010: Middle_circle1
+    4300012: Outside_circle
+    4300014: Collider_invisable
+    4300016: Bridge_1
+    4300018: Bridge_2
+    4300020: Bridge_3
+    4300022: Bridge_4
+    4300024: Bridge_5
+    4300026: Bridge_6
+    4300028: Collider_invisable1
+    4300030: Collider_box_invisable2
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

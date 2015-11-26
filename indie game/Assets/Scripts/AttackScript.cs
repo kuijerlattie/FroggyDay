@@ -10,12 +10,18 @@ public class AttackScript : MonoBehaviour {
 
     float[] cooldowns;
     public float[] coolDowns { get { return cooldowns; } }
-    
+
+    AudioSource hudAudio;
+
+    [SerializeField]
+    public GameObject spellSoundHelperPrefab;
     
     void Start()
     {
         CheckSpellManager();
         CheckCooldowns();
+
+        hudAudio = GameObject.Find("HUD").GetComponent<AudioSource>();
     }
 
     /// <summary>
@@ -26,6 +32,7 @@ public class AttackScript : MonoBehaviour {
     {
             CheckSpellManager();
             spellmanager.MakeSpellMouse(spellmanager.spellslist[4], gameObject.transform);
+            PlaySpellSound(spellmanager.spellslist[4].spellSound);
             return 0;
     }
 
@@ -53,10 +60,13 @@ public class AttackScript : MonoBehaviour {
                 }
                 cooldowns[index] = spellmanager.spellslist[index].cooldown;
                 spellmanager.MakeSpellForward(spellmanager.spellslist[index], gameObject.transform, forward);
+                PlaySpellSound(spellmanager.spellslist[index].spellSound);
                 return 0;
             }
+            PlayHudSound(spellmanager.lowOnMana);
             return 1;
         }
+        PlayHudSound(spellmanager.Cooldown);
         return 2;
         
     }
@@ -83,10 +93,13 @@ public class AttackScript : MonoBehaviour {
                 }
                 cooldowns[index] = spellmanager.spellslist[index].cooldown;
                 spellmanager.MakeSpellMouse(spellmanager.spellslist[index], gameObject.transform);
+                PlaySpellSound(spellmanager.spellslist[index].spellSound);
                 return 0;
             }
+            PlayHudSound(spellmanager.lowOnMana);
             return 1;
         }
+        PlayHudSound(spellmanager.Cooldown);
         return 2;
 
     }
@@ -125,7 +138,27 @@ public class AttackScript : MonoBehaviour {
                     cooldowns[i] -= Time.deltaTime;
             }
         }
+    }
 
+    void PlayHudSound(AudioClip clip)
+    {
+        if (hudAudio.clip != clip)
+        {
+            hudAudio.clip = clip;
+            hudAudio.Play();
+        }
+        else if (!hudAudio.isPlaying)
+        {
+            hudAudio.Play();
+        }
+    }
+
+    void PlaySpellSound(AudioClip clip)
+    {
+        GameObject g = GameObject.Instantiate(spellSoundHelperPrefab);
+        g.AddComponent<AudioSource>();
+        g.GetComponent<AudioSource>().clip = clip;
+        g.AddComponent<SpellSoundHelper>();
 
     }
 }

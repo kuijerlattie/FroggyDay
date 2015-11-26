@@ -25,11 +25,11 @@ public class CameraController : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            rotation -= rotationspeed;
+            rotation += rotationspeed;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            rotation += rotationspeed;
+            rotation -= rotationspeed;
         }
         if (oldZoomDistance != 0)
         {

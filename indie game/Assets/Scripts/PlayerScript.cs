@@ -62,12 +62,11 @@ public class PlayerScript : stats {
 	
 	// Update is called once per frame
 	void Update () {
-        UpdateCooldowns();
-        UpdateHPMana();
+        UpdateHud();
         UpdateInput();
     }
 
-    void UpdateCooldowns()
+    void UpdateHud()
     {
         qCooldownOverlay.fillAmount = GetComponent<AttackScript>().coolDowns[qSpell] / GetComponent<AttackScript>().spellmanager.spellslist[qSpell].cooldown;
         wCooldownOverlay.fillAmount = GetComponent<AttackScript>().coolDowns[wSpell] / GetComponent<AttackScript>().spellmanager.spellslist[wSpell].cooldown;
@@ -75,11 +74,7 @@ public class PlayerScript : stats {
         rCooldownOverlay.fillAmount = GetComponent<AttackScript>().coolDowns[rSpell] / GetComponent<AttackScript>().spellmanager.spellslist[rSpell].cooldown;
         healthOverlay.fillAmount = ((float)health / (float)maxhealth);
         manaOverlay.fillAmount = ((float)mana / (float)maxmana);
-    }
-
-    void UpdateHPMana()
-    {
-
+        //gold
     }
 
     void UpdateInput()

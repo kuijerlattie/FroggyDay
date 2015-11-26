@@ -13,6 +13,10 @@ public class stats : MonoBehaviour {
     [HideInInspector]
     public int maxmana;
 
+    private int _gold;
+    [HideInInspector]
+    public int gold { get { return _gold; } set { _gold = value; } }
+
 
     public virtual void Hit(int dmg)
     {

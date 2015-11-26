@@ -107,7 +107,7 @@ public class EnemyManager : MonoBehaviour {
         waveActive = true;
         spawnEnemies = true;
 
-        waveSize = waveLevel * 500;
+        waveSize = waveLevel * 5;
         enemyCount = 0;
         spawnCount = 0;
 

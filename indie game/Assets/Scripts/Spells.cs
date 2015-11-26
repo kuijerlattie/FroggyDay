@@ -208,7 +208,7 @@ public class Spells : MonoBehaviour {
        public  List<HitBall> hitballlist = new List<HitBall>();
 
        public SpellInfo(Sprite picon, AudioClip pspellsound, int pmanacost, float pcooldown, string pname, string pdestription, HitBall[] hitballs,
-                         int pdmg, int pdmgovertime = 0, int pdmgovertimeseconds = 0, float pslowpercentage = 0, float pslowseconds = 0, float pstunseconds = 0)
+                         int pdmg, int pdmgovertime = 0, int pdmgovertimeseconds = 0, float pslowpercentage = 0, float pslowseconds = 0, float pstunseconds = 0, int pselfheal = 0)
         {
             icon = picon;
             manacost = pmanacost;
@@ -223,6 +223,7 @@ public class Spells : MonoBehaviour {
             stunSeconds = pstunseconds;
             hitballlist.AddRange(hitballs);
             spellSound = pspellsound;
+            
         }
     }
 

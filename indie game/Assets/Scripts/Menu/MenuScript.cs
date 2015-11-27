@@ -15,7 +15,7 @@ public class MenuScript : MonoBehaviour {
 
     public void Play()
     {
-        Application.LoadLevel(1);
+        Application.LoadLevel("mninimapscene");
     }
 
     public void Quit()

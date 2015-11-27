@@ -33,6 +33,7 @@ public class EnemyManager : MonoBehaviour {
     {
         GameObject enemy = (GameObject)GameObject.Instantiate(meleeEnemyPrefab);
         enemy.transform.position = GetSpawnLocation();
+        enemy.GetComponent<EnemyBase>().isWaveEnemy = true;
         enemyCount++;
         spawnCount++;
     }
@@ -41,6 +42,8 @@ public class EnemyManager : MonoBehaviour {
     {
         GameObject enemy = (GameObject)GameObject.Instantiate(rangedEnemyPrefab);
         enemy.transform.position = GetSpawnLocation();
+        enemy.GetComponent<EnemyBase>().isWaveEnemy = true;
+
         enemyCount++;
         spawnCount++;
     }

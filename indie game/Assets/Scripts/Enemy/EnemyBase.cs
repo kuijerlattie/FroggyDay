@@ -12,6 +12,8 @@ public abstract class EnemyBase : stats {
     protected GameObject target;
     protected float attackrange;
 
+    public bool isWaveEnemy = false;
+
     protected float stunnedSeconds = 0;
 
     // Use this for initialization
@@ -20,6 +22,7 @@ public abstract class EnemyBase : stats {
         target = GameObject.Find("Player");
         maxhealth = 500;
         health = 100;
+        gold = Random.Range(50, 101);
        
         manager = GameObject.FindObjectOfType<EnemyManager>();
     }
@@ -54,7 +57,9 @@ public abstract class EnemyBase : stats {
 
     protected virtual void Die()
     {
-        manager.RemoveEnemy();
+        if (isWaveEnemy)
+            manager.RemoveEnemy();
+        GameObject.FindObjectOfType<PlayerScript>().LootGold(gold);
         GameObject.Destroy(gameObject);
     }
 }

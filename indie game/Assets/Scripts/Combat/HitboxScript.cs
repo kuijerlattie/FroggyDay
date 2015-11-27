@@ -63,25 +63,36 @@ public class HitboxScript : MonoBehaviour {
     private void CheckCollisions()
     {
         Collider tempcollider = null;
+       
 
         foreach (Collider col in colliders)
         {
-            if (col.gameObject.layer != layer && col.gameObject.GetComponent<stats>() != null)
+            stats _stats;
+           if(col.gameObject.layer == 8)
+            {
+                _stats = GameObject.FindObjectOfType<PlayerScript>();
+            }
+            else
+            {
+                _stats = col.gameObject.GetComponent<stats>();
+            }
+            
+            if (col.gameObject.layer != layer &&  _stats != null)
             {
                 if(stunseconds > 0)
                 {
-                    Debug.Log("STUNNED");
                     col.gameObject.GetComponent<EnemyBase>().Stun(stunseconds);
                 }
                 if(slowpercentage > 0 && slowseconds > 0)
                 {
-                    col.gameObject.GetComponent<stats>().ApplySlow(slowpercentage, slowseconds);
+                    _stats.ApplySlow(slowpercentage, slowseconds);
                 }
                 tempcollider = col;
-                col.gameObject.GetComponent<stats>().Hit(dmg);
+               _stats.Hit(dmg);
+                Debug.Log("dmg: " + dmg);
                 if (dmgot != 0)
                 {
-                    col.gameObject.GetComponent<stats>().HitOverTime(dmgot, dmgottime);
+                    _stats.HitOverTime(dmgot, dmgottime);
                 }
                 if(velocity.magnitude > 0)
                 {

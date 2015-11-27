@@ -55,6 +55,15 @@ public class Spells : MonoBehaviour {
 
             hitboxscript.stunseconds = spell.stunSeconds;
 
+            if (spell.selfheal > 0)
+            {
+                GameObject.FindObjectOfType<PlayerScript>().health += spell.selfheal;
+            }
+            if (spell.selfmana > 0)
+            {
+                GameObject.FindObjectOfType<PlayerScript>().mana += spell.selfmana;
+            }
+
             hitboxscript.layer = caster.gameObject.layer;
             hitboxscript.Spawn(hitball.spawndelay, hitball.duration);
         }
@@ -87,6 +96,15 @@ public class Spells : MonoBehaviour {
 
             hitboxscript.stunseconds = spell.stunSeconds;
 
+            if(spell.selfheal > 0)
+            {
+                GameObject.FindObjectOfType<PlayerScript>().health += spell.selfheal;
+            }
+            if (spell.selfmana > 0)
+            {
+                GameObject.FindObjectOfType<PlayerScript>().mana += spell.selfmana;
+            }
+
             hitboxscript.layer = caster.gameObject.layer;
             hitboxscript.Spawn(hitball.spawndelay, hitball.duration);
         }
@@ -104,7 +122,7 @@ public class Spells : MonoBehaviour {
                // new HitBall(new Vector3(0,0,8), 0.8f, 1.0f, 3.0f, Vector3.zero),
                // new HitBall(new Vector3(0,0,10), 1.0f, 1.0f, 3.0f, Vector3.zero)
             }
-            , 100,   //dmg
+            , 30,   //dmg
               0,     //dmg over time
               0,     //dmg over time seconds
               0,     //slow percentage
@@ -131,7 +149,7 @@ public class Spells : MonoBehaviour {
                 new HitBall(new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, (Vector3.forward + Vector3.right).normalized * 100),
                 new HitBall(new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, (Vector3.forward - Vector3.right).normalized * 100)
          }
-         , 24,   //dmg
+         , 30,   //dmg
          0,     //dmg over time
          0,     //dmg over time seconds
          35,     //slow percentage

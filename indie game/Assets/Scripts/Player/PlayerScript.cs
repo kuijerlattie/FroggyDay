@@ -29,8 +29,8 @@ public class PlayerScript : stats {
     int spellIceSpecial = 0;
     int spellAirSpecial = 0;
 
-    int spellHealthPotion = 0;
-    int spellManaPotion = 0;
+    int spellHealthPotion = 5;
+    int spellManaPotion = 6;
     int spellAbilityRun = 0;
 
     Image imageSlotQ;
@@ -116,7 +116,9 @@ public class PlayerScript : stats {
             UpdateHud();
             UpdateInput();
         }
-        
+
+        //Debug.Log("mana: " + mana);
+        Debug.Log("health: " + health);
         /// Pause game
         if (Input.GetKeyDown(KeyCode.Escape))
         {

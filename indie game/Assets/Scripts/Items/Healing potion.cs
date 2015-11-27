@@ -19,7 +19,8 @@ public class Healingpotion : UsableItem {
 
     public override void Pickup()
     {
-        throw new NotImplementedException();
+        Spells spellmanager = GameObject.FindObjectOfType<Spells>();
+        spellmanager.spellslist[5].uses++;
     }
 
     public override bool Use(stats user)

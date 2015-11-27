@@ -11,7 +11,10 @@ public class Manapotion : UsableItem{
 
     public override void Pickup()
     {
-        throw new NotImplementedException();
+
+        // throw new NotImplementedException();
+        Spells spellmanager = GameObject.FindObjectOfType<Spells>();
+        spellmanager.spellslist[6].uses++;
     }
 
     public override bool Use(stats user)

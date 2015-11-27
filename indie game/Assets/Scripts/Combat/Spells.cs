@@ -15,6 +15,8 @@ public class Spells : MonoBehaviour {
     public AudioClip Cooldown;
     [SerializeField]
     public AudioClip lowOnMana;
+    public AudioClip SpellNotLearned;
+    public AudioClip OutOfCharges;
 
     public void MakeSpellMouse(Spells.SpellInfo spell, Transform caster)
     {
@@ -165,6 +167,8 @@ public class Spells : MonoBehaviour {
                 new HitBall(new Vector3(0,0,1), 0.0f, 0.5f, 3.0f, Vector3.zero)
          }
          , 1, 0, 0, 0, 0));
+        spellslist.Add(new SpellInfo(spellIcons[5], spellSounds[5], 0, 0, "Healing Potion", "Heal yourself for X amount of health", new HitBall[] { }, 0, 0, 0, 0, 0, 0, 10, 0, 0)); //hp potion
+        spellslist.Add(new SpellInfo(spellIcons[6], spellSounds[6], 0, 0, "Mana Potion", "Replenish x amount of your mana", new HitBall[] { }, 0, 0, 0, 0, 0, 0, 0, 10, 0)); //mana potion
 
     }
 
@@ -204,11 +208,15 @@ public class Spells : MonoBehaviour {
         public float cooldown { get { return _cooldown; } }
         public int manacost;
         public AudioClip spellSound;
+        public int selfheal;
+        public int selfmana;
+        public int uses;
+        public bool learned;
 
        public  List<HitBall> hitballlist = new List<HitBall>();
 
        public SpellInfo(Sprite picon, AudioClip pspellsound, int pmanacost, float pcooldown, string pname, string pdestription, HitBall[] hitballs,
-                         int pdmg, int pdmgovertime = 0, int pdmgovertimeseconds = 0, float pslowpercentage = 0, float pslowseconds = 0, float pstunseconds = 0, int pselfheal = 0)
+                         int pdmg, int pdmgovertime = 0, int pdmgovertimeseconds = 0, float pslowpercentage = 0, float pslowseconds = 0, float pstunseconds = 0, int pselfheal = 0, int pselfmana = 0, int puses = -1, bool plearned = true)
         {
             icon = picon;
             manacost = pmanacost;
@@ -223,6 +231,10 @@ public class Spells : MonoBehaviour {
             stunSeconds = pstunseconds;
             hitballlist.AddRange(hitballs);
             spellSound = pspellsound;
+            selfheal = pselfheal;
+            selfmana = pselfmana;
+            uses = puses;
+            learned = plearned;     
             
         }
     }

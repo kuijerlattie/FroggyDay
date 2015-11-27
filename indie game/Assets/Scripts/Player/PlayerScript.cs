@@ -4,6 +4,13 @@ using UnityEngine.UI;
 
 public class PlayerScript : stats {
 
+
+    int healthpotion = 0;
+    int manapotion = 0;
+
+    bool fireSpecialISActive = false;
+    bool iceSpecialIsActive = false;
+    bool airSpecialIsActive = false;
     GameObject HUD;
     GameObject pauseMenu;
 
@@ -167,6 +174,21 @@ public class PlayerScript : stats {
         {
             CastSpell(spellR);
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            CastSpell(spell1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            CastSpell(spell2);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            CastSpell(spell3);
+        }
     }
 
     public void CheckPause()
@@ -246,6 +268,12 @@ public class PlayerScript : stats {
             case 2:
                 //spell failed, still on cooldown
                 break;
+            case 3:
+                //spell not learned yet
+                break;
+            case 4:
+                //spell out of charges
+                break;
             default:
                 Debug.Log("spell with id: " + spellQ + " returned the following unusual value: " + result);
                 break;
@@ -261,5 +289,15 @@ public class PlayerScript : stats {
     public void QuitToMenu()
     {
         Application.LoadLevel(0);
+    }
+
+    public void AddHealthPotion()
+    {
+        healthpotion++;
+    }
+
+    public void AddManaPotion()
+    {
+        manapotion++;
     }
 }

@@ -52,19 +52,34 @@ public class AttackScript : MonoBehaviour {
     
         if (cooldowns[index] <= 0)
         {
-            if (playerscript == null || playerscript.mana >= spellmanager.spellslist[index].manacost)
+            if (spellmanager.spellslist[index].uses != 0)
             {
-                if(playerscript != null)
+                if (spellmanager.spellslist[index].learned)
                 {
-                    playerscript.mana -= spellmanager.spellslist[index].manacost;
+                    if (playerscript == null || playerscript.mana >= spellmanager.spellslist[index].manacost)
+                    {
+                        if (playerscript != null)
+                        {
+                            playerscript.mana -= spellmanager.spellslist[index].manacost;
+                            playerscript.mana += spellmanager.spellslist[index].selfmana;
+                            playerscript.health += spellmanager.spellslist[index].selfheal;
+                            if (spellmanager.spellslist[index].uses > 0)
+                                spellmanager.spellslist[index].uses -= 1;
+
+                        }
+                        cooldowns[index] = spellmanager.spellslist[index].cooldown;
+                        spellmanager.MakeSpellForward(spellmanager.spellslist[index], gameObject.transform, forward);
+                        PlaySpellSound(spellmanager.spellslist[index].spellSound);
+                        return 0;
+                    }
+                    PlayHudSound(spellmanager.lowOnMana);
+                    return 1;
                 }
-                cooldowns[index] = spellmanager.spellslist[index].cooldown;
-                spellmanager.MakeSpellForward(spellmanager.spellslist[index], gameObject.transform, forward);
-                PlaySpellSound(spellmanager.spellslist[index].spellSound);
-                return 0;
+                PlayHudSound(spellmanager.SpellNotLearned);
+                return 3;
             }
-            PlayHudSound(spellmanager.lowOnMana);
-            return 1;
+            PlayHudSound(spellmanager.OutOfCharges);
+            return 4;
         }
         PlayHudSound(spellmanager.Cooldown);
         return 2;
@@ -83,26 +98,42 @@ public class AttackScript : MonoBehaviour {
 
         PlayerScript playerscript = GetComponent<PlayerScript>();
 
-        if (cooldowns[index] <= 0)
+       if (cooldowns[index] <= 0)
         {
-            if (playerscript == null || playerscript.mana >= spellmanager.spellslist[index].manacost)
+            if (spellmanager.spellslist[index].uses != 0)
             {
-                if (playerscript != null)
+                if (spellmanager.spellslist[index].learned)
                 {
-                    playerscript.mana -= spellmanager.spellslist[index].manacost;
+                    if (playerscript == null || playerscript.mana >= spellmanager.spellslist[index].manacost)
+                    {
+                        if (playerscript != null)
+                        {
+                            playerscript.mana -= spellmanager.spellslist[index].manacost;
+                            playerscript.mana += spellmanager.spellslist[index].selfmana;
+                            playerscript.health += spellmanager.spellslist[index].selfheal;
+                            if (spellmanager.spellslist[index].uses > 0)
+                                spellmanager.spellslist[index].uses -= 1;
+
+                        }
+                        cooldowns[index] = spellmanager.spellslist[index].cooldown;
+                        spellmanager.MakeSpellMouse(spellmanager.spellslist[index], gameObject.transform);
+                        PlaySpellSound(spellmanager.spellslist[index].spellSound);
+                        return 0;
+                    }
+                    PlayHudSound(spellmanager.lowOnMana);
+                    return 1;
                 }
-                cooldowns[index] = spellmanager.spellslist[index].cooldown;
-                spellmanager.MakeSpellMouse(spellmanager.spellslist[index], gameObject.transform);
-                PlaySpellSound(spellmanager.spellslist[index].spellSound);
-                return 0;
+                PlayHudSound(spellmanager.SpellNotLearned);
+                return 3;
             }
-            PlayHudSound(spellmanager.lowOnMana);
-            return 1;
+            PlayHudSound(spellmanager.OutOfCharges);
+            return 4;
         }
         PlayHudSound(spellmanager.Cooldown);
         return 2;
 
     }
+
 
     bool CheckSpellManager()
     {

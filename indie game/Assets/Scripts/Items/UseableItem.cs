@@ -13,5 +13,5 @@ public abstract class UsableItem : Item {
 	
 	}
 
-    public abstract bool Use(stats user);
+    //public abstract bool Use(stats user);
 }

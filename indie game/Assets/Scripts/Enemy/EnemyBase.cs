@@ -59,6 +59,10 @@ public abstract class EnemyBase : stats {
     {
         if (isWaveEnemy)
             manager.RemoveEnemy();
+        Healingpotion hppot = new Healingpotion();
+        hppot.Drop(transform.position);
+        Manapotion mppot = new Manapotion();
+        mppot.Drop(transform.position);
         GameObject.FindObjectOfType<PlayerScript>().LootGold(gold);
         GameObject.Destroy(gameObject);
     }

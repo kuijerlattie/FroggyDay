@@ -21,7 +21,7 @@ public class stats : MonoBehaviour {
     public virtual void Hit(int dmg)
     {
         health -= dmg;
-        Debug.Log(gameObject.name + "'s health: " + health);
+       // Debug.Log(gameObject.name + "'s health: " + health);
         if (health <= 0)
         {
             
@@ -31,7 +31,7 @@ public class stats : MonoBehaviour {
 
     public void ApplySlow(float percentage, float seconds)
     {
-        Debug.Log("slowed");
+        //Debug.Log("slowed");
         float _movespeed = movespeed;
         movespeed = (movespeed/100) * (100-percentage);
         GetComponent<NavMeshAgent>().speed = movespeed;

@@ -1,20 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Manapotion : UsableItem{
 
     [HideInInspector]
     public int manaValue;
 
-	// Use this for initialization
-	void Start () {
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	    
-	}
+
+    public override void Pickup()
+    {
+        throw new NotImplementedException();
+    }
 
     public override bool Use(stats user)
     {

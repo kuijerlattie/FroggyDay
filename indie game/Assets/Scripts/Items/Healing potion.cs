@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Healingpotion : UsableItem {
 
@@ -16,8 +17,14 @@ public class Healingpotion : UsableItem {
 	
 	}
 
+    public override void Pickup()
+    {
+        throw new NotImplementedException();
+    }
+
     public override bool Use(stats user)
     {
+        playerstats = user;
         if (playerstats.health < playerstats.maxhealth)
         {
             user.health += healingValue;

@@ -17,7 +17,6 @@ public class EnemyMelee : EnemyBase {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log("movespeed enemy: " + GetComponent<NavMeshAgent>().speed);
         if(stunnedSeconds > 0)
         {
             agent.SetDestination(transform.position);

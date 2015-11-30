@@ -89,7 +89,6 @@ public class HitboxScript : MonoBehaviour {
                 }
                 tempcollider = col;
                _stats.Hit(dmg);
-                Debug.Log("dmg: " + dmg);
                 if (dmgot != 0)
                 {
                     _stats.HitOverTime(dmgot, dmgottime);

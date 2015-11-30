@@ -8,10 +8,10 @@ public class stats : MonoBehaviour {
     [HideInInspector]
     public int maxhealth;
 
-    private int _mana;
-    public int mana { get { return _mana; } set { _mana = value > 0 ? (value <= maxmana ? value : maxmana) : 0; } }
+    private float _mana;
+    public float mana { get { return _mana; } set { _mana = value > 0 ? (value <= maxmana ? value : maxmana) : 0; } }
     [HideInInspector]
-    public int maxmana;
+    public float maxmana;
 
     private int _gold;
     [HideInInspector]
@@ -21,7 +21,6 @@ public class stats : MonoBehaviour {
     public virtual void Hit(int dmg)
     {
         health -= dmg;
-       // Debug.Log(gameObject.name + "'s health: " + health);
         if (health <= 0)
         {
             
@@ -31,7 +30,6 @@ public class stats : MonoBehaviour {
 
     public void ApplySlow(float percentage, float seconds)
     {
-        //Debug.Log("slowed");
         float _movespeed = movespeed;
         movespeed = (movespeed/100) * (100-percentage);
         GetComponent<NavMeshAgent>().speed = movespeed;

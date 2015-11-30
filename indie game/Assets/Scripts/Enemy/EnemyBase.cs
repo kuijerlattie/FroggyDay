@@ -8,6 +8,8 @@ public abstract class EnemyBase : stats {
     protected NavMeshAgent agent;
 
     //protected float movespeed;
+    public float viewdistance = 10f;
+
     protected int difficulty;
     protected GameObject target;
     protected float attackrange;
@@ -47,14 +49,16 @@ public abstract class EnemyBase : stats {
             stunnedSeconds -= Time.deltaTime;
             return;
         }
-        agent.SetDestination(target.transform.position);
+        if (Vector2.Distance(this.transform.position, target.transform.position) <= viewdistance)
+            agent.SetDestination(target.transform.position);
+        else
+            agent.SetDestination(this.transform.position);
 	}
 
     
     public override void Hit(int dmg)
     {
         health -= dmg;
-        Debug.Log(gameObject.name + "'s health: " + health);
 
         if (health <= 0)
         {

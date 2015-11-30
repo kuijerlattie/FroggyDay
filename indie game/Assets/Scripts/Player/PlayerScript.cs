@@ -49,6 +49,9 @@ public class PlayerScript : stats {
     Image cooldownOverlay2;
     Image cooldownOverlay3;
 
+    Text itemCounter1;
+    Text itemCounter2;
+
     Image healthOverlay;
     Image manaOverlay;
 
@@ -90,6 +93,9 @@ public class PlayerScript : stats {
         cooldownOverlay2 = GameObject.Find("CooldownOverlay2").GetComponent<Image>();
         cooldownOverlay3 = GameObject.Find("CooldownOverlay3").GetComponent<Image>();
 
+        itemCounter1 = GameObject.Find("ItemCounter1").GetComponent<Text>();
+        itemCounter2 = GameObject.Find("ItemCounter2").GetComponent<Text>();
+
         healthOverlay = GameObject.Find("HealthOverlay").GetComponent<Image>();
         manaOverlay = GameObject.Find("ManaOverlay").GetComponent<Image>();
         goldText = GameObject.Find("GoldText").GetComponent<Text>();
@@ -117,8 +123,8 @@ public class PlayerScript : stats {
             UpdateInput();
         }
 
-        //Debug.Log("mana: " + mana);
-        Debug.Log("health: " + health);
+        mana += 10 * Time.deltaTime;
+
         /// Pause game
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -138,6 +144,8 @@ public class PlayerScript : stats {
         healthOverlay.fillAmount = ((float)health / (float)maxhealth);
         manaOverlay.fillAmount = ((float)mana / (float)maxmana);
         goldText.text = gold.ToString();
+        itemCounter1.text = GetComponent<AttackScript>().spellmanager.spellslist[spell1].uses.ToString();
+        itemCounter2.text = GetComponent<AttackScript>().spellmanager.spellslist[spell2].uses.ToString();
     }
 
     void UpdateInput()
@@ -285,7 +293,6 @@ public class PlayerScript : stats {
     public void LootGold(int g)
     {
         gold += g;
-        Debug.Log("player has " + gold + " gold");  
     }
 
     public void QuitToMenu()

@@ -62,9 +62,6 @@ public class EnemyManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        Debug.Log(enemyCount);
-
         if (waveActive)
         {
             if (spawnCount >= waveSize)
@@ -125,7 +122,6 @@ public class EnemyManager : MonoBehaviour {
 
     public void RemoveEnemy()
     {
-        Debug.Log("enemy died");
         enemyCount--;
     }
 

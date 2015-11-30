@@ -10,14 +10,20 @@ public class EnemyManager : MonoBehaviour {
     GameObject rangedEnemyPrefab;
     float timer = 0;
 
+    public int[] areaCounters;
+
     bool waveActive = false;
     bool spawnEnemies = false;
 
+    [HideInInspector]
     public int waveLevel = 0;
+    [HideInInspector]
     public int waveSize = 0; //amount of enemies in current wave;
     public float waveDelay = 5.0f; //time between waves;
 
+    [HideInInspector]
     public int spawnCount = 0; //enemies spawned this round;
+    [HideInInspector]
     public int enemyCount = 0; //enemies still alive
     private float spawnDelay = 1f;
 
@@ -121,5 +127,29 @@ public class EnemyManager : MonoBehaviour {
     {
         Debug.Log("enemy died");
         enemyCount--;
+    }
+
+    public void AddToArea(int areanumber)
+    {
+        areaCounters[areanumber - 1] += 1;
+    }
+
+    public void RemoveFromArea(int areanumber)
+    {
+        areaCounters[areanumber - 1] -= 1;
+    }
+
+    public bool IsAreaEmpty(int areanumber)
+    {
+        if (areaCounters[areanumber - 1] <= 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public int GetEnemyCountInArea(int areanumber)
+    {
+        return areaCounters[areanumber - 1];
     }
 }

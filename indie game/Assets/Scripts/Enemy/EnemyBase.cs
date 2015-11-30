@@ -13,6 +13,7 @@ public abstract class EnemyBase : stats {
     protected float attackrange;
 
     public bool isWaveEnemy = false;
+    public int area;
 
     protected float stunnedSeconds = 0;
 
@@ -25,6 +26,12 @@ public abstract class EnemyBase : stats {
         gold = Random.Range(50, 101);
        
         manager = GameObject.FindObjectOfType<EnemyManager>();
+
+        if (!isWaveEnemy)
+        {
+            //not part of a wave, link to area
+            manager.AddToArea(area);
+        }
     }
 
     public void Stun(float seconds)
@@ -59,6 +66,8 @@ public abstract class EnemyBase : stats {
     {
         if (isWaveEnemy)
             manager.RemoveEnemy();
+        else
+            manager.RemoveFromArea(area);
         Healingpotion hppot = new Healingpotion();
         hppot.healingValue = 10;
         hppot.Drop(transform.position);

@@ -42,6 +42,16 @@ public class EnemyRanged : EnemyBase {
             currentcooldown -= Time.deltaTime;
     }
 
+   private float CurrentDistanceToPlayer()
+    {
+        return (transform.position - target.transform.position).magnitude;
+    }
+    private float DestinationDistanceToPlayer()
+    {
+        return (agent.destination - target.transform.position).magnitude;
+    }
+
+
     private void Think()
     {
         Vector3 playerVelocity = (target.transform.position - previousPlayerPos).normalized;
@@ -51,29 +61,41 @@ public class EnemyRanged : EnemyBase {
         _up = transform.up;
         float distanceToPlayer = Vector3.Distance(transform.position, target.transform.position);
 
+        if(CurrentDistanceToPlayer() > range && DestinationDistanceToPlayer() > range)
+        {
+            //new destination
+        }
+
+
+
+
+
         if (distanceToPlayer > range)
         {
             agent.SetDestination(target.transform.position - _forward * range * 0.7f);
+            return;
         }
 
         if (distanceToPlayer <= range * 0.7f)
         {
             if (distanceToPlayer <= range * 0.2f)
-                MeleeAttack();
-            agent.SetDestination(target.transform.position - _forward * range * 3f);
+                //MeleeAttack(); if it gets too close to the player, it does melee
+            agent.SetDestination(target.transform.position - _forward * range);
+            return;
         }
       
-       if(distanceToPlayer <= range && distanceToPlayer >= range / 2)
+       if(distanceToPlayer <= range)
        {
             if (currentcooldown <= 0)
             {
                 Attack();
+                return;
             }
-            agent.SetDestination(GetRandomSide(target.transform.position));
+           // agent.SetDestination(GetRandomSide(target.transform.position));
        }
     }
 
-    private Vector3 GetRandomSide(Vector3 origin)
+    private Vector3 GetRandomSide(Vector3 origin)   //this needs fixing
     {
         return origin + (new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1))).normalized * (range*0.7f);
     }
@@ -81,7 +103,7 @@ public class EnemyRanged : EnemyBase {
     protected void Attack()
     {
         currentcooldown = cooldown;
-        GetComponent<AttackScript>().MageAttackForward(0, -_forward);
+        GetComponent<AttackScript>().MageAttackForward(0, _forward);
     }
     protected void MeleeAttack()
     {

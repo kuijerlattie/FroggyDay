@@ -18,57 +18,6 @@ public class Spells : MonoBehaviour {
     public AudioClip SpellNotLearned;
     public AudioClip OutOfCharges;
 
-    public void MakeSpellMouse(Spells.SpellInfo spell, Transform caster)
-    {
-        Vector3 _forward = caster.forward;
-        Vector3 _right = caster.right;
-        Vector3 _up = caster.up;
-        LayerMask layermask = (1 << 11);
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, layermask))
-        {
-            if ((hit.point - caster.position).magnitude > 0.5f)
-            {
-                
-                Vector3 tempforward = (hit.point - caster.position).normalized;
-                _forward = new Vector3(tempforward.x, 0, tempforward.z);
-                _right = new Vector3(-_forward.z, 0, _forward.x);
-            }
-        }
-        for (int i = 0; i < spell.hitballlist.Count; i++) {
-            HitBall hitball = spell.hitballlist[i];
-        
-            GameObject _gameObject = GameObject.Instantiate(hitballprefab);
-            _gameObject.transform.position =
-            caster.position + hitball.position.x * _right + hitball.position.y * _up + hitball.position.z * _forward;
-            _gameObject.transform.localScale = new Vector3(hitball.radius, hitball.radius, hitball.radius);
-            HitboxScript hitboxscript = _gameObject.GetComponent<HitboxScript>();
-
-            hitboxscript.velocity = hitball.velocity.x * _right + hitball.velocity.y * _up + hitball.velocity.z * _forward;
-
-            hitboxscript.dmg = spell.dmg;
-            hitboxscript.dmgot = spell.dmgot;
-            hitboxscript.dmgottime = spell.dmgots;
-
-            hitboxscript.slowpercentage = spell.slowpercentage;
-            hitboxscript.slowseconds = spell.slowseconds;
-
-            hitboxscript.stunseconds = spell.stunSeconds;
-
-            if (spell.selfheal > 0)
-            {
-                GameObject.FindObjectOfType<PlayerScript>().health += spell.selfheal;
-            }
-            if (spell.selfmana > 0)
-            {
-                GameObject.FindObjectOfType<PlayerScript>().mana += spell.selfmana;
-            }
-
-            hitboxscript.layer = caster.gameObject.layer;
-            hitboxscript.Spawn(hitball.spawndelay, hitball.duration);
-        }
-    }
-
     public void MakeSpellForward(Spells.SpellInfo spell, Transform caster, Vector3 forward)
     {
         Vector3 _forward = new Vector3(forward.x, 0, forward.z);
@@ -85,7 +34,7 @@ public class Spells : MonoBehaviour {
             _gameObject.transform.localScale = new Vector3(hitball.radius, hitball.radius, hitball.radius);
             HitboxScript hitboxscript = _gameObject.GetComponent<HitboxScript>();
 
-            hitboxscript.velocity = hitball.velocity.x * _right + hitball.velocity.y * _up + hitball.velocity.z * -_forward;
+            hitboxscript.velocity = hitball.velocity.x * _right + hitball.velocity.y * _up + hitball.velocity.z * _forward;
 
             hitboxscript.dmg = spell.dmg;
             hitboxscript.dmgot = spell.dmgot;
@@ -184,7 +133,7 @@ public class Spells : MonoBehaviour {
          new HitBall[] {
                 new HitBall(new Vector3(0,0,1), 0.0f, 0.5f, 3.0f, Vector3.zero)
          }
-         , 1, 0, 0, 0, 0));
+         , 15, 0, 0, 0, 0));
         spellslist.Add(new SpellInfo(spellIcons[5], spellSounds[5], 0, 0, "Healing Potion", "Heal yourself for X amount of health", new HitBall[] { }, 0, 0, 0, 0, 0, 0, 10, 0, 0)); //hp potion
         spellslist.Add(new SpellInfo(spellIcons[6], spellSounds[6], 0, 0, "Mana Potion", "Replenish x amount of your mana", new HitBall[] { }, 0, 0, 0, 0, 0, 0, 0, 10, 0)); //mana potion
 

@@ -31,7 +31,7 @@ public class AttackScript : MonoBehaviour {
     public int MeleeAttack()
     {
             CheckSpellManager();
-            spellmanager.MakeSpellMouse(spellmanager.spellslist[4], gameObject.transform);
+            spellmanager.MakeSpellForward(spellmanager.spellslist[4], gameObject.transform, gameObject.transform.forward);
             PlaySpellSound(spellmanager.spellslist[4].spellSound);
             return 0;
     }
@@ -69,6 +69,17 @@ public class AttackScript : MonoBehaviour {
                         }
                         cooldowns[index] = spellmanager.spellslist[index].cooldown;
                         spellmanager.MakeSpellForward(spellmanager.spellslist[index], gameObject.transform, forward);
+
+                        NavMeshAgent agent = gameObject.GetComponentInChildren<NavMeshAgent>();
+                        if(gameObject.layer == 8)
+                        {
+                            GameObject.FindObjectOfType<playerMovementSmart>().targetPosition.transform.position = transform.position;
+                        }
+                        agent.SetDestination(gameObject.transform.position);
+                        agent.updateRotation = false;
+                        gameObject.transform.LookAt(transform.position + forward);
+                        agent.updateRotation = true;
+
                         PlaySpellSound(spellmanager.spellslist[index].spellSound);
                         return 0;
                     }
@@ -96,42 +107,16 @@ public class AttackScript : MonoBehaviour {
             return -1;
         CheckSpellManager();
 
-        PlayerScript playerscript = GetComponent<PlayerScript>();
-
-       if (cooldowns[index] <= 0)
+        Vector3 _forward = transform.forward;
+        LayerMask layermask = (1 << 11);
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, layermask))
         {
-            if (spellmanager.spellslist[index].uses != 0)
-            {
-                if (spellmanager.spellslist[index].learned)
-                {
-                    if (playerscript == null || playerscript.mana >= spellmanager.spellslist[index].manacost)
-                    {
-                        if (playerscript != null)
-                        {
-                            playerscript.mana -= spellmanager.spellslist[index].manacost;
-                            playerscript.mana += spellmanager.spellslist[index].selfmana;
-                            playerscript.health += spellmanager.spellslist[index].selfheal;
-                            if (spellmanager.spellslist[index].uses > 0)
-                                spellmanager.spellslist[index].uses -= 1;
-
-                        }
-                        cooldowns[index] = spellmanager.spellslist[index].cooldown;
-                        spellmanager.MakeSpellMouse(spellmanager.spellslist[index], gameObject.transform);
-                        PlaySpellSound(spellmanager.spellslist[index].spellSound);
-                        return 0;
-                    }
-                    PlayHudSound(spellmanager.lowOnMana);
-                    return 1;
-                }
-                PlayHudSound(spellmanager.SpellNotLearned);
-                return 3;
-            }
-            PlayHudSound(spellmanager.OutOfCharges);
-            return 4;
+                _forward = (hit.point - transform.position).normalized;
+                return MageAttackForward(index, _forward);
+                
         }
-        PlayHudSound(spellmanager.Cooldown);
-        return 2;
-
+        return -1;  //raycast failed
     }
 
 

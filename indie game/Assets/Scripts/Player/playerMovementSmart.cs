@@ -6,7 +6,7 @@ public class playerMovementSmart : MonoBehaviour {
     NavMeshAgent agent;
 
     [SerializeField] Camera playerCamera;
-    GameObject targetPosition;
+    public GameObject targetPosition;
     float Acceleration = 500;
 
 	// Use this for initialization
@@ -22,10 +22,12 @@ public class playerMovementSmart : MonoBehaviour {
         {
             agent.destination = targetPosition.transform.position;
         }
-        Debug.Log("pathlength: " + (agent.destination - transform.position).magnitude);
-        if((agent.destination - transform.position).magnitude < 1)
+        //Debug.Log("pathlength: " + (agent.destination - transform.position).magnitude);
+        if((agent.destination - transform.position).magnitude < 0.4f)
         {
-
+            //attempt to fix weird behaviour on rotating navmesh
+            // agent.Warp(agent.destination);
+            //transform.position = agent.destination;
         }
         if (Input.GetMouseButton(1))
         {

@@ -12,6 +12,7 @@ public abstract class EnemyBase : stats {
 
     protected int difficulty;
     protected GameObject target;
+    protected Vector3 targetpos;
     protected float attackrange;
 
     public bool isWaveEnemy = false;

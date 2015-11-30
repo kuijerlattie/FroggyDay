@@ -22,6 +22,11 @@ public class playerMovementSmart : MonoBehaviour {
         {
             agent.destination = targetPosition.transform.position;
         }
+        Debug.Log("pathlength: " + (agent.destination - transform.position).magnitude);
+        if((agent.destination - transform.position).magnitude < 1)
+        {
+
+        }
         if (Input.GetMouseButton(1))
         {
             RaycastHit hit;

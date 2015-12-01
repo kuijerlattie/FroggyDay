@@ -18,6 +18,8 @@ public abstract class EnemyBase : stats {
     public bool isWaveEnemy = false;
     public int area;
 
+    [HideInInspector]
+    public bool canDrop = true;
     public Dropables AlwaysDrops = Dropables.Nothing;
 
     public float dropChance = 50;   //standard 50%
@@ -133,8 +135,11 @@ public abstract class EnemyBase : stats {
         else
             manager.RemoveFromArea(area);
 
-        DropRandomPickup(transform.position);
-        DropAlwaysDrop();
+        if (canDrop)
+        {
+            DropRandomPickup(transform.position);
+            DropAlwaysDrop();
+        }
 
 
         GameObject.FindObjectOfType<PlayerScript>().LootGold(gold);

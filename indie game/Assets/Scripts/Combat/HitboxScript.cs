@@ -32,15 +32,16 @@ public class HitboxScript : MonoBehaviour {
     {
         yield return new WaitForSeconds(delay);
         spawned = true;
-        //gameObject.GetComponent<MeshRenderer>().enabled = true;
+        //gameObject.GetComponent<MeshRenderer>().enabled = true;   //debug only
         radius = gameObject.transform.localScale.x * 0.5f;
-        
-        if (velocity.magnitude > 0)
+
+        //if it is moving, it has continuous collision checks untill it hits something
+        //if it is not moving, it will only do a collision check ONCE
+        if (velocity.magnitude > 0) 
         {
 
             Rigidbody _body = gameObject.AddComponent<Rigidbody>();
             _body.useGravity = false;
-            //_body.velocity = velocity;
             _body.AddForce(velocity * 10);
         }
         else

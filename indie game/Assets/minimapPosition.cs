@@ -9,8 +9,12 @@ public class minimapPosition : MonoBehaviour {
 
     private float previousWidth;
     private float previousHeight;
+
+    Image overlay;
+
 	// Use this for initialization
 	void Start () {
+        overlay = GetComponent<Image>();
         AdjustScale();
 	}
 	
@@ -26,8 +30,8 @@ public class minimapPosition : MonoBehaviour {
     {
         previousWidth = Screen.width;
         previousHeight = Screen.height;
-        Vector2 pos = new Vector2(previousWidth - 250 + xoffset, previousHeight - 250 + yoffset); //minimap position 
-        GetComponent<Image>().rectTransform.position = pos;
-        GetComponent<Image>().rectTransform.pivot = Vector2.zero;
+        Vector2 pos = new Vector2(previousWidth - 250 + xoffset, previousHeight - 250 + yoffset);
+        overlay.rectTransform.position = pos;
+        overlay.rectTransform.pivot = Vector2.zero;
     }
 }

@@ -24,7 +24,6 @@ public class playerMovementSmart : MonoBehaviour {
         {
             agent.destination = targetPosition.transform.position;
         }
-        //Debug.Log("pathlength: " + (agent.destination - transform.position).magnitude);
         if((agent.destination - transform.position).magnitude < 0.4f)
         {
             //attempt to fix weird behaviour on rotating navmesh
@@ -37,15 +36,8 @@ public class playerMovementSmart : MonoBehaviour {
             LayerMask layermask = (1<<11);
             if (Physics.Raycast(playerCamera.ScreenPointToRay(Input.mousePosition), out hit, 100, layermask))
             {
-                //if ((hit.point - transform.position).magnitude > 0.5f)
-                //{
-                    
-                // targetPosition = GameObject.Instantiate(new GameObject());
-                    
-                    targetPosition.transform.position = hit.point;
-                    targetPosition.transform.parent = hit.collider.gameObject.transform;
-                    
-               // }
+                 targetPosition.transform.position = hit.point;
+                 targetPosition.transform.parent = hit.collider.gameObject.transform;
             }
         }
 	}

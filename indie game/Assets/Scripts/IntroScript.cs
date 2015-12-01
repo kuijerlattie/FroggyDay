@@ -215,7 +215,21 @@ public class IntroScript : MonoBehaviour {
 
     void ShowText(string ptext)
     {
-        text.text = ptext; //not confusing at all, text text text
+        ResizeTextbox[] textboxes = GameObject.FindObjectsOfType<ResizeTextbox>();
+        ResizeTextbox thistextbox = null;
+        foreach(ResizeTextbox textbox in textboxes)
+        {
+            if(textbox._text == text)
+            {
+                thistextbox = textbox;
+                break;
+            }
+        }
+        if(thistextbox != null)
+        {
+            thistextbox.UpdateSize(ptext);
+        }
+        text.text = ptext; //not confusing at all, text text text      -         text.text.fbx.txt.meta.text.confuse
     }
 
     void SingSong()

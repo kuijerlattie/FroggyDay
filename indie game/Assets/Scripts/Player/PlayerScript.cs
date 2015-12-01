@@ -49,6 +49,7 @@ public class PlayerScript : stats {
     Text itemCounter2;
 
     Image healthOverlay;
+    Image healthOverlay2;   //this is the one attached to the player
     Image manaOverlay;
 
     Text goldText;
@@ -70,7 +71,7 @@ public class PlayerScript : stats {
 	void Start () {
 
         maxhealth = 100;
-        health = 10;
+        health = 100;
         maxmana = 100;
         mana = 100;
 
@@ -94,6 +95,7 @@ public class PlayerScript : stats {
         itemCounter2 = GameObject.Find("ItemCounter2").GetComponent<Text>();
 
         healthOverlay = GameObject.Find("HealthOverlay").GetComponent<Image>();
+        healthOverlay2 = GameObject.Find("HealthOverlay2").GetComponent<Image>();
         manaOverlay = GameObject.Find("ManaOverlay").GetComponent<Image>();
         goldText = GameObject.Find("GoldText").GetComponent<Text>();
 
@@ -141,6 +143,7 @@ public class PlayerScript : stats {
         cooldownOverlay2.fillAmount = GetComponent<AttackScript>().coolDowns[spell2] / GetComponent<AttackScript>().spellmanager.spellslist[spell2].cooldown;
         cooldownOverlay3.fillAmount = GetComponent<AttackScript>().coolDowns[spell3] / GetComponent<AttackScript>().spellmanager.spellslist[spell3].cooldown;
         healthOverlay.fillAmount = ((float)health / (float)maxhealth);
+        healthOverlay2.fillAmount = healthOverlay.fillAmount;
         manaOverlay.fillAmount = ((float)mana / (float)maxmana);
         goldText.text = gold.ToString();
         itemCounter1.text = GetComponent<AttackScript>().spellmanager.spellslist[spell1].uses.ToString();

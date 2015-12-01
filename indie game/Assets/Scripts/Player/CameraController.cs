@@ -19,6 +19,16 @@ public class CameraController : MonoBehaviour {
 	void Start () {
         player = GameObject.Find("Player");
 	}
+
+    private void UpdateTextRotation()
+    {
+        //points all textboxes ingame towards the camera
+        PointToCamera[] canvasses = FindObjectsOfType<PointToCamera>();
+        foreach (PointToCamera canvas in canvasses)
+        {
+            canvas.UpdateRotation(transform.rotation);
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -71,18 +81,7 @@ public class CameraController : MonoBehaviour {
         Camera.main.transform.position = player.transform.position;
         Camera.main.transform.RotateAround(player.transform.position, Vector3.up, rotation);
         Camera.main.transform.position = player.transform.position - Camera.main.transform.forward * zoomDistance;
-        //Vector3 newcameraposition;//
-
-        //newcameraposition = (player.transform.position - Camera.main.transform.position).normalized;
-        //newcameraposition *= zoomDistance;
-        
-
-        //Camera.main.transform.position = newcameraposition; //makes camera zoom in somewhere... not at the place where i want it tho
-               
-
-        
+        UpdateTextRotation();
+       
 	}
-
- //copy pasta.fbx.txt.meta
-
 }

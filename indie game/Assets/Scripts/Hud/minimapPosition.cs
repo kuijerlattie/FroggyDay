@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Image))]
 public class minimapPosition : MonoBehaviour {
 
     public float xoffset = 0;

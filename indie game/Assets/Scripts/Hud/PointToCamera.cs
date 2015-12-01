@@ -4,6 +4,7 @@ using System.Collections;
 /// <summary>
 /// Sets the rotation and scale of a canvas to match the camera's view
 /// </summary>
+[RequireComponent(typeof(RectTransform))]
 public class PointToCamera : MonoBehaviour {
 
     Camera _camera;

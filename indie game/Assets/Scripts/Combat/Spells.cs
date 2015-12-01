@@ -203,7 +203,7 @@ public class Spells : MonoBehaviour {
             dmgot = pdmgovertime;
             dmgots = pdmgovertimeseconds;
             _cooldown = pcooldown;
-            name = description;
+            name = pname;
             description = pdestription;
             slowpercentage = pslowpercentage;
             slowseconds = pslowseconds;

@@ -20,7 +20,7 @@ public class Healingpotion : UsableItem {
     public override void Pickup()
     {
         Spells spellmanager = GameObject.FindObjectOfType<Spells>();
-        spellmanager.spellslist[5].uses++;
+        spellmanager.spellslist[6].uses++;
     }
 
     public override bool Use(stats user)

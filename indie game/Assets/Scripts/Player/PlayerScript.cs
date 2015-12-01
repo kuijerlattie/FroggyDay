@@ -4,10 +4,6 @@ using UnityEngine.UI;
 
 public class PlayerScript : stats {
 
-
-    int healthpotion = 0;
-    int manapotion = 0;
-
     bool fireSpecialISActive = false;
     bool iceSpecialIsActive = false;
     bool airSpecialIsActive = false;
@@ -18,8 +14,8 @@ public class PlayerScript : stats {
     int spellW = 0;
     int spellE = 0;
     int spellR = 0;
-    int spell1 = 0;
-    int spell2 = 0;
+    int spell1 = 6;
+    int spell2 = 7;
     int spell3 = 0;
 
     public int spellFireNormal = 0;
@@ -72,8 +68,9 @@ public class PlayerScript : stats {
 
 	// Use this for initialization
 	void Start () {
+
         maxhealth = 100;
-        health = 100;
+        health = 10;
         maxmana = 100;
         mana = 100;
 
@@ -113,6 +110,8 @@ public class PlayerScript : stats {
         HUD = GameObject.Find("HUD");
         pauseMenu = GameObject.Find("PauseMenu");
         pauseMenu.SetActive(false);
+
+        Debug.Log("spell = " + attackscript.spellmanager.spellslist[6].name);
 	}
 	
 	// Update is called once per frame
@@ -223,8 +222,8 @@ public class PlayerScript : stats {
         {
             case SpellSlots.spellQ:
                 //set a image to the hud slot
+                spellQ = spellid;
                 imageSlotQ.sprite = attackscript.spellmanager.spellslist[spellid].icon;
-                Debug.Log("q set to 0");    
                 break;
             case SpellSlots.spellW:
                 spellW = spellid;
@@ -298,16 +297,6 @@ public class PlayerScript : stats {
     public void QuitToMenu()
     {
         Application.LoadLevel(0);
-    }
-
-    public void AddHealthPotion()
-    {
-        healthpotion++;
-    }
-
-    public void AddManaPotion()
-    {
-        manapotion++;
     }
 
     public void enableQspell()

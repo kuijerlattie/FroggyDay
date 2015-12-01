@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraController : MonoBehaviour {
 
 
-    float rotation;
+    public float rotation;
     float rotationspeed = 90f;
     float maxZoomDistance = 50f; //max distance away from player
     float minZoomDistance = 10f; //min distance away from player

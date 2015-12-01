@@ -76,13 +76,13 @@ public class EnemyManager : MonoBehaviour {
             }
         }
         else //wave not active
-        {
-            if (timer >= waveDelay)
-            {
-                StartNewWave();
-                timer = 0;
-            }
-        }
+        //{
+        //    if (timer >= waveDelay)  //not using this system anymore, as waves get spawned (and despawned) with triggers in the map
+        //    {
+        //        StartNewWave();
+        //        timer = 0;
+        //    }
+        //}
 
         if (spawnEnemies)
         {
@@ -123,6 +123,12 @@ public class EnemyManager : MonoBehaviour {
     public void RemoveEnemy()
     {
         enemyCount--;
+    }
+
+    public void StartWave()
+    {
+        if (!waveActive)
+            StartNewWave();
     }
 
     public void AddToArea(int areanumber)

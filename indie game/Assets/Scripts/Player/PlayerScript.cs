@@ -14,24 +14,24 @@ public class PlayerScript : stats {
     GameObject HUD;
     GameObject pauseMenu;
 
-    const int spellQ = 0;
-    int spellW = 0;
-    int spellE = 0;
-    int spellR = 0;
-    int spell1 = 0;
-    int spell2 = 0;
-    int spell3 = 0;
+    int spellQ = -1;
+    int spellW = -1;
+    int spellE = -1;
+    int spellR = -1;
+    int spell1 = -1;
+    int spell2 = -1;
+    int spell3 = -1;
 
-    int spellFireNormal = 1;
-    int spellIceNormal = 2;
-    int spellAirNormal = 3;
-    int spellFireSpecial = 0;
-    int spellIceSpecial = 0;
-    int spellAirSpecial = 0;
+    public int spellFireNormal = -1;
+    public int spellIceNormal = -1;
+    public int spellAirNormal = -1;
+    public int spellFireSpecial = -1;
+    public int spellIceSpecial = -1;
+    public int spellAirSpecial = -1;
 
-    int spellHealthPotion = 5;
-    int spellManaPotion = 6;
-    int spellAbilityRun = 0;
+    public int spellHealthPotion = 5;
+    public int spellManaPotion = 6;
+    public int spellAbilityRun = -1;
 
     Image imageSlotQ;
     Image imageSlotW;
@@ -308,5 +308,10 @@ public class PlayerScript : stats {
     public void AddManaPotion()
     {
         manapotion++;
+    }
+
+    public void enableQspell()
+    {
+        spellQ = 0;
     }
 }

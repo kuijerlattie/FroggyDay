@@ -18,6 +18,9 @@ public class EnemyRanged : EnemyBase {
     private float minRange = 10;
     private float maxRange = 15;
 
+    private float moveCooldown = 5;
+    private float currentmoveCooldown = 0;
+
     // Use this for initialization
     void Start()
     {
@@ -41,6 +44,10 @@ public class EnemyRanged : EnemyBase {
         {
             Think();
             thinktimer = 0;
+        }
+        if(currentmoveCooldown > 0)
+        {
+            currentmoveCooldown -= Time.deltaTime;
         }
         thinktimer += Time.deltaTime;
         previousPlayerPos = target.transform.position;
@@ -90,17 +97,32 @@ public class EnemyRanged : EnemyBase {
         if(!InDesiredRange() && !CheckDestination())
         {
             //new destination
-            targetpos = GetRandomSide(target.transform.position);
-            return;
+            if (currentmoveCooldown <= 0)
+            {
+                currentmoveCooldown = moveCooldown;
+                targetpos = GetRandomSide(target.transform.position);
+                return;
+            }
+            else
+            {
+                if(currentcooldown <= 0)
+                {
+                    Attack();
+                }
+            }
         }
     }
 
-    private Vector3 GetRandomSide(Vector3 origin)
+    private Vector3 GetRandomSide(Vector3 origin, int counter = 0)
     {
         Vector3 newpos = origin + (new Vector3(Random.Range(-1.0f, 1.0f), 0.0f, Random.Range(-1.0f, 1.0f))).normalized * maxRange * 0.9f;
+        if(counter >= 5)
+        {
+            return newpos;
+        }
         if((newpos - transform.position).magnitude > (target.transform.position - transform.position).magnitude * 1.5f)
         {
-            return GetRandomSide(origin);
+            return GetRandomSide(origin, counter++);
         }
         return newpos;
     }

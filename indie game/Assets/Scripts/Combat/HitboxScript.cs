@@ -32,7 +32,7 @@ public class HitboxScript : MonoBehaviour {
     {
         yield return new WaitForSeconds(delay);
         spawned = true;
-        gameObject.GetComponent<MeshRenderer>().enabled = true;
+        //gameObject.GetComponent<MeshRenderer>().enabled = true;
         radius = gameObject.transform.localScale.x * 0.5f;
         
         if (velocity.magnitude > 0)

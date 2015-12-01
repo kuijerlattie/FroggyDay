@@ -18,10 +18,20 @@ public abstract class EnemyBase : stats {
     public bool isWaveEnemy = false;
     public int area;
 
-    public float dropChance         //percent
-    {   get;    set;    } = 50;     //standard 50%
+    public Dropables AlwaysDrops = Dropables.Nothing;
+
+    public float dropChance = 50;   //standard 50%
+   
 
     protected float stunnedSeconds = 0;
+
+
+    public enum Dropables
+    {
+        Nothing,
+        HealthPotion,
+        ManaPotion
+    }
 
     // Use this for initialization
     protected void Start () {
@@ -73,9 +83,8 @@ public abstract class EnemyBase : stats {
     private Item GetRandomPickup()
     {
         Item item = null;   //returning null means no item 
-
+        dropChance = dropChance > 0 ? (dropChance < 100 ? dropChance : 100) : 0;    //keep between 0 and 100
         int rnd = Random.Range(0, (int)(2*(100/ dropChance)));
-        Debug.Log("item dropped: " + rnd);
         switch (rnd)
         {
             case 0:
@@ -84,6 +93,27 @@ public abstract class EnemyBase : stats {
             case 1:
                 item = new Manapotion() { manaValue = 10 };
                 break;
+        }
+        return item;
+    }
+
+    private Item DropAlwaysDrop()
+    {
+        Item item = null;
+        switch (AlwaysDrops)
+        {
+            case Dropables.Nothing: //item stays null
+                break;
+            case Dropables.HealthPotion:
+                item = new Healingpotion() { healingValue = 10 };
+                break;
+            case Dropables.ManaPotion:
+                item = new Manapotion() { manaValue = 10 };
+                break;
+        }
+        if(item != null)
+        {
+            item.Drop(transform.position);
         }
         return item;
     }
@@ -104,6 +134,9 @@ public abstract class EnemyBase : stats {
             manager.RemoveFromArea(area);
 
         DropRandomPickup(transform.position);
+        DropAlwaysDrop();
+
+
         GameObject.FindObjectOfType<PlayerScript>().LootGold(gold);
         GameObject.Destroy(gameObject);
     }

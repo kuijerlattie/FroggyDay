@@ -17,6 +17,8 @@ public class Spells : MonoBehaviour {
     public AudioClip lowOnMana;
     public AudioClip SpellNotLearned;
     public AudioClip OutOfCharges;
+    [SerializeField]
+    GameObject[] particlePrefabs;
 
     public void MakeSpellForward(Spells.SpellInfo spell, Transform caster, Vector3 forward)
     {
@@ -33,8 +35,15 @@ public class Spells : MonoBehaviour {
             caster.position + hitball.position.x * _right + hitball.position.y * _up + hitball.position.z * _forward;
             _gameObject.transform.localScale = new Vector3(hitball.radius, hitball.radius, hitball.radius);
             HitboxScript hitboxscript = _gameObject.GetComponent<HitboxScript>();
-
             hitboxscript.velocity = hitball.velocity.x * _right + hitball.velocity.y * _up + hitball.velocity.z * _forward;
+
+            //particles
+            GameObject _particles = GameObject.Instantiate(particlePrefabs[hitball.particleID]);
+            _particles.transform.LookAt(_particles.transform.position - hitboxscript.velocity);
+            _particles.transform.parent = _gameObject.transform;
+            _particles.transform.localPosition = Vector3.zero;
+
+            
 
             hitboxscript.dmg = spell.dmg;
             hitboxscript.dmgot = spell.dmgot;
@@ -65,7 +74,7 @@ public class Spells : MonoBehaviour {
 
         spellslist.Add(new SpellInfo(spellIcons[0], spellSounds[0], 0, 0.8f, "Q", "description1",
             new HitBall[] {
-                new HitBall(new Vector3(0,0,2), 0.0f, 1.0f, 3.0f, Vector3.forward * 100)
+                new HitBall(0, new Vector3(0,1,2), 0.0f, 1.0f, 3.0f, Vector3.forward * 100)
                 //new HitBall(new Vector3(0,0,4), 0.4f, 1.0f, 3.0f, Vector3.zero),
                // new HitBall(new Vector3(0,0,6), 0.6f, 1.0f, 3.0f, Vector3.zero),
                // new HitBall(new Vector3(0,0,8), 0.8f, 1.0f, 3.0f, Vector3.zero),
@@ -80,23 +89,23 @@ public class Spells : MonoBehaviour {
 
         spellslist.Add(new SpellInfo(spellIcons[1], spellSounds[1], 5, 3, "W", "description1",
             new HitBall[] {
-                new HitBall(new Vector3(0,0,5).normalized, 0.08f, 1.0f, 2.0f, Vector3.forward * 100),
-                new HitBall(new Vector3(2.5f,0,2.5f).normalized, 0.04f, 1.0f, 2.0f, new Vector3(1,0,1).normalized * 100),
-                new HitBall(new Vector3(-2.5f,0,2.5f).normalized, 0.12f, 1.0f, 2.0f, new Vector3(-1,0,1).normalized * 100),
-                new HitBall(new Vector3(5,0,0).normalized, 0.00f, 1.0f, 2.0f, new Vector3(3,0,1).normalized * 100),
-                new HitBall(new Vector3(-5,0,0).normalized, 0.16f, 1.0f, 2.0f, new Vector3(-3,0,1).normalized * 100),
+                new HitBall(0, new Vector3(0,0,5).normalized, 0.08f, 1.0f, 2.0f, Vector3.forward * 100),
+                new HitBall(0, new Vector3(2.5f,0,2.5f).normalized, 0.04f, 1.0f, 2.0f, new Vector3(1,0,1).normalized * 100),
+                new HitBall(0, new Vector3(-2.5f,0,2.5f).normalized, 0.12f, 1.0f, 2.0f, new Vector3(-1,0,1).normalized * 100),
+                new HitBall(0, new Vector3(5,0,0).normalized, 0.00f, 1.0f, 2.0f, new Vector3(3,0,1).normalized * 100),
+                new HitBall(0, new Vector3(-5,0,0).normalized, 0.16f, 1.0f, 2.0f, new Vector3(-3,0,1).normalized * 100),
                 
-                new HitBall(new Vector3(0,0,-5).normalized, 0.24f, 1.0f, 2.0f, -Vector3.forward * 100),
-                new HitBall(new Vector3(2.5f,0,-2.5f).normalized, 0.28f, 1.0f, 2.0f, new Vector3(1,0,-1).normalized * 100),
-                new HitBall(new Vector3(-2.5f,0,-2.5f).normalized, 0.20f, 1.0f, 2.0f, new Vector3(-1,0,-1).normalized * 100)
+                new HitBall(0, new Vector3(0,0,-5).normalized, 0.24f, 1.0f, 2.0f, -Vector3.forward * 100),
+                new HitBall(0, new Vector3(2.5f,0,-2.5f).normalized, 0.28f, 1.0f, 2.0f, new Vector3(1,0,-1).normalized * 100),
+                new HitBall(0, new Vector3(-2.5f,0,-2.5f).normalized, 0.20f, 1.0f, 2.0f, new Vector3(-1,0,-1).normalized * 100)
             }
             , 20, 0, 0, 0, 0));
 
         spellslist.Add(new SpellInfo(spellIcons[2], spellSounds[2], 8, 5, "E", "description2",
          new HitBall[] {
-                new HitBall(new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, Vector3.forward * 100),
-                new HitBall(new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, (Vector3.forward + Vector3.right).normalized * 100),
-                new HitBall(new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, (Vector3.forward - Vector3.right).normalized * 100)
+                new HitBall(0, new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, Vector3.forward * 100),
+                new HitBall(1, new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, (Vector3.forward + Vector3.right).normalized * 100),
+                new HitBall(1, new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, (Vector3.forward - Vector3.right).normalized * 100)
          }
          , 30,   //dmg
          0,     //dmg over time
@@ -116,9 +125,9 @@ public class Spells : MonoBehaviour {
             "R",       //spell name
             "description2", //spell description
             new HitBall[] {
-                new HitBall(new Vector3(0,0,6), 0.0f, 0.5f, 4.0f, Vector3.zero),  //front
-                new HitBall(new Vector3(0,0,12), 0.2f, 0.5f, 8.0f, Vector3.zero),  //front
-                new HitBall(new Vector3(0,0,18), 0.4f, 0.5f, 12.0f, Vector3.zero),  //front
+                new HitBall(1, new Vector3(0,0,6), 0.0f, 0.5f, 4.0f, Vector3.zero),  //front
+                new HitBall(1, new Vector3(0,0,12), 0.2f, 0.5f, 8.0f, Vector3.zero),  //front
+                new HitBall(1, new Vector3(0,0,18), 0.4f, 0.5f, 12.0f, Vector3.zero),  //front
                    
          }
           , 30,   //dmg
@@ -131,7 +140,7 @@ public class Spells : MonoBehaviour {
         //melee attack only used by enemies
         spellslist.Add(new SpellInfo(spellIcons[4], spellSounds[4], 0, 3, "melee attack", "description melee",
          new HitBall[] {
-                new HitBall(new Vector3(0,0,1), 0.0f, 0.5f, 3.0f, Vector3.zero)
+                new HitBall(0, new Vector3(0,0,1), 0.0f, 0.5f, 3.0f, Vector3.zero)
          }
          , 15, 0, 0, 0, 0));
         spellslist.Add(new SpellInfo(spellIcons[5], spellSounds[5], 0, 0, "Healing Potion", "Heal yourself for X amount of health", new HitBall[] { }, 0, 0, 0, 0, 0, 0, 10, 0, 0)); //hp potion
@@ -147,9 +156,11 @@ public class Spells : MonoBehaviour {
         public float duration;
         public float radius;
         public Vector3 velocity;
+        public int particleID;
 
-        public HitBall(Vector3 pposition, float pspawndelay, float pduration, float pradius, Vector3 pvelocity)
+        public HitBall(int pparticleID, Vector3 pposition, float pspawndelay, float pduration, float pradius, Vector3 pvelocity)
         {
+            particleID = pparticleID;
             position = pposition;
             spawndelay = pspawndelay;
             duration = pduration;

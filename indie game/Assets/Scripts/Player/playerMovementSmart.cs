@@ -12,7 +12,9 @@ public class playerMovementSmart : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         agent = GetComponent<NavMeshAgent>();
-	}
+        targetPosition = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        targetPosition.transform.position = transform.position;
+    }
 	
 	// Update is called onc e per frame
 	void Update () {
@@ -37,9 +39,9 @@ public class playerMovementSmart : MonoBehaviour {
             {
                 //if ((hit.point - transform.position).magnitude > 0.5f)
                 //{
-                    GameObject.Destroy(targetPosition);
+                    
                 // targetPosition = GameObject.Instantiate(new GameObject());
-                    targetPosition = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    
                     targetPosition.transform.position = hit.point;
                     targetPosition.transform.parent = hit.collider.gameObject.transform;
                     

@@ -12,12 +12,26 @@ public abstract class EnemyBase : stats {
 
     protected int difficulty;
     protected GameObject target;
+    protected Vector3 targetpos;
     protected float attackrange;
 
     public bool isWaveEnemy = false;
     public int area;
 
+    public Dropables AlwaysDrops = Dropables.Nothing;
+
+    public float dropChance = 50;   //standard 50%
+   
+
     protected float stunnedSeconds = 0;
+
+
+    public enum Dropables
+    {
+        Nothing,
+        HealthPotion,
+        ManaPotion
+    }
 
     // Use this for initialization
     protected void Start () {
@@ -66,18 +80,63 @@ public abstract class EnemyBase : stats {
         }
     }
 
+    private Item GetRandomPickup()
+    {
+        Item item = null;   //returning null means no item 
+        dropChance = dropChance > 0 ? (dropChance < 100 ? dropChance : 100) : 0;    //keep between 0 and 100
+        int rnd = Random.Range(0, (int)(2*(100/ dropChance)));
+        switch (rnd)
+        {
+            case 0:
+               item = new Healingpotion() { healingValue = 10 };
+               break;
+            case 1:
+                item = new Manapotion() { manaValue = 10 };
+                break;
+        }
+        return item;
+    }
+
+    private Item DropAlwaysDrop()
+    {
+        Item item = null;
+        switch (AlwaysDrops)
+        {
+            case Dropables.Nothing: //item stays null
+                break;
+            case Dropables.HealthPotion:
+                item = new Healingpotion() { healingValue = 10 };
+                break;
+            case Dropables.ManaPotion:
+                item = new Manapotion() { manaValue = 10 };
+                break;
+        }
+        if(item != null)
+        {
+            item.Drop(transform.position);
+        }
+        return item;
+    }
+
+    private Item DropRandomPickup(Vector3 position)
+    {
+        Item item = GetRandomPickup();
+        if (item != null)
+            item.Drop(position);
+        return item;
+    }
+
     protected virtual void Die()
     {
         if (isWaveEnemy)
             manager.RemoveEnemy();
         else
             manager.RemoveFromArea(area);
-        Healingpotion hppot = new Healingpotion();
-        hppot.healingValue = 10;
-        hppot.Drop(transform.position);
-        Manapotion mppot = new Manapotion();
-        mppot.manaValue = 10;
-        mppot.Drop(transform.position);
+
+        DropRandomPickup(transform.position);
+        DropAlwaysDrop();
+
+
         GameObject.FindObjectOfType<PlayerScript>().LootGold(gold);
         GameObject.Destroy(gameObject);
     }

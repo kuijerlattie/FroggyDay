@@ -9,13 +9,17 @@ public class EnemyRanged : EnemyBase {
     private Vector3 _right;
     private Vector3 _up;
 
-    private float thinktime = 2f;
-    private float thinktimer = 2f;
+    private float thinktime = 0.5f;
+    private float thinktimer = 0.5f;
 
     private Vector3 previousPlayerPos = Vector3.zero;
     private float accuracy = 3;
 
-    private float range = 15;
+    private float minRange = 10;
+    private float maxRange = 15;
+
+    private float moveCooldown = 5;
+    private float currentmoveCooldown = 0;
 
     // Use this for initialization
     void Start()
@@ -26,6 +30,11 @@ public class EnemyRanged : EnemyBase {
     // Update is called once per frame
     void Update()
     {
+
+        if(target == null)
+        {
+            return; //player is dead, AI shouldnt do anything
+        }
         if (stunnedSeconds > 0)
         {
             stunnedSeconds -= Time.deltaTime;
@@ -36,10 +45,20 @@ public class EnemyRanged : EnemyBase {
             Think();
             thinktimer = 0;
         }
+        if(currentmoveCooldown > 0)
+        {
+            currentmoveCooldown -= Time.deltaTime;
+        }
         thinktimer += Time.deltaTime;
         previousPlayerPos = target.transform.position;
         if (currentcooldown > 0)
             currentcooldown -= Time.deltaTime;
+
+        if(agent.destination != targetpos)
+        {
+            agent.destination = targetpos;
+            return;
+        }
     }
 
    private float CurrentDistanceToPlayer()
@@ -51,6 +70,15 @@ public class EnemyRanged : EnemyBase {
         return (agent.destination - target.transform.position).magnitude;
     }
 
+    private bool InDesiredRange()
+    {
+        return CurrentDistanceToPlayer() <= maxRange && CurrentDistanceToPlayer() >= minRange;
+    }
+
+    private bool CheckDestination()
+    {
+        return DestinationDistanceToPlayer() <= maxRange && DestinationDistanceToPlayer() >= minRange;
+    }
 
     private void Think()
     {
@@ -59,45 +87,44 @@ public class EnemyRanged : EnemyBase {
         _forward = new Vector3(forward.x, 0, forward.z).normalized;
         _right = new Vector3(-_forward.z, 0, _forward.x).normalized;
         _up = transform.up;
-        float distanceToPlayer = Vector3.Distance(transform.position, target.transform.position);
 
-        if(CurrentDistanceToPlayer() > range && DestinationDistanceToPlayer() > range)
+        if(InDesiredRange() && agent.velocity.magnitude == 0 && currentcooldown <= 0)
+        {
+            Attack();
+            return;
+        }
+
+        if(!InDesiredRange() && !CheckDestination())
         {
             //new destination
-        }
-
-
-
-
-
-        if (distanceToPlayer > range)
-        {
-            agent.SetDestination(target.transform.position - _forward * range * 0.7f);
-            return;
-        }
-
-        if (distanceToPlayer <= range * 0.7f)
-        {
-            if (distanceToPlayer <= range * 0.2f)
-                //MeleeAttack(); if it gets too close to the player, it does melee
-            agent.SetDestination(target.transform.position - _forward * range);
-            return;
-        }
-      
-       if(distanceToPlayer <= range)
-       {
-            if (currentcooldown <= 0)
+            if (currentmoveCooldown <= 0)
             {
-                Attack();
+                currentmoveCooldown = moveCooldown;
+                targetpos = GetRandomSide(target.transform.position);
                 return;
             }
-           // agent.SetDestination(GetRandomSide(target.transform.position));
-       }
+            else
+            {
+                if(currentcooldown <= 0)
+                {
+                    Attack();
+                }
+            }
+        }
     }
 
-    private Vector3 GetRandomSide(Vector3 origin)   //this needs fixing
+    private Vector3 GetRandomSide(Vector3 origin, int counter = 0)
     {
-        return origin + (new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1))).normalized * (range*0.7f);
+        Vector3 newpos = origin + (new Vector3(Random.Range(-1.0f, 1.0f), 0.0f, Random.Range(-1.0f, 1.0f))).normalized * maxRange * 0.9f;
+        if(counter >= 5)
+        {
+            return newpos;
+        }
+        if((newpos - transform.position).magnitude > (target.transform.position - transform.position).magnitude * 1.5f)
+        {
+            return GetRandomSide(origin, counter++);
+        }
+        return newpos;
     }
 
     protected void Attack()

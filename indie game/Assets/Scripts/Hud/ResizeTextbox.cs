@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
 public class ResizeTextbox : MonoBehaviour {
 
@@ -19,6 +20,8 @@ public class ResizeTextbox : MonoBehaviour {
 
     void UpdateSize()
     {
-        _image.rectTransform.sizeDelta = new Vector2(75, _text.preferredHeight + 5);
+        string[] text = Regex.Split(_text.text, "\n");
+        Debug.Log("length: " + text[0].Length + " fontsize: " + _text.fontSize);
+        _image.rectTransform.sizeDelta = new Vector2(text[0].Length * _text.fontSize, _text.preferredHeight + 5);
     }
 }

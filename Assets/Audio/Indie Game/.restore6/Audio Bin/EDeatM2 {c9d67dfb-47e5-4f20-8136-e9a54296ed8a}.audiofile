@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.05.00">
+    <object class="AudioFile" id="{c9d67dfb-47e5-4f20-8136-e9a54296ed8a}">
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>1.6000000000000001</value>
+        </property>
+        <property name="audioFilePath">
+            <value>$(AUDIO_BIN_DIR)/EDeatM2 {d69f9f2d-6143-44eb-9f19-43f8cf18ad10}.wav</value>
+        </property>
+        <relationship name="container">
+            <destination>{d499fe42-5617-46d8-b990-a1e49b8cc5eb}</destination>
+        </relationship>
+    </object>
+</objects>

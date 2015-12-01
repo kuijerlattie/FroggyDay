@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.05.00">
+    <object class="AudioFile" id="{a9697cc7-c404-484a-a77d-0081d6e6b266}">
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>150.85732426303855</value>
+        </property>
+        <property name="audioFilePath">
+            <value>$(AUDIO_BIN_DIR)/DOMA_East_Theme_bpm140 {fe63aeb1-80e3-4c60-9e09-0eeb26ee159e}.wav</value>
+        </property>
+        <relationship name="container">
+            <destination>{f40587dd-91d9-4585-85a7-d0c2390afe58}</destination>
+        </relationship>
+    </object>
+</objects>

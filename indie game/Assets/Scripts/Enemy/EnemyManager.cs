@@ -1,9 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyManager : MonoBehaviour {
 
-    GameObject[] spawnlocations;
+
+    List<List<GameObject>> spawnlocations = new List<List<GameObject>>();
+    List<GameObject> spawnlocations1 = new List<GameObject>();
+    List<GameObject> spawnlocations2 = new List<GameObject>();
+    List<GameObject> spawnlocations3 = new List<GameObject>();
+    List<GameObject> spawnlocations4 = new List<GameObject>();
+    List<GameObject> spawnlocations5 = new List<GameObject>();
+    List<GameObject> spawnlocations6 = new List<GameObject>();
+
+    int CurrentArea;
+
     [SerializeField]
     GameObject meleeEnemyPrefab;
     [SerializeField]
@@ -31,8 +42,19 @@ public class EnemyManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        spawnlocations = GameObject.FindGameObjectsWithTag("EnemySpawn");
-        Debug.Log("spawn locations found: " + spawnlocations.Length);
+        spawnlocations1.AddRange(GameObject.FindGameObjectsWithTag("EnemySpawn1"));
+        spawnlocations2.AddRange(GameObject.FindGameObjectsWithTag("EnemySpawn2"));
+        spawnlocations3.AddRange(GameObject.FindGameObjectsWithTag("EnemySpawn3"));
+        spawnlocations4.AddRange(GameObject.FindGameObjectsWithTag("EnemySpawn4"));
+        spawnlocations5.AddRange(GameObject.FindGameObjectsWithTag("EnemySpawn5"));
+        spawnlocations6.AddRange(GameObject.FindGameObjectsWithTag("EnemySpawn6"));
+
+        spawnlocations.Add(spawnlocations1);
+        spawnlocations.Add(spawnlocations2);
+        spawnlocations.Add(spawnlocations3);
+        spawnlocations.Add(spawnlocations4);
+        spawnlocations.Add(spawnlocations5);
+        spawnlocations.Add(spawnlocations6);
 	}
 
     void SpawnEnemy()
@@ -56,7 +78,7 @@ public class EnemyManager : MonoBehaviour {
 
     Vector3 GetSpawnLocation()
     {
-        Vector3 location = spawnlocations[Random.Range(0, spawnlocations.Length)].transform.position;
+        Vector3 location = spawnlocations[CurrentArea][Random.Range(0, spawnlocations[CurrentArea].Count)].transform.position;
         return location;
     }
 	
@@ -125,7 +147,7 @@ public class EnemyManager : MonoBehaviour {
         enemyCount--;
     }
 
-    public void StartWave()
+    public void StartWave(int area = 1)
     {
         if (!waveActive)
             StartNewWave();

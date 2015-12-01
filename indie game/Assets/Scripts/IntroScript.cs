@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class IntroScript : MonoBehaviour {
 
+    string currentCoroutine = "";
+
     bool hasStarted = false;
     bool walkedInstructions = false;
     bool hasWalked = false;
@@ -13,6 +15,7 @@ public class IntroScript : MonoBehaviour {
     bool hasKilledEnemy = false;
     bool potionInstruction = false;
     bool hasUsedPotion = false;
+    bool destroyme = false;
     public float WaitTimeInSeconds = 5;
 
     float playerrotationstart;
@@ -25,6 +28,7 @@ public class IntroScript : MonoBehaviour {
     public GameObject meleeEnemyPrefab;
     public GameObject TutorialEnemySpawn;
     public GameObject HealthpotionSpawn;
+    public GameObject IntroActor;
 
     Text text;
 
@@ -44,18 +48,38 @@ public class IntroScript : MonoBehaviour {
             SingSong();
         }
 
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            StopCoroutine(currentCoroutine);
+            hasStarted = true;
+            walkedInstructions = true;
+            hasWalked = true;
+            rotateInstructions = true;
+            hasRotatedCamera = true;
+            enemyInstructions = true;
+            hasKilledEnemy = true;
+            potionInstruction = true;
+            player.health = player.maxhealth;
+        }
+
+        if (destroyme)
+        {
+            GameObject.Destroy(gameObject);
+        }
+
         if (!hasStarted)
         {
             hasStarted = true;
-            StartCoroutine(StartTutorial());
-            Debug.Log("returned started tutorial");
+            currentCoroutine = "StartTutorial";
+            StartCoroutine("StartTutorial");
         }
         else if (!hasWalked)
         {
             if (walkedInstructions && CheckWalked())
             {
                 hasWalked = true;
-                StartCoroutine(StartRotation());
+                currentCoroutine = "StartRotation";
+                StartCoroutine("StartRotation");
             }
         }
         else if (!hasRotatedCamera)
@@ -63,7 +87,8 @@ public class IntroScript : MonoBehaviour {
             if (rotateInstructions && CheckRotation())
             {
                 hasRotatedCamera = true;
-                StartCoroutine(StartEnemy());
+                currentCoroutine = "StartEnemy";
+                StartCoroutine("StartEnemy");
             }
         }
         else if (!hasKilledEnemy)
@@ -71,7 +96,8 @@ public class IntroScript : MonoBehaviour {
             if (enemyInstructions && CheckEnemy())
             {
                 hasKilledEnemy = true;
-                StartCoroutine(StartPotion());
+                currentCoroutine = "StartPotion";
+                StartCoroutine("StartPotion");
             }
         }
         else if (!hasUsedPotion)
@@ -87,6 +113,8 @@ public class IntroScript : MonoBehaviour {
     IEnumerator StartTutorial()
     {
         Debug.Log("StartedTutorial");
+        ShowText("Press Y to skip this tutorial at any time!");
+        yield return new WaitForSeconds(5f);
         ShowText("Hello Jian, we will prepare your journey today, to become the master! \r\n Walk to the target that just appeared Jian!");
         yield return new WaitForSeconds(WaitTimeInSeconds);
         WalkTarget.GetComponent<MeshRenderer>().enabled = true;//turn on walk target
@@ -175,9 +203,13 @@ public class IntroScript : MonoBehaviour {
 
     IEnumerator EndTutorial()
     {
-        ShowText("I will be in the yard if you neeed me for further guidance.");
+        ShowText("I will be in the yard if you need me for further guidance.");
+        player.health = player.maxhealth;
         yield return new WaitForSeconds(10);
-        GameObject.Destroy(gameObject);
+        FindObjectOfType<EnemyManager>().StartWave(1);
+        GameObject.Destroy(IntroActor);
+        destroyme = true;
+        yield return new WaitForSeconds(0.01f);
 
     }
 

@@ -4,34 +4,30 @@ using UnityEngine.UI;
 
 public class PlayerScript : stats {
 
-
-    int healthpotion = 0;
-    int manapotion = 0;
-
     bool fireSpecialISActive = false;
     bool iceSpecialIsActive = false;
     bool airSpecialIsActive = false;
     GameObject HUD;
     GameObject pauseMenu;
 
-    const int spellQ = 0;
+    int spellQ = 0;
     int spellW = 0;
     int spellE = 0;
     int spellR = 0;
-    int spell1 = 0;
-    int spell2 = 0;
+    int spell1 = 6;
+    int spell2 = 7;
     int spell3 = 0;
 
-    int spellFireNormal = 1;
-    int spellIceNormal = 2;
-    int spellAirNormal = 3;
-    int spellFireSpecial = 0;
-    int spellIceSpecial = 0;
-    int spellAirSpecial = 0;
+    public int spellFireNormal = 0;
+    public int spellIceNormal = 0;
+    public int spellAirNormal = 0;
+    public int spellFireSpecial = 0;
+    public int spellIceSpecial = 0;
+    public int spellAirSpecial = 0;
 
-    int spellHealthPotion = 5;
-    int spellManaPotion = 6;
-    int spellAbilityRun = 0;
+    public int spellHealthPotion = 6;
+    public int spellManaPotion = 7;
+    public int spellAbilityRun = 0;
 
     Image imageSlotQ;
     Image imageSlotW;
@@ -53,6 +49,7 @@ public class PlayerScript : stats {
     Text itemCounter2;
 
     Image healthOverlay;
+    Image healthOverlay2;   //this is the one attached to the player
     Image manaOverlay;
 
     Text goldText;
@@ -72,6 +69,7 @@ public class PlayerScript : stats {
 
 	// Use this for initialization
 	void Start () {
+
         maxhealth = 100;
         health = 100;
         maxmana = 100;
@@ -97,12 +95,13 @@ public class PlayerScript : stats {
         itemCounter2 = GameObject.Find("ItemCounter2").GetComponent<Text>();
 
         healthOverlay = GameObject.Find("HealthOverlay").GetComponent<Image>();
+        healthOverlay2 = GameObject.Find("HealthOverlay2").GetComponent<Image>();
         manaOverlay = GameObject.Find("ManaOverlay").GetComponent<Image>();
         goldText = GameObject.Find("GoldText").GetComponent<Text>();
 
         attackscript = GetComponent<AttackScript>();
 
-        SetSpell(SpellSlots.spellQ, 0);
+        SetSpell(SpellSlots.spellQ, spellQ);
         SetSpell(SpellSlots.spellW, spellFireNormal);
         SetSpell(SpellSlots.spellE, spellIceNormal);
         SetSpell(SpellSlots.spellR, spellAirNormal);
@@ -113,6 +112,8 @@ public class PlayerScript : stats {
         HUD = GameObject.Find("HUD");
         pauseMenu = GameObject.Find("PauseMenu");
         pauseMenu.SetActive(false);
+
+        Debug.Log("spell = " + attackscript.spellmanager.spellslist[6].name);
 	}
 	
 	// Update is called once per frame
@@ -142,6 +143,7 @@ public class PlayerScript : stats {
         cooldownOverlay2.fillAmount = GetComponent<AttackScript>().coolDowns[spell2] / GetComponent<AttackScript>().spellmanager.spellslist[spell2].cooldown;
         cooldownOverlay3.fillAmount = GetComponent<AttackScript>().coolDowns[spell3] / GetComponent<AttackScript>().spellmanager.spellslist[spell3].cooldown;
         healthOverlay.fillAmount = ((float)health / (float)maxhealth);
+        healthOverlay2.fillAmount = healthOverlay.fillAmount;
         manaOverlay.fillAmount = ((float)mana / (float)maxmana);
         goldText.text = gold.ToString();
         itemCounter1.text = GetComponent<AttackScript>().spellmanager.spellslist[spell1].uses.ToString();
@@ -223,8 +225,8 @@ public class PlayerScript : stats {
         {
             case SpellSlots.spellQ:
                 //set a image to the hud slot
+                spellQ = spellid;
                 imageSlotQ.sprite = attackscript.spellmanager.spellslist[spellid].icon;
-                Debug.Log("q set to 0");    
                 break;
             case SpellSlots.spellW:
                 spellW = spellid;
@@ -300,13 +302,8 @@ public class PlayerScript : stats {
         Application.LoadLevel(0);
     }
 
-    public void AddHealthPotion()
+    public void enableQspell()
     {
-        healthpotion++;
-    }
-
-    public void AddManaPotion()
-    {
-        manapotion++;
+        spellQ = 1;
     }
 }

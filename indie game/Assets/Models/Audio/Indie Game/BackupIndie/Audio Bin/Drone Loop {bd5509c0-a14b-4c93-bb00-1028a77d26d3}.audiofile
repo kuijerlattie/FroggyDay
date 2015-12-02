@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.05.00">
+    <object class="AudioFile" id="{bd5509c0-a14b-4c93-bb00-1028a77d26d3}">
+        <property name="frequencyInKHz">
+            <value>48</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>9.0566041666666663</value>
+        </property>
+        <property name="audioFilePath">
+            <value>$(AUDIO_BIN_DIR)/Drone Loop {1204e1a6-b03c-41c7-8300-af2ddd4f80dd}.ogg</value>
+        </property>
+        <relationship name="container">
+            <destination>{bc2176cd-e84e-445a-86ad-52f01e5336d9}</destination>
+        </relationship>
+    </object>
+</objects>

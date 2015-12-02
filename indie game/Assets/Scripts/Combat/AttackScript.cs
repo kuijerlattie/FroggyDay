@@ -32,7 +32,7 @@ public class AttackScript : MonoBehaviour {
     {
             CheckSpellManager();
             spellmanager.MakeSpellForward(spellmanager.spellslist[4], gameObject.transform, gameObject.transform.forward);
-            PlaySpellSound(spellmanager.spellslist[4].spellSound);
+            GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.FireB);
             return 0;
     }
 
@@ -70,6 +70,13 @@ public class AttackScript : MonoBehaviour {
                         cooldowns[index] = spellmanager.spellslist[index].cooldown;
                         spellmanager.MakeSpellForward(spellmanager.spellslist[index], gameObject.transform, forward);
 
+                        if(GetComponentInChildren<playerMovementSmart>() != null)
+                        {
+                            GetComponentInChildren<Animator>().SetBool("attack1", true);
+                            //GetComponentInChildren<Animator>().Play("attack1");
+                            //GetComponentInChildren<Animator>().SetBool("attack1", false);
+                        }
+
                         NavMeshAgent agent = gameObject.GetComponentInChildren<NavMeshAgent>();
                         if(gameObject.layer == 8)
                         {
@@ -80,7 +87,7 @@ public class AttackScript : MonoBehaviour {
                         gameObject.transform.LookAt(transform.position + forward);
                         agent.updateRotation = true;
 
-                        PlaySpellSound(spellmanager.spellslist[index].spellSound);
+                        GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(spellmanager.spellslist[index].soundeffect);
                         return 0;
                     }
                     PlayHudSound(spellmanager.lowOnMana);
@@ -146,6 +153,8 @@ public class AttackScript : MonoBehaviour {
 
     void Update()
     {
+        GetComponentInChildren<Animator>().SetBool("attack1", false);
+        GetComponentInChildren<Animator>().SetBool("attack2", false);
         if (CheckCooldowns())
         {
             for (int i = 0; i < cooldowns.Length; i++)

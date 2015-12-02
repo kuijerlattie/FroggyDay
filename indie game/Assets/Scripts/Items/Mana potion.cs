@@ -14,7 +14,7 @@ public class Manapotion : UsableItem{
 
         // throw new NotImplementedException();
         Spells spellmanager = GameObject.FindObjectOfType<Spells>();
-        spellmanager.spellslist[6].uses++;
+        spellmanager.spellslist[7].uses++;
     }
 
     public override bool Use(stats user)

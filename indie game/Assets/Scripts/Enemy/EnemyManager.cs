@@ -1,28 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyManager : MonoBehaviour {
 
-    GameObject[] spawnlocations;
+
+    List<List<GameObject>> spawnlocations = new List<List<GameObject>>();
+    List<GameObject> spawnlocations1 = new List<GameObject>();
+    List<GameObject> spawnlocations2 = new List<GameObject>();
+    List<GameObject> spawnlocations3 = new List<GameObject>();
+    List<GameObject> spawnlocations4 = new List<GameObject>();
+    List<GameObject> spawnlocations5 = new List<GameObject>();
+    List<GameObject> spawnlocations6 = new List<GameObject>();
+
+    int CurrentArea;
+
     [SerializeField]
     GameObject meleeEnemyPrefab;
     [SerializeField]
     GameObject rangedEnemyPrefab;
     float timer = 0;
 
-    public int[] areaCounters;
-
     bool waveActive = false;
     bool spawnEnemies = false;
+    public bool waveDone = false;
 
     [HideInInspector]
     public int waveLevel = 0;
-    [HideInInspector]
-    public int waveSize = 0; //amount of enemies in current wave;
     public float waveDelay = 5.0f; //time between waves;
 
     [HideInInspector]
-    public int spawnCount = 0; //enemies spawned this round;
+    public float spawnCredits;
     [HideInInspector]
     public int enemyCount = 0; //enemies still alive
     private float spawnDelay = 1f;
@@ -31,8 +39,19 @@ public class EnemyManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        spawnlocations = GameObject.FindGameObjectsWithTag("EnemySpawn");
-        Debug.Log("spawn locations found: " + spawnlocations.Length);
+        spawnlocations1.AddRange(GameObject.FindGameObjectsWithTag("EnemySpawn1"));
+        spawnlocations2.AddRange(GameObject.FindGameObjectsWithTag("EnemySpawn2"));
+        spawnlocations3.AddRange(GameObject.FindGameObjectsWithTag("EnemySpawn3"));
+        spawnlocations4.AddRange(GameObject.FindGameObjectsWithTag("EnemySpawn4"));
+        spawnlocations5.AddRange(GameObject.FindGameObjectsWithTag("EnemySpawn5"));
+        spawnlocations6.AddRange(GameObject.FindGameObjectsWithTag("EnemySpawn6"));
+
+        spawnlocations.Add(spawnlocations1);
+        spawnlocations.Add(spawnlocations2);
+        spawnlocations.Add(spawnlocations3);
+        spawnlocations.Add(spawnlocations4);
+        spawnlocations.Add(spawnlocations5);
+        spawnlocations.Add(spawnlocations6);
 	}
 
     void SpawnEnemy()
@@ -40,8 +59,19 @@ public class EnemyManager : MonoBehaviour {
         GameObject enemy = (GameObject)GameObject.Instantiate(meleeEnemyPrefab);
         enemy.transform.position = GetSpawnLocation();
         enemy.GetComponent<EnemyBase>().isWaveEnemy = true;
+        enemy.GetComponent<EnemyBase>().area = CurrentArea;
         enemyCount++;
-        spawnCount++;
+        spawnCredits -= 1f;
+    }
+
+    void SpawnStrongEnemy()
+    {
+        GameObject enemy = (GameObject)GameObject.Instantiate(meleeEnemyPrefab);
+        enemy.transform.position = GetSpawnLocation();
+        enemy.GetComponent<EnemyBase>().isWaveEnemy = true;
+        enemy.GetComponent<EnemyBase>().area = CurrentArea;
+        enemyCount++;
+        spawnCredits -= 2.5f;
     }
 
     void SpawnRangedEnemy()
@@ -49,14 +79,16 @@ public class EnemyManager : MonoBehaviour {
         GameObject enemy = (GameObject)GameObject.Instantiate(rangedEnemyPrefab);
         enemy.transform.position = GetSpawnLocation();
         enemy.GetComponent<EnemyBase>().isWaveEnemy = true;
+        enemy.GetComponent<EnemyBase>().area = CurrentArea;
 
         enemyCount++;
-        spawnCount++;
+        spawnCredits -= 1.5f;
     }
 
     Vector3 GetSpawnLocation()
     {
-        Vector3 location = spawnlocations[Random.Range(0, spawnlocations.Length)].transform.position;
+        Debug.Log("total spawnlocations in area" + spawnlocations[CurrentArea - 1].Count);
+        Vector3 location = spawnlocations[CurrentArea-1][Random.Range(0, spawnlocations[CurrentArea-1].Count)].transform.position;
         return location;
     }
 	
@@ -64,23 +96,16 @@ public class EnemyManager : MonoBehaviour {
 	void Update () {
         if (waveActive)
         {
-            if (spawnCount >= waveSize)
+            if (spawnCredits < 1)
             {
                 spawnEnemies = false;
 
                 if (enemyCount <= 0)
                 {
+                    waveDone = true;
                     waveActive = false;
                     timer = 0;
                 }
-            }
-        }
-        else //wave not active
-        {
-            if (timer >= waveDelay)
-            {
-                StartNewWave();
-                timer = 0;
             }
         }
 
@@ -88,34 +113,38 @@ public class EnemyManager : MonoBehaviour {
         {
             if (timer >= spawnDelay)
             {
-                int i = Random.Range(1, 3);
-                switch (i)
+                float i = Random.Range(0, 1);
+                if (i <= 0.6) //60% chance
                 {
-                    case 1:
-                        SpawnEnemy();
-                        break;
-                    case 2:
+                    SpawnEnemy();
+                }
+                else if (i <= 0.9) // 30% chance
+                {
+                    if (waveLevel > 1)
                         SpawnRangedEnemy();
-                        break;
-                    default:
-                        SpawnEnemy();
-                        break;
+                }
+                else if (i <= 1) // 60% chance
+                {
+                    if (waveLevel > 4)
+                        SpawnStrongEnemy();
                 }
                 timer = 0;
             }
         }
+
         timer += Time.deltaTime;
 	}
 
     void StartNewWave()
     {
+        Debug.Log("starting wave " + (waveLevel + 1) + " in area " + CurrentArea);
         waveLevel++;
         waveActive = true;
         spawnEnemies = true;
+        waveDone = false;
 
-        waveSize = waveLevel * 5;
         enemyCount = 0;
-        spawnCount = 0;
+        spawnCredits = 3f * Mathf.Pow(1.3f, waveLevel);
 
         //soundeffect? hudupdate?
     }
@@ -125,27 +154,15 @@ public class EnemyManager : MonoBehaviour {
         enemyCount--;
     }
 
-    public void AddToArea(int areanumber)
+    public void StartWave(int area = 1)
     {
-        areaCounters[areanumber - 1] += 1;
+        CurrentArea = area;
+        if (!waveActive)
+            StartNewWave();
     }
 
-    public void RemoveFromArea(int areanumber)
+    public int EnemiesLeft()
     {
-        areaCounters[areanumber - 1] -= 1;
-    }
-
-    public bool IsAreaEmpty(int areanumber)
-    {
-        if (areaCounters[areanumber - 1] <= 0)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public int GetEnemyCountInArea(int areanumber)
-    {
-        return areaCounters[areanumber - 1];
+        return enemyCount;
     }
 }

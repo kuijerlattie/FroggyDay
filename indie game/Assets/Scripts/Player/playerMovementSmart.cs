@@ -12,17 +12,26 @@ public class playerMovementSmart : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         agent = GetComponent<NavMeshAgent>();
-	}
+        targetPosition = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        targetPosition.transform.position = transform.position;
+    }
 	
 	// Update is called onc e per frame
 	void Update () {
+        if (agent.velocity.magnitude > 0)
+        {
+            GetComponentInChildren<Animator>().SetFloat("speed" , 0.2f);
+        }
+        else
+        {
+            GetComponentInChildren<Animator>().SetFloat("speed", 0.0f);
+        }
         if (playerCamera == null)
             return;
         if (targetPosition != null)
         {
             agent.destination = targetPosition.transform.position;
         }
-        //Debug.Log("pathlength: " + (agent.destination - transform.position).magnitude);
         if((agent.destination - transform.position).magnitude < 0.4f)
         {
             //attempt to fix weird behaviour on rotating navmesh
@@ -35,15 +44,8 @@ public class playerMovementSmart : MonoBehaviour {
             LayerMask layermask = (1<<11);
             if (Physics.Raycast(playerCamera.ScreenPointToRay(Input.mousePosition), out hit, 100, layermask))
             {
-                //if ((hit.point - transform.position).magnitude > 0.5f)
-                //{
-                    GameObject.Destroy(targetPosition);
-                // targetPosition = GameObject.Instantiate(new GameObject());
-                    targetPosition = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    targetPosition.transform.position = hit.point;
-                    targetPosition.transform.parent = hit.collider.gameObject.transform;
-                    
-               // }
+                 targetPosition.transform.position = hit.point;
+                 targetPosition.transform.parent = hit.collider.gameObject.transform;
             }
         }
 	}

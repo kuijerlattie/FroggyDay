@@ -31,7 +31,7 @@ public class AttackScript : MonoBehaviour {
     public int MeleeAttack()
     {
             CheckSpellManager();
-            spellmanager.MakeSpellForward(spellmanager.spellslist[4], gameObject.transform, gameObject.transform.forward);
+            spellmanager.MakeSpellForward(spellmanager.spellslist[5], gameObject.transform, gameObject.transform.forward);
             GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.FireB);
             return 0;
     }

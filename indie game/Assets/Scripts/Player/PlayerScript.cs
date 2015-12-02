@@ -354,8 +354,10 @@ public class PlayerScript : stats {
     {
         if (alive)
         {
+            GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.PDeath);
             Debug.Log("player died");
             alive = false;
+            gold = 0;
             deathtimer = 5f;
         }
     }

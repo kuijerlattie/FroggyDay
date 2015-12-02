@@ -154,8 +154,7 @@ public class PlayerScript : stats {
             if (alive)
                 UpdateInput();
         }
-        Hit(1);
-        mana += 10 * Time.deltaTime;
+        mana += 1 * Time.deltaTime;
 
         /// Pause game
         if (Input.GetKeyDown(KeyCode.Escape))

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.05.00">
+    <object class="AudioFile" id="{2e1f2013-a3b3-4f56-a320-db7dee5ec7ca}">
+        <property name="frequencyInKHz">
+            <value>96</value>
+        </property>
+        <property name="channelCount">
+            <value>1</value>
+        </property>
+        <property name="length">
+            <value>0.16446875</value>
+        </property>
+        <property name="audioFilePath">
+            <value>$(AUDIO_BIN_DIR)/SwitchOff1 {6f1ed431-bb41-4ed6-ab29-9515c3699fdd}.ogg</value>
+        </property>
+        <relationship name="container">
+            <destination>{be47b4c8-cd1d-480d-8523-e30c4149a73b}</destination>
+        </relationship>
+    </object>
+</objects>

@@ -23,7 +23,6 @@ public class stats : MonoBehaviour {
         health -= dmg;
         if (health <= 0)
         {
-            
             //Die();
         }
     }

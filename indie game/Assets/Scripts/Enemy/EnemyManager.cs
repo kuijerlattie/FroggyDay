@@ -1,16 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyManager : MonoBehaviour {
 
-    GameObject[] spawnlocations;
+
+    List<List<GameObject>> spawnlocations = new List<List<GameObject>>();
+    List<GameObject> spawnlocations1 = new List<GameObject>();
+    List<GameObject> spawnlocations2 = new List<GameObject>();
+    List<GameObject> spawnlocations3 = new List<GameObject>();
+    List<GameObject> spawnlocations4 = new List<GameObject>();
+    List<GameObject> spawnlocations5 = new List<GameObject>();
+    List<GameObject> spawnlocations6 = new List<GameObject>();
+
+    int CurrentArea;
+
     [SerializeField]
     GameObject meleeEnemyPrefab;
     [SerializeField]
     GameObject rangedEnemyPrefab;
     float timer = 0;
-
-    public int[] areaCounters;
 
     bool waveActive = false;
     bool spawnEnemies = false;
@@ -31,8 +40,19 @@ public class EnemyManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        spawnlocations = GameObject.FindGameObjectsWithTag("EnemySpawn");
-        Debug.Log("spawn locations found: " + spawnlocations.Length);
+        spawnlocations1.AddRange(GameObject.FindGameObjectsWithTag("EnemySpawn1"));
+        spawnlocations2.AddRange(GameObject.FindGameObjectsWithTag("EnemySpawn2"));
+        spawnlocations3.AddRange(GameObject.FindGameObjectsWithTag("EnemySpawn3"));
+        spawnlocations4.AddRange(GameObject.FindGameObjectsWithTag("EnemySpawn4"));
+        spawnlocations5.AddRange(GameObject.FindGameObjectsWithTag("EnemySpawn5"));
+        spawnlocations6.AddRange(GameObject.FindGameObjectsWithTag("EnemySpawn6"));
+
+        spawnlocations.Add(spawnlocations1);
+        spawnlocations.Add(spawnlocations2);
+        spawnlocations.Add(spawnlocations3);
+        spawnlocations.Add(spawnlocations4);
+        spawnlocations.Add(spawnlocations5);
+        spawnlocations.Add(spawnlocations6);
 	}
 
     void SpawnEnemy()
@@ -40,6 +60,7 @@ public class EnemyManager : MonoBehaviour {
         GameObject enemy = (GameObject)GameObject.Instantiate(meleeEnemyPrefab);
         enemy.transform.position = GetSpawnLocation();
         enemy.GetComponent<EnemyBase>().isWaveEnemy = true;
+        enemy.GetComponent<EnemyBase>().area = CurrentArea;
         enemyCount++;
         spawnCount++;
     }
@@ -49,6 +70,7 @@ public class EnemyManager : MonoBehaviour {
         GameObject enemy = (GameObject)GameObject.Instantiate(rangedEnemyPrefab);
         enemy.transform.position = GetSpawnLocation();
         enemy.GetComponent<EnemyBase>().isWaveEnemy = true;
+        enemy.GetComponent<EnemyBase>().area = CurrentArea;
 
         enemyCount++;
         spawnCount++;
@@ -56,7 +78,8 @@ public class EnemyManager : MonoBehaviour {
 
     Vector3 GetSpawnLocation()
     {
-        Vector3 location = spawnlocations[Random.Range(0, spawnlocations.Length)].transform.position;
+        Debug.Log("total spawnlocations in area" + spawnlocations[CurrentArea - 1].Count);
+        Vector3 location = spawnlocations[CurrentArea-1][Random.Range(0, spawnlocations[CurrentArea-1].Count)].transform.position;
         return location;
     }
 	
@@ -75,14 +98,14 @@ public class EnemyManager : MonoBehaviour {
                 }
             }
         }
-        else //wave not active
-        {
-            if (timer >= waveDelay)
-            {
-                StartNewWave();
-                timer = 0;
-            }
-        }
+        //else //wave not active
+        //{
+        //    if (timer >= waveDelay)  //not using this system anymore, as waves get spawned (and despawned) with triggers in the map
+        //    {
+        //        StartNewWave();
+        //        timer = 0;
+        //    }
+        //}
 
         if (spawnEnemies)
         {
@@ -109,6 +132,7 @@ public class EnemyManager : MonoBehaviour {
 
     void StartNewWave()
     {
+        Debug.Log("starting wave " + (waveLevel + 1) + " in area " + CurrentArea);
         waveLevel++;
         waveActive = true;
         spawnEnemies = true;
@@ -125,27 +149,15 @@ public class EnemyManager : MonoBehaviour {
         enemyCount--;
     }
 
-    public void AddToArea(int areanumber)
+    public void StartWave(int area = 1)
     {
-        areaCounters[areanumber - 1] += 1;
+        CurrentArea = area;
+        if (!waveActive)
+            StartNewWave();
     }
 
-    public void RemoveFromArea(int areanumber)
+    public int EnemiesLeft()
     {
-        areaCounters[areanumber - 1] -= 1;
-    }
-
-    public bool IsAreaEmpty(int areanumber)
-    {
-        if (areaCounters[areanumber - 1] <= 0)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public int GetEnemyCountInArea(int areanumber)
-    {
-        return areaCounters[areanumber - 1];
+        return enemyCount;
     }
 }

@@ -125,7 +125,8 @@ public abstract class EnemyBase : stats {
 
     protected virtual void Die()
     {
-            manager.RemoveEnemy();
+        GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.EMidDeath);
+        manager.RemoveEnemy();
 
         if (canDrop)
         {

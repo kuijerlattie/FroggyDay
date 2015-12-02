@@ -8,6 +8,8 @@ public class playerMovementSmart : MonoBehaviour {
     [SerializeField] Camera playerCamera;
     public GameObject targetPosition;
     float Acceleration = 500;
+    FMODUnity.StudioEventEmitter emitter;
+    bool walking = false;
 
 	// Use this for initialization
 	void Start () {
@@ -20,11 +22,16 @@ public class playerMovementSmart : MonoBehaviour {
 	void Update () {
         if (agent.velocity.magnitude > 0)
         {
+            if(walking == false)
+                emitter = GameObject.FindObjectOfType<SoundManager>().MakeSoundObjectLooped(SoundManager.Sounds.Footstep);
+            walking = true;
             GetComponentInChildren<Animator>().SetFloat("speed" , 0.2f);
         }
         else
         {
+            walking = false;
             GetComponentInChildren<Animator>().SetFloat("speed", 0.0f);
+            GameObject.FindObjectOfType<SoundManager>().StopLooping(emitter);
         }
         if (playerCamera == null)
             return;

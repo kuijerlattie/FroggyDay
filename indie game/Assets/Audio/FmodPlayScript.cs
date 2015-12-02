@@ -35,8 +35,6 @@ public class FmodPlayScript : MonoBehaviour {
 
     public void StopSoundLooped(FMODUnity.StudioEventEmitter emitter)
     {
-        if (emitter == null)
-            return;
         GameObject.Destroy(emitter.gameObject);
     }
 

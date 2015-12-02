@@ -295,6 +295,7 @@ public class PlayerScript : stats {
     public void LootGold(int g)
     {
         gold += g;
+        GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.PickUpCoin);
     }
 
     public void QuitToMenu()

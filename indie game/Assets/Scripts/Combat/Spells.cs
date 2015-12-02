@@ -73,7 +73,7 @@ public class Spells : MonoBehaviour {
         spellslist = new List<SpellInfo>();
         spellslist.Add(new SpellInfo(spellIcons[0], SoundManager.Sounds.FireB, 0, 0, "emptyspell", "enmptyspell", new HitBall[] { }, 0));
 
-        spellslist.Add(new SpellInfo(spellIcons[1], SoundManager.Sounds.FireB, 0, 0.8f, "Q", "description1",
+        spellslist.Add(new SpellInfo(spellIcons[1], SoundManager.Sounds.Spell1, 0, 0.8f, "Q", "description1",
             new HitBall[] {
                 new HitBall(0, new Vector3(0,1,2), 0.0f, 1.0f, 3.0f, Vector3.forward * 100)
                 //new HitBall(new Vector3(0,0,4), 0.4f, 1.0f, 3.0f, Vector3.zero),
@@ -102,7 +102,7 @@ public class Spells : MonoBehaviour {
             }
             , 20, 0, 0, 0, 0));
 
-        spellslist.Add(new SpellInfo(spellIcons[3], SoundManager.Sounds.FireB, 8, 5, "E", "description2",
+        spellslist.Add(new SpellInfo(spellIcons[3], SoundManager.Sounds.IceB, 8, 5, "E", "description2",
          new HitBall[] {
                 new HitBall(0, new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, Vector3.forward * 100),
                 new HitBall(1, new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, (Vector3.forward + Vector3.right).normalized * 100),
@@ -120,7 +120,7 @@ public class Spells : MonoBehaviour {
 
         spellslist.Add(new SpellInfo(
             spellIcons[4],  //icon
-            SoundManager.Sounds.FireB, //spell cast sound
+            SoundManager.Sounds.WindS, //spell cast sound
             12,             //manacost
             8,              //cooldown seconds
             "R",       //spell name
@@ -139,13 +139,13 @@ public class Spells : MonoBehaviour {
           5));   //stun seconds
 
         //melee attack only used by enemies
-        spellslist.Add(new SpellInfo(spellIcons[5], SoundManager.Sounds.FireB, 0, 3, "melee attack", "description melee",
+        spellslist.Add(new SpellInfo(spellIcons[5], SoundManager.Sounds.EMidAttack, 0, 3, "melee attack", "description melee",
          new HitBall[] {
                 new HitBall(0, new Vector3(0,0,1), 0.0f, 0.5f, 3.0f, Vector3.zero)
          }
          , 15, 0, 0, 0, 0));
-        spellslist.Add(new SpellInfo(spellIcons[6], SoundManager.Sounds.FireB, 0, 0, "Healing Potion", "Heal yourself for X amount of health", new HitBall[] { }, 0, 0, 0, 0, 0, 0, 10, 0, 0)); //hp potion
-        spellslist.Add(new SpellInfo(spellIcons[7], SoundManager.Sounds.FireB, 0, 0, "Mana Potion", "Replenish x amount of your mana", new HitBall[] { }, 0, 0, 0, 0, 0, 0, 0, 10, 0)); //mana potion
+        spellslist.Add(new SpellInfo(spellIcons[6], SoundManager.Sounds.Heal, 0, 0, "Healing Potion", "Heal yourself for X amount of health", new HitBall[] { }, 0, 0, 0, 0, 0, 0, 10, 0, 0)); //hp potion
+        spellslist.Add(new SpellInfo(spellIcons[7], SoundManager.Sounds.Mana, 0, 0, "Mana Potion", "Replenish x amount of your mana", new HitBall[] { }, 0, 0, 0, 0, 0, 0, 0, 10, 0)); //mana potion
 
     }
 

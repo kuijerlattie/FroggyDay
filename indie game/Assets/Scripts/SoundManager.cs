@@ -43,10 +43,18 @@ public class SoundManager : MonoBehaviour {
 		SoundsDatabase.Add(Sounds.OpenChest, "event:/Sounds/Enviroment/OpenChest");
 		SoundsDatabase.Add(Sounds.BuyItem, "event:/Sounds/Enviroment/Buy an Item");
 
-		SoundsDatabase.Add(Sounds.MenuMusic, "event:/Sounds/Menu/MenuMusic");
-		SoundsDatabase.Add(Sounds.Click, "event:/Sounds/Menu/Click");
-		SoundsDatabase.Add(Sounds.Music, "event:/Sounds/Music/Music");
+		SoundsDatabase.Add(Sounds.MenuMusic, "event:/Menu/MenuMusic");
+		SoundsDatabase.Add(Sounds.Click, "event:/Menu/Click");
+		SoundsDatabase.Add(Sounds.Music, "event:/Music/Music");
 
+        SoundsDatabase.Add(Sounds.NeedMoreGold, "event:/Sounds/Player/FireB");
+        SoundsDatabase.Add(Sounds.OutOfPotions, "event:/Sounds/Player/FireS");
+
+        SoundsDatabase.Add(Sounds.Footstep, "event:/Sounds/Player/Footstep");
+
+
+        if(GameObject.FindObjectOfType<PlayerScript>() != null)
+                GameObject.FindObjectOfType<SoundManager>().MakeSoundObjectLooped(SoundManager.Sounds.Music);
     }
 
     
@@ -82,8 +90,10 @@ public class SoundManager : MonoBehaviour {
 		BuyItem,
 		MenuMusic,
 		Click,
-		Music
-           
+		Music,
+        NeedMoreGold,
+        OutOfPotions,
+        Footstep
     }
 
     public void MakeSoundObject(Sounds soundeffect)
@@ -91,6 +101,20 @@ public class SoundManager : MonoBehaviour {
         GameObject soundObj = GameObject.Instantiate(SoundObjectPrefab);
         FmodPlayScript soundscript = soundObj.GetComponent<FmodPlayScript>();
         soundscript.PlaySound(SoundsDatabase[soundeffect]);
+    }
+
+    public void StopLooping(FMODUnity.StudioEventEmitter emitter)
+    {
+        if (emitter == null)
+            return;
+        emitter.gameObject.GetComponent<FmodPlayScript>().StopSoundLooped(emitter);
+    }
+
+    public FMODUnity.StudioEventEmitter MakeSoundObjectLooped(Sounds soundeffect)
+    {
+        GameObject soundObj = GameObject.Instantiate(SoundObjectPrefab);
+        FmodPlayScript soundscript = soundObj.GetComponent<FmodPlayScript>();
+        return soundscript.PlaySoundLooped(SoundsDatabase[soundeffect]);
     }
 }
 

@@ -19,7 +19,7 @@ public class SoundManager : MonoBehaviour {
 
 		SoundsDatabase.Add(Sounds.PDamage, "event:/Sounds/Player/Damage");
 		SoundsDatabase.Add(Sounds.PDeath, "event:/Sounds/Player/Death");
-		SoundsDatabase.Add(Sounds.Heal, "event:/Sounds/Player/Health");
+		SoundsDatabase.Add(Sounds.Heal, "event:/Sounds/Player/Heal");
 		SoundsDatabase.Add(Sounds.Mana, "event:/Sounds/Player/Mana");
 		SoundsDatabase.Add(Sounds.LowHP, "event:/Sounds/Player/Low on Health");
 		SoundsDatabase.Add(Sounds.LowMana, "event:/Sounds/Player/Low on mana");

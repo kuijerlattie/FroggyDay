@@ -2,10 +2,6 @@
 using System.Collections;
 
 public class RemoveAfterEnemyTreshold : MonoBehaviour {
-
-    public int area;
-    public int EnemiesLeft;
-    public bool RemoveWhenAreaIsCleared = false;
     public bool RemoveAfterWaves = false;
     public int waves;
     EnemyManager manager;
@@ -16,18 +12,11 @@ public class RemoveAfterEnemyTreshold : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (RemoveWhenAreaIsCleared)
-        {
-            if (manager.IsAreaEmpty(area))
-                Destroy(gameObject);
-        }
-        else if(RemoveAfterWaves)
-        {
-            if (GameObject.FindObjectOfType<EnemyManager>().waveLevel > waves)
-                Destroy(gameObject);
-        }
-        else if (manager.GetEnemyCountInArea(area) <= EnemiesLeft)
-            Destroy(gameObject);
         
+        if(RemoveAfterWaves)
+        {
+            if (GameObject.FindObjectOfType<EnemyManager>().waveLevel >= waves && GameObject.FindObjectOfType<EnemyManager>().EnemiesLeft() == 0)
+                Destroy(gameObject);
+        }
 	}
 }

@@ -204,6 +204,7 @@ public class IntroScript : MonoBehaviour {
     IEnumerator EndTutorial()
     {
         ShowText("I will be in the yard if you need me for further guidance.");
+        player.SetSpell(PlayerScript.SpellSlots.spellQ, 1);
         player.health = player.maxhealth;
         yield return new WaitForSeconds(10);
         FindObjectOfType<EnemyManager>().StartWave(1);

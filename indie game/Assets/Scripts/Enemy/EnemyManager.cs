@@ -21,8 +21,6 @@ public class EnemyManager : MonoBehaviour {
     GameObject rangedEnemyPrefab;
     float timer = 0;
 
-    public int[] areaCounters;
-
     bool waveActive = false;
     bool spawnEnemies = false;
 
@@ -62,6 +60,7 @@ public class EnemyManager : MonoBehaviour {
         GameObject enemy = (GameObject)GameObject.Instantiate(meleeEnemyPrefab);
         enemy.transform.position = GetSpawnLocation();
         enemy.GetComponent<EnemyBase>().isWaveEnemy = true;
+        enemy.GetComponent<EnemyBase>().area = CurrentArea;
         enemyCount++;
         spawnCount++;
     }
@@ -71,6 +70,7 @@ public class EnemyManager : MonoBehaviour {
         GameObject enemy = (GameObject)GameObject.Instantiate(rangedEnemyPrefab);
         enemy.transform.position = GetSpawnLocation();
         enemy.GetComponent<EnemyBase>().isWaveEnemy = true;
+        enemy.GetComponent<EnemyBase>().area = CurrentArea;
 
         enemyCount++;
         spawnCount++;
@@ -78,7 +78,8 @@ public class EnemyManager : MonoBehaviour {
 
     Vector3 GetSpawnLocation()
     {
-        Vector3 location = spawnlocations[CurrentArea][Random.Range(0, spawnlocations[CurrentArea].Count)].transform.position;
+        Debug.Log("total spawnlocations in area" + spawnlocations[CurrentArea - 1].Count);
+        Vector3 location = spawnlocations[CurrentArea-1][Random.Range(0, spawnlocations[CurrentArea-1].Count)].transform.position;
         return location;
     }
 	
@@ -97,7 +98,7 @@ public class EnemyManager : MonoBehaviour {
                 }
             }
         }
-        else //wave not active
+        //else //wave not active
         //{
         //    if (timer >= waveDelay)  //not using this system anymore, as waves get spawned (and despawned) with triggers in the map
         //    {
@@ -131,6 +132,7 @@ public class EnemyManager : MonoBehaviour {
 
     void StartNewWave()
     {
+        Debug.Log("starting wave " + (waveLevel + 1) + " in area " + CurrentArea);
         waveLevel++;
         waveActive = true;
         spawnEnemies = true;
@@ -149,31 +151,13 @@ public class EnemyManager : MonoBehaviour {
 
     public void StartWave(int area = 1)
     {
+        CurrentArea = area;
         if (!waveActive)
             StartNewWave();
     }
 
-    public void AddToArea(int areanumber)
+    public int EnemiesLeft()
     {
-        areaCounters[areanumber - 1] += 1;
-    }
-
-    public void RemoveFromArea(int areanumber)
-    {
-        areaCounters[areanumber - 1] -= 1;
-    }
-
-    public bool IsAreaEmpty(int areanumber)
-    {
-        if (areaCounters[areanumber - 1] <= 0)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public int GetEnemyCountInArea(int areanumber)
-    {
-        return areaCounters[areanumber - 1];
+        return enemyCount;
     }
 }

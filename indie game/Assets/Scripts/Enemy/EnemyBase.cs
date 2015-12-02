@@ -45,11 +45,6 @@ public abstract class EnemyBase : stats {
        
         manager = GameObject.FindObjectOfType<EnemyManager>();
 
-        if (!isWaveEnemy)
-        {
-            //not part of a wave, link to area
-            manager.AddToArea(area);
-        }
     }
 
     public void Stun(float seconds)
@@ -130,10 +125,7 @@ public abstract class EnemyBase : stats {
 
     protected virtual void Die()
     {
-        if (isWaveEnemy)
             manager.RemoveEnemy();
-        else
-            manager.RemoveFromArea(area);
 
         if (canDrop)
         {

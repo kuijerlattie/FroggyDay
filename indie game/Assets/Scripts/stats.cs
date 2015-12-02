@@ -23,7 +23,7 @@ public class stats : MonoBehaviour {
         health -= dmg;
         if (health <= 0)
         {
-            //Die();
+            Die();
         }
     }
 
@@ -62,6 +62,6 @@ public class stats : MonoBehaviour {
     */
     public float movespeed { get { return GetComponent<NavMeshAgent>().speed; }
                              set { GetComponent<NavMeshAgent>().speed = value; } }
-    
-    
+
+    public abstract void Die();
 }

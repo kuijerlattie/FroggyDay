@@ -22,6 +22,10 @@ public class HitboxScript : MonoBehaviour {
     public float slowpercentage = 0;
     public float slowseconds = 0;
 
+    public Transform followTarget= null;
+
+    public bool giveImmunity = false;
+
     public void Spawn(float delay = 0.0f, float duration = 0.0f)
     {
         _duration = duration;
@@ -32,6 +36,8 @@ public class HitboxScript : MonoBehaviour {
     {
         yield return new WaitForSeconds(delay);
         spawned = true;
+        if (giveImmunity)
+            GameObject.FindObjectOfType<PlayerScript>().immunity = true;
         //gameObject.GetComponent<MeshRenderer>().enabled = true;   //debug only
         radius = gameObject.transform.localScale.x * 0.5f;
 
@@ -54,6 +60,10 @@ public class HitboxScript : MonoBehaviour {
 
     void Update()
     {
+        if(followTarget != null)
+        {
+            transform.position = followTarget.position;
+        }
         if(velocity.magnitude > 0 && spawned)
         {
             colliders = Physics.OverlapSphere(transform.position, radius);
@@ -116,6 +126,8 @@ public class HitboxScript : MonoBehaviour {
 
     private void DestroySelfNow()
     {
+        if (giveImmunity)
+            GameObject.FindObjectOfType<PlayerScript>().immunity = false;
         GameObject.Destroy(this.gameObject);
     }
 
@@ -123,6 +135,8 @@ public class HitboxScript : MonoBehaviour {
     {
         startedDestroy = true;
         yield return new WaitForSeconds(_duration);
+        if (giveImmunity)
+            GameObject.FindObjectOfType<PlayerScript>().immunity = false;
         GameObject.Destroy(this.gameObject);
     }
 

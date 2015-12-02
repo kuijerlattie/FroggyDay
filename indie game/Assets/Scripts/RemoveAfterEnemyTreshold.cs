@@ -15,7 +15,7 @@ public class RemoveAfterEnemyTreshold : MonoBehaviour {
         
         if(RemoveAfterWaves)
         {
-            if (GameObject.FindObjectOfType<EnemyManager>().waveLevel >= waves && GameObject.FindObjectOfType<EnemyManager>().EnemiesLeft() == 0)
+            if (GameObject.FindObjectOfType<EnemyManager>().waveLevel >= waves && GameObject.FindObjectOfType<EnemyManager>().waveDone)
                 Destroy(gameObject);
         }
 	}

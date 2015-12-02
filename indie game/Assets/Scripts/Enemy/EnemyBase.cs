@@ -123,7 +123,7 @@ public abstract class EnemyBase : stats {
         return item;
     }
 
-    protected virtual void Die()
+    public override void Die()
     {
         GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.EMidDeath);
         manager.RemoveEnemy();

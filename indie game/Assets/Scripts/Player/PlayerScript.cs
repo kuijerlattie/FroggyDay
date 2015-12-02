@@ -307,4 +307,9 @@ public class PlayerScript : stats {
     {
         spellQ = 1;
     }
+
+    public override void Die()
+    {
+
+    }
 }

@@ -13,7 +13,8 @@ public class EnemyManager : MonoBehaviour {
     List<GameObject> spawnlocations5 = new List<GameObject>();
     List<GameObject> spawnlocations6 = new List<GameObject>();
 
-    int CurrentArea;
+    [HideInInspector]
+    public int CurrentArea = 1;
 
     [SerializeField]
     GameObject meleeEnemyPrefab;

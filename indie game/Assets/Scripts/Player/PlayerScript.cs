@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class PlayerScript : stats {
@@ -54,6 +55,19 @@ public class PlayerScript : stats {
 
     Text goldText;
 
+    EnemyManager enemyManager;
+
+    List<List<GameObject>> playerSpawnList = new List<List<GameObject>>();
+    List<GameObject> playerspawn1 = new List<GameObject>();
+    List<GameObject> playerspawn2 = new List<GameObject>();
+    List<GameObject> playerspawn3 = new List<GameObject>();
+    List<GameObject> playerspawn4 = new List<GameObject>();
+    List<GameObject> playerspawn5 = new List<GameObject>();
+    List<GameObject> playerspawn6 = new List<GameObject>();
+
+    float deathtimer = 0;
+    public bool alive = true;
+
     public enum SpellSlots
     {
         spellQ,
@@ -99,6 +113,20 @@ public class PlayerScript : stats {
         manaOverlay = GameObject.Find("ManaOverlay").GetComponent<Image>();
         goldText = GameObject.Find("GoldText").GetComponent<Text>();
 
+        //shitload of adds to make sure player spawns at wanted locations when he dies
+        playerspawn1.AddRange(GameObject.FindGameObjectsWithTag("PlayerSpawn1"));
+        playerspawn2.AddRange(GameObject.FindGameObjectsWithTag("PlayerSpawn2"));
+        playerspawn3.AddRange(GameObject.FindGameObjectsWithTag("PlayerSpawn3"));
+        playerspawn4.AddRange(GameObject.FindGameObjectsWithTag("PlayerSpawn4"));
+        playerspawn5.AddRange(GameObject.FindGameObjectsWithTag("PlayerSpawn5"));
+        playerspawn6.AddRange(GameObject.FindGameObjectsWithTag("PlayerSpawn6"));
+        playerSpawnList.Add(playerspawn1);
+        playerSpawnList.Add(playerspawn2);
+        playerSpawnList.Add(playerspawn3);
+        playerSpawnList.Add(playerspawn4);
+        playerSpawnList.Add(playerspawn5);
+        playerSpawnList.Add(playerspawn6);
+
         attackscript = GetComponent<AttackScript>();
 
         SetSpell(SpellSlots.spellQ, spellQ);
@@ -108,6 +136,8 @@ public class PlayerScript : stats {
         SetSpell(SpellSlots.spell1, spellHealthPotion);
         SetSpell(SpellSlots.spell2, spellManaPotion);
         SetSpell(SpellSlots.spell3, spellAbilityRun);
+
+        enemyManager = GameObject.FindObjectOfType<EnemyManager>();
 
         HUD = GameObject.Find("HUD");
         pauseMenu = GameObject.Find("PauseMenu");
@@ -121,15 +151,28 @@ public class PlayerScript : stats {
         if (Time.timeScale != 0) //this loop stops when game is paused
         {
             UpdateHud();
-            UpdateInput();
+            if (alive)
+                UpdateInput();
         }
-
+        Hit(1);
         mana += 10 * Time.deltaTime;
 
         /// Pause game
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             CheckPause();
+        }
+
+        if (!alive)
+        {
+            if (deathtimer > 0)
+            {
+                deathtimer -= Time.deltaTime;
+            }
+            else
+            {
+                Respawn();
+            }
         }
     }
 
@@ -310,6 +353,27 @@ public class PlayerScript : stats {
 
     public override void Die()
     {
+        if (alive)
+        {
+            Debug.Log("player died");
+            alive = false;
+            deathtimer = 5f;
+        }
+    }
 
+    void Respawn()
+    {
+        Debug.Log("respawning");
+        health = maxhealth;
+        mana = maxmana;
+        alive = true;
+        transform.position = GetSpawnPoint();
+    }
+
+    Vector3 GetSpawnPoint()
+    {
+        if (enemyManager.CurrentArea == 0)
+            enemyManager.CurrentArea = 1;
+        return playerSpawnList[enemyManager.CurrentArea - 1][Random.Range(0, playerSpawnList[enemyManager.CurrentArea - 1].Count)].transform.position;
     }
 }

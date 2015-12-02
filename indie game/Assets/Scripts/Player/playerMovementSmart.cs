@@ -10,12 +10,14 @@ public class playerMovementSmart : MonoBehaviour {
     float Acceleration = 500;
     FMODUnity.StudioEventEmitter emitter;
     bool walking = false;
+    PlayerScript player;
 
 	// Use this for initialization
 	void Start () {
         agent = GetComponent<NavMeshAgent>();
         targetPosition = GameObject.CreatePrimitive(PrimitiveType.Cube);
         targetPosition.transform.position = transform.position;
+        player = GetComponent<PlayerScript>();
     }
 	
 	// Update is called onc e per frame
@@ -32,6 +34,12 @@ public class playerMovementSmart : MonoBehaviour {
             walking = false;
             GetComponentInChildren<Animator>().SetFloat("speed", 0.0f);
             GameObject.FindObjectOfType<SoundManager>().StopLooping(emitter);
+        }
+        if (!player.alive)
+        {
+            targetPosition.transform.position = player.transform.position;
+            agent.destination = targetPosition.transform.position;
+            return;
         }
         if (playerCamera == null)
             return;

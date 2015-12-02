@@ -16,10 +16,28 @@ public class FmodPlayScript : MonoBehaviour {
         {
             emitter = GetComponent<FMODUnity.StudioEventEmitter>();
         }
-        Debug.Log(emitter.Event);
         emitter.Event = eventName;
         emitter.Play();
         StartCoroutine(StopSound());
+    }
+
+    public FMODUnity.StudioEventEmitter PlaySoundLooped(string eventName)
+    {
+        if (emitter == null)
+        {
+            emitter = GetComponent<FMODUnity.StudioEventEmitter>();
+        }
+        emitter.TriggerOnce = false;
+        emitter.Event = eventName;
+        emitter.Play();
+        return emitter;
+    }
+
+    public void StopSoundLooped(FMODUnity.StudioEventEmitter emitter)
+    {
+        if (emitter == null)
+            return;
+        GameObject.Destroy(emitter.gameObject);
     }
 
     private IEnumerator StopSound()

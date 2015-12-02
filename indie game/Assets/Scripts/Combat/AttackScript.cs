@@ -73,8 +73,6 @@ public class AttackScript : MonoBehaviour {
                         if(GetComponentInChildren<playerMovementSmart>() != null)
                         {
                             GetComponentInChildren<Animator>().SetBool("attack1", true);
-                            //GetComponentInChildren<Animator>().Play("attack1");
-                            //GetComponentInChildren<Animator>().SetBool("attack1", false);
                         }
 
                         NavMeshAgent agent = gameObject.GetComponentInChildren<NavMeshAgent>();

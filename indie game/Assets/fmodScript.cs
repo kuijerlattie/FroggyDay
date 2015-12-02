@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class fmodScript : MonoBehaviour {
-
+    /*
 
 	FMOD.Studio.EventInstance noremorse; // declare that you're using an event, and give it a name.
 	FMOD.Studio.ParameterInstance buildup; // declare that you're using a parameter, and give it a name.
@@ -59,4 +59,5 @@ public class fmodScript : MonoBehaviour {
 		buildup.setValue (decreasingdistance); // set the parameter to the same value as the float above
 
 	}
+    */
 }

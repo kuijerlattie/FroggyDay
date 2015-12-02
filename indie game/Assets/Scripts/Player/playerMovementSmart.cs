@@ -18,6 +18,14 @@ public class playerMovementSmart : MonoBehaviour {
 	
 	// Update is called onc e per frame
 	void Update () {
+        if (agent.velocity.magnitude > 0)
+        {
+            GetComponentInChildren<Animator>().SetFloat("speed" , 0.2f);
+        }
+        else
+        {
+            GetComponentInChildren<Animator>().SetFloat("speed", 0.0f);
+        }
         if (playerCamera == null)
             return;
         if (targetPosition != null)

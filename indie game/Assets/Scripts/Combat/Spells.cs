@@ -71,9 +71,9 @@ public class Spells : MonoBehaviour {
     void Awake()
     {
         spellslist = new List<SpellInfo>();
-        spellslist.Add(new SpellInfo(spellIcons[0], spellSounds[0], 0, 0, "emptyspell", "enmptyspell", new HitBall[] { }, 0));
+        spellslist.Add(new SpellInfo(spellIcons[0], SoundManager.Sounds.FireB, 0, 0, "emptyspell", "enmptyspell", new HitBall[] { }, 0));
 
-        spellslist.Add(new SpellInfo(spellIcons[1], spellSounds[1], 0, 0.8f, "Q", "description1",
+        spellslist.Add(new SpellInfo(spellIcons[1], SoundManager.Sounds.FireB, 0, 0.8f, "Q", "description1",
             new HitBall[] {
                 new HitBall(0, new Vector3(0,1,2), 0.0f, 1.0f, 3.0f, Vector3.forward * 100)
                 //new HitBall(new Vector3(0,0,4), 0.4f, 1.0f, 3.0f, Vector3.zero),
@@ -88,7 +88,7 @@ public class Spells : MonoBehaviour {
               0,     //slow seconds
               0));   //stun seconds
 
-        spellslist.Add(new SpellInfo(spellIcons[2], spellSounds[2], 5, 3, "W", "description1",
+        spellslist.Add(new SpellInfo(spellIcons[2], SoundManager.Sounds.FireB, 5, 3, "W", "description1",
             new HitBall[] {
                 new HitBall(0, new Vector3(0,0,5).normalized, 0.08f, 1.0f, 2.0f, Vector3.forward * 100),
                 new HitBall(0, new Vector3(2.5f,0,2.5f).normalized, 0.04f, 1.0f, 2.0f, new Vector3(1,0,1).normalized * 100),
@@ -102,7 +102,7 @@ public class Spells : MonoBehaviour {
             }
             , 20, 0, 0, 0, 0));
 
-        spellslist.Add(new SpellInfo(spellIcons[3], spellSounds[3], 8, 5, "E", "description2",
+        spellslist.Add(new SpellInfo(spellIcons[3], SoundManager.Sounds.FireB, 8, 5, "E", "description2",
          new HitBall[] {
                 new HitBall(0, new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, Vector3.forward * 100),
                 new HitBall(1, new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, (Vector3.forward + Vector3.right).normalized * 100),
@@ -120,7 +120,7 @@ public class Spells : MonoBehaviour {
 
         spellslist.Add(new SpellInfo(
             spellIcons[4],  //icon
-            spellSounds[4], //spell cast sound
+            SoundManager.Sounds.FireB, //spell cast sound
             12,             //manacost
             8,              //cooldown seconds
             "R",       //spell name
@@ -139,13 +139,13 @@ public class Spells : MonoBehaviour {
           5));   //stun seconds
 
         //melee attack only used by enemies
-        spellslist.Add(new SpellInfo(spellIcons[5], spellSounds[5], 0, 3, "melee attack", "description melee",
+        spellslist.Add(new SpellInfo(spellIcons[5], SoundManager.Sounds.FireB, 0, 3, "melee attack", "description melee",
          new HitBall[] {
                 new HitBall(0, new Vector3(0,0,1), 0.0f, 0.5f, 3.0f, Vector3.zero)
          }
          , 15, 0, 0, 0, 0));
-        spellslist.Add(new SpellInfo(spellIcons[6], spellSounds[6], 0, 0, "Healing Potion", "Heal yourself for X amount of health", new HitBall[] { }, 0, 0, 0, 0, 0, 0, 10, 0, 0)); //hp potion
-        spellslist.Add(new SpellInfo(spellIcons[7], spellSounds[7], 0, 0, "Mana Potion", "Replenish x amount of your mana", new HitBall[] { }, 0, 0, 0, 0, 0, 0, 0, 10, 0)); //mana potion
+        spellslist.Add(new SpellInfo(spellIcons[6], SoundManager.Sounds.FireB, 0, 0, "Healing Potion", "Heal yourself for X amount of health", new HitBall[] { }, 0, 0, 0, 0, 0, 0, 10, 0, 0)); //hp potion
+        spellslist.Add(new SpellInfo(spellIcons[7], SoundManager.Sounds.FireB, 0, 0, "Mana Potion", "Replenish x amount of your mana", new HitBall[] { }, 0, 0, 0, 0, 0, 0, 0, 10, 0)); //mana potion
 
     }
 
@@ -186,7 +186,7 @@ public class Spells : MonoBehaviour {
         private float _cooldown;
         public float cooldown { get { return _cooldown; } }
         public int manacost;
-        public AudioClip spellSound;
+        public SoundManager.Sounds soundeffect;
         public int selfheal;
         public int selfmana;
         public int uses;
@@ -194,7 +194,7 @@ public class Spells : MonoBehaviour {
 
        public  List<HitBall> hitballlist = new List<HitBall>();
 
-       public SpellInfo(Sprite picon, AudioClip pspellsound, int pmanacost, float pcooldown, string pname, string pdestription, HitBall[] hitballs,
+       public SpellInfo(Sprite picon, SoundManager.Sounds psoundeffect, int pmanacost, float pcooldown, string pname, string pdestription, HitBall[] hitballs,
                          int pdmg, int pdmgovertime = 0, int pdmgovertimeseconds = 0, float pslowpercentage = 0, float pslowseconds = 0, float pstunseconds = 0, int pselfheal = 0, int pselfmana = 0, int puses = -1, bool plearned = true)
         {
             icon = picon;
@@ -209,7 +209,7 @@ public class Spells : MonoBehaviour {
             slowseconds = pslowseconds;
             stunSeconds = pstunseconds;
             hitballlist.AddRange(hitballs);
-            spellSound = pspellsound;
+            soundeffect = psoundeffect;
             selfheal = pselfheal;
             selfmana = pselfmana;
             uses = puses;

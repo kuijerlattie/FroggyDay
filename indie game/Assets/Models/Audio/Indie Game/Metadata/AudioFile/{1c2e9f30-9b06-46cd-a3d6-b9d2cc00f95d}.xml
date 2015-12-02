@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.05.00">
+    <object class="AudioFile" id="{1c2e9f30-9b06-46cd-a3d6-b9d2cc00f95d}">
+        <property name="frequencyInKHz">
+            <value>48</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>292.78031249999998</value>
+        </property>
+        <property name="audioFilePath">
+            <value>$(AUDIO_BIN_DIR)/Thunderstorm1 {c26c0055-9515-43ef-94a9-a983760f38ab}.ogg</value>
+        </property>
+        <relationship name="container">
+            <destination>{d4369d33-65ca-423d-98b0-99480ddc01bc}</destination>
+        </relationship>
+    </object>
+</objects>

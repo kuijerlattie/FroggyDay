@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.05.00">
+    <object class="AudioFile" id="{8de84b31-d82f-457c-8a5c-d3d1a6bdf146}">
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>0.70589569160997734</value>
+        </property>
+        <property name="audioFilePath">
+            <value>$(AUDIO_BIN_DIR)/Gravel3 {abfe48d4-8ba3-4e3f-9488-77304a7b5875}.wav</value>
+        </property>
+        <relationship name="container">
+            <destination>{20322cde-adbd-489f-b7f8-c14a48c33da8}</destination>
+        </relationship>
+    </object>
+</objects>

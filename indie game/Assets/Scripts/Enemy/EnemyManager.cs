@@ -23,15 +23,14 @@ public class EnemyManager : MonoBehaviour {
 
     bool waveActive = false;
     bool spawnEnemies = false;
+    public bool waveDone = false;
 
     [HideInInspector]
     public int waveLevel = 0;
-    [HideInInspector]
-    public int waveSize = 0; //amount of enemies in current wave;
     public float waveDelay = 5.0f; //time between waves;
 
     [HideInInspector]
-    public int spawnCount = 0; //enemies spawned this round;
+    public float spawnCredits;
     [HideInInspector]
     public int enemyCount = 0; //enemies still alive
     private float spawnDelay = 1f;
@@ -62,7 +61,17 @@ public class EnemyManager : MonoBehaviour {
         enemy.GetComponent<EnemyBase>().isWaveEnemy = true;
         enemy.GetComponent<EnemyBase>().area = CurrentArea;
         enemyCount++;
-        spawnCount++;
+        spawnCredits -= 1f;
+    }
+
+    void SpawnStrongEnemy()
+    {
+        GameObject enemy = (GameObject)GameObject.Instantiate(meleeEnemyPrefab);
+        enemy.transform.position = GetSpawnLocation();
+        enemy.GetComponent<EnemyBase>().isWaveEnemy = true;
+        enemy.GetComponent<EnemyBase>().area = CurrentArea;
+        enemyCount++;
+        spawnCredits -= 2.5f;
     }
 
     void SpawnRangedEnemy()
@@ -73,7 +82,7 @@ public class EnemyManager : MonoBehaviour {
         enemy.GetComponent<EnemyBase>().area = CurrentArea;
 
         enemyCount++;
-        spawnCount++;
+        spawnCredits -= 1.5f;
     }
 
     Vector3 GetSpawnLocation()
@@ -87,46 +96,42 @@ public class EnemyManager : MonoBehaviour {
 	void Update () {
         if (waveActive)
         {
-            if (spawnCount >= waveSize)
+            if (spawnCredits < 1)
             {
                 spawnEnemies = false;
 
                 if (enemyCount <= 0)
                 {
+                    waveDone = true;
                     waveActive = false;
                     timer = 0;
                 }
             }
         }
-        //else //wave not active
-        //{
-        //    if (timer >= waveDelay)  //not using this system anymore, as waves get spawned (and despawned) with triggers in the map
-        //    {
-        //        StartNewWave();
-        //        timer = 0;
-        //    }
-        //}
 
         if (spawnEnemies)
         {
             if (timer >= spawnDelay)
             {
-                int i = Random.Range(1, 3);
-                switch (i)
+                float i = Random.Range(0, 1);
+                if (i <= 0.6) //60% chance
                 {
-                    case 1:
-                        SpawnEnemy();
-                        break;
-                    case 2:
+                    SpawnEnemy();
+                }
+                else if (i <= 0.9) // 30% chance
+                {
+                    if (waveLevel > 1)
                         SpawnRangedEnemy();
-                        break;
-                    default:
-                        SpawnEnemy();
-                        break;
+                }
+                else if (i <= 1) // 60% chance
+                {
+                    if (waveLevel > 4)
+                        SpawnStrongEnemy();
                 }
                 timer = 0;
             }
         }
+
         timer += Time.deltaTime;
 	}
 
@@ -136,10 +141,10 @@ public class EnemyManager : MonoBehaviour {
         waveLevel++;
         waveActive = true;
         spawnEnemies = true;
+        waveDone = false;
 
-        waveSize = waveLevel * 5;
         enemyCount = 0;
-        spawnCount = 0;
+        spawnCredits = 3f * Mathf.Pow(1.3f, waveLevel);
 
         //soundeffect? hudupdate?
     }

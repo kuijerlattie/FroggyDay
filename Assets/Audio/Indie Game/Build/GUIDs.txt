@@ -1,15 +1,12 @@
 {ac47801d-ddf3-4e88-97b2-f5fb3e8a930d} event:/Ambient/Weather
 {eebb0db7-4d87-4998-bb73-44d23d6d16db} event:/Menu/Click
 {9c068105-ef6d-4944-a84b-11d76f9e8e77} event:/Menu/MenuMusic
-{f4dd65c7-abb9-4933-b170-72d856b3e620} event:/Music/Music Ex/Basic/Random Layered
-{54d6b138-a3fc-4f67-85ef-069a1a311952} event:/Music/Music Ex/Complex/Situation_Oriental
-{9e8934ae-9461-4342-8a86-23300623ff59} event:/Music/Music Ex/Music
-{295a8732-3938-4bc0-87b0-df11d9df3404} event:/Music/Music
+{295a8732-3938-4bc0-87b0-df11d9df3404} event:/Music/Music1
+{8a1a0a8a-4867-4d8b-b2b7-e942b4781a31} event:/Music/Music2
 {60b765cf-af3c-48a4-9a64-63ee9a05a572} event:/Sounds/EBig/EA3
 {a1e4dcd8-b0c1-4473-a196-d91047439453} event:/Sounds/EBig/EDeath
 {e3ff06c1-151e-4d8b-9c79-d0cdda4a1c6b} event:/Sounds/EBig/Move
 {91ff05a0-c7ef-4a89-a780-e39878fea731} event:/Sounds/EBoss/EA4
-{ecd3fc6f-b013-482c-9b91-a5e251331377} event:/Sounds/EBoss/EDamage
 {40e4bd58-a025-4446-9003-e109c7092f36} event:/Sounds/EBoss/EDeath
 {60940c2b-23d3-4a99-b112-a5158944aa61} event:/Sounds/EBoss/Move
 {1ff3b970-23c8-4482-ab73-a56d8ab94059} event:/Sounds/EMid/EA2
@@ -40,8 +37,25 @@
 {ea4c8319-59d5-4ab3-a454-48abf8f9a616} event:/Sounds/Player/Spell1
 {60ae0c27-05ad-4e62-b47d-59c0c3e6b915} event:/Sounds/Player/WindB
 {d7663374-6d04-4908-8b3b-df19e0772ead} event:/Sounds/Player/WindS
+{6c0ea7e6-1e5d-4894-933f-1d4344a272a7} event:/VoiceOver/VoiceEffects/OhNo
+{db1c14bc-2874-4040-a4ed-8bdd3427fef5} event:/VoiceOver/VoiceEffects/WatchHP
+{ebb64a37-f0f3-4fac-8025-9d54382eac6f} event:/VoiceOver/VoiceEffects/GoodJob
+{2f51e653-093f-4b90-b6f9-d59f4ea86052} event:/VoiceOver/VoiceEffects/SenseiProud
+{20990c14-1f31-4012-ad37-f2262599baa3} event:/VoiceOver/Tutorial/VO1
+{29187742-cabe-48a4-8669-492a6d1e92de} event:/VoiceOver/Tutorial/VO2
+{2309607c-8221-4a7b-bbb8-a1c0811a883e} event:/VoiceOver/Tutorial/VO3
+{3a7d766a-2c6d-4c56-a902-84ded6c2c467} event:/VoiceOver/Tutorial/VO4
+{dda0dd49-f334-4de5-b98f-6328f38ca11e} event:/VoiceOver/Tutorial/VO5
+{b01399dd-d9ad-427d-b98c-98934b9fae57} event:/VoiceOver/Tutorial/VO6
 {d44e97c9-b710-4574-b5a7-a7adc40b624e} bus:/
 {561d3022-92b2-48b1-a5e7-de6c6b65681f} bus:/SFX
 {2cbf7375-53c7-4e53-9e90-c739c27dfcef} bus:/SFX/Reverb
 {3366b952-93e0-4bb2-9a58-4c69faa6aeb7} bus:/Reverb
 {f451ed16-012d-496c-8271-dfb07ed9f22c} bank:/Master Bank
+{afc80a6a-e9d4-4638-84fe-4a8b9d6336bf} bank:/Music
+{ae1f279e-5899-44d7-b653-546e4f8b39bb} bank:/Menu
+{b8e9731f-0f7a-47bb-9956-a6dbb93cea2e} bank:/Boss
+{da51f76d-9c96-4f20-bbe7-8082a9974ab4} bank:/Enemies
+{00b37ac2-b44a-48ce-9883-0b48a9385461} bank:/Player
+{98c6bb72-eccb-438f-9c2b-8bc75417c840} bank:/VoiceOver
+{fac8ed22-8a35-4729-8a75-ae69916d10c7} bank:/Enviroment

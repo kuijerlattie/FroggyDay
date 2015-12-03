@@ -20,6 +20,11 @@ public class Spells : MonoBehaviour {
     [SerializeField]
     GameObject[] particlePrefabs;
 
+    public void MakeSpellSelf(Spells.SpellInfo spell, Transform caster)
+    {
+
+    }
+
     public void MakeSpellForward(Spells.SpellInfo spell, Transform caster, Vector3 forward)
     {
         Vector3 _forward = new Vector3(forward.x, 0, forward.z);
@@ -34,14 +39,25 @@ public class Spells : MonoBehaviour {
             _gameObject.transform.position =
             caster.position + hitball.position.x * _right + hitball.position.y * _up + hitball.position.z * _forward;
             _gameObject.transform.localScale = new Vector3(hitball.radius, hitball.radius, hitball.radius);
+           
+                
             HitboxScript hitboxscript = _gameObject.GetComponent<HitboxScript>();
             hitboxscript.velocity = hitball.velocity.x * _right + hitball.velocity.y * _up + hitball.velocity.z * _forward;
 
+            hitboxscript.giveImmunity = hitball.immuneCaster;
+            if (hitball.setParent)
+            {
+                hitboxscript.followTarget = caster;
+            }
+
             //particles
-            GameObject _particles = GameObject.Instantiate(particlePrefabs[hitball.particleID]);
-            _particles.transform.LookAt(_particles.transform.position - hitboxscript.velocity);
-            _particles.transform.parent = _gameObject.transform;
-            _particles.transform.localPosition = Vector3.zero;
+            if (hitball.particleID != -1)
+            {
+                GameObject _particles = GameObject.Instantiate(particlePrefabs[hitball.particleID]);
+                _particles.transform.LookAt(_particles.transform.position - hitboxscript.velocity);
+                _particles.transform.parent = _gameObject.transform;
+                _particles.transform.localPosition = Vector3.zero;
+            }
 
             
 
@@ -73,7 +89,7 @@ public class Spells : MonoBehaviour {
         spellslist = new List<SpellInfo>();
         spellslist.Add(new SpellInfo(spellIcons[0], SoundManager.Sounds.FireB, 0, 0, "emptyspell", "enmptyspell", new HitBall[] { }, 0));
 
-        spellslist.Add(new SpellInfo(spellIcons[1], SoundManager.Sounds.FireB, 0, 0.8f, "Q", "description1",
+        spellslist.Add(new SpellInfo(spellIcons[1], SoundManager.Sounds.Spell1, 0, 0.8f, "Q", "description1",
             new HitBall[] {
                 new HitBall(0, new Vector3(0,1,2), 0.0f, 1.0f, 3.0f, Vector3.forward * 100)
                 //new HitBall(new Vector3(0,0,4), 0.4f, 1.0f, 3.0f, Vector3.zero),
@@ -102,7 +118,7 @@ public class Spells : MonoBehaviour {
             }
             , 20, 0, 0, 0, 0));
 
-        spellslist.Add(new SpellInfo(spellIcons[3], SoundManager.Sounds.FireB, 8, 5, "E", "description2",
+        spellslist.Add(new SpellInfo(spellIcons[3], SoundManager.Sounds.IceB, 8, 5, "E", "description2",
          new HitBall[] {
                 new HitBall(0, new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, Vector3.forward * 100),
                 new HitBall(1, new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, (Vector3.forward + Vector3.right).normalized * 100),
@@ -120,7 +136,7 @@ public class Spells : MonoBehaviour {
 
         spellslist.Add(new SpellInfo(
             spellIcons[4],  //icon
-            SoundManager.Sounds.FireB, //spell cast sound
+            SoundManager.Sounds.WindS, //spell cast sound
             12,             //manacost
             8,              //cooldown seconds
             "R",       //spell name
@@ -139,13 +155,32 @@ public class Spells : MonoBehaviour {
           5));   //stun seconds
 
         //melee attack only used by enemies
-        spellslist.Add(new SpellInfo(spellIcons[5], SoundManager.Sounds.FireB, 0, 3, "melee attack", "description melee",
+        spellslist.Add(new SpellInfo(spellIcons[5], SoundManager.Sounds.EMidAttack, 0, 3, "melee attack", "description melee",
          new HitBall[] {
                 new HitBall(0, new Vector3(0,0,1), 0.0f, 0.5f, 3.0f, Vector3.zero)
          }
          , 15, 0, 0, 0, 0));
-        spellslist.Add(new SpellInfo(spellIcons[6], SoundManager.Sounds.FireB, 0, 0, "Healing Potion", "Heal yourself for X amount of health", new HitBall[] { }, 0, 0, 0, 0, 0, 0, 10, 0, 0)); //hp potion
-        spellslist.Add(new SpellInfo(spellIcons[7], SoundManager.Sounds.FireB, 0, 0, "Mana Potion", "Replenish x amount of your mana", new HitBall[] { }, 0, 0, 0, 0, 0, 0, 0, 10, 0)); //mana potion
+        spellslist.Add(new SpellInfo(spellIcons[6], SoundManager.Sounds.Heal, 0, 0, "Healing Potion", "Heal yourself for X amount of health", new HitBall[] { }, 0, 0, 0, 0, 0, 0, 10, 0, 0)); //hp potion
+        spellslist.Add(new SpellInfo(spellIcons[7], SoundManager.Sounds.Mana, 0, 0, "Mana Potion", "Replenish x amount of your mana", new HitBall[] { }, 0, 0, 0, 0, 0, 0, 0, 10, 0)); //mana potion
+
+
+        //Spells dat have a player-following effect
+        spellslist.Add(new SpellInfo(spellIcons[5], SoundManager.Sounds.FireB, 40, 15, "spell id 8", "big AoE fire attack",
+         new HitBall[] {
+                new HitBall(2, new Vector3(0,0,0), 0.0f, 5.0f, 1.0f, Vector3.zero, true),
+
+                new HitBall(-1, new Vector3(0,0,0), 1.0f, 0.2f, 25.0f, Vector3.zero, true),
+                new HitBall(-1, new Vector3(0,0,0), 2.0f, 0.2f, 25.0f, Vector3.zero, true),
+                new HitBall(-1, new Vector3(0,0,0), 3.0f, 0.2f, 25.0f, Vector3.zero, true),
+                new HitBall(-1, new Vector3(0,0,0), 4.0f, 0.2f, 25.0f, Vector3.zero, true)
+         }
+         , 10, 0, 0, 0, 0));
+
+        spellslist.Add(new SpellInfo(spellIcons[5], SoundManager.Sounds.FireB, 40, 15, "spell id 9", "shield",
+         new HitBall[] {
+                new HitBall(3, new Vector3(0,0,0), 0.0f, 5.0f, 1.0f, Vector3.zero, true, true)
+         }
+         , 0, 0, 0, 0, 0));
 
     }
 
@@ -158,8 +193,10 @@ public class Spells : MonoBehaviour {
         public float radius;
         public Vector3 velocity;
         public int particleID;
+        public bool setParent;
+        public bool immuneCaster;
 
-        public HitBall(int pparticleID, Vector3 pposition, float pspawndelay, float pduration, float pradius, Vector3 pvelocity)
+        public HitBall(int pparticleID, Vector3 pposition, float pspawndelay, float pduration, float pradius, Vector3 pvelocity, bool setParent = false, bool immuneCaster = false)
         {
             particleID = pparticleID;
             position = pposition;
@@ -167,10 +204,10 @@ public class Spells : MonoBehaviour {
             duration = pduration;
             radius = pradius;
             velocity = pvelocity;
+            this.setParent = setParent;
+            this.immuneCaster = immuneCaster;
         }
     }
-
-
 
     public class SpellInfo
     {

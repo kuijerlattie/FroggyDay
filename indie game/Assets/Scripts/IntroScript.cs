@@ -125,7 +125,6 @@ public class IntroScript : MonoBehaviour {
 
     bool CheckWalked()
     {
-        Debug.Log("Distance to target: " + Vector3.Distance(player.transform.position, WalkTarget.transform.position));
         if (Vector3.Distance(player.transform.position, WalkTarget.transform.position) <= 3)
         {
             WalkTarget.GetComponent<MeshRenderer>().enabled = false;
@@ -205,6 +204,7 @@ public class IntroScript : MonoBehaviour {
     {
         ShowText("I will be in the yard if you need me for further guidance.");
         player.SetSpell(PlayerScript.SpellSlots.spellQ, 1);
+        player.SetSpell(PlayerScript.SpellSlots.spellW, 9);
         player.health = player.maxhealth;
         yield return new WaitForSeconds(10);
         FindObjectOfType<EnemyManager>().StartWave(1);

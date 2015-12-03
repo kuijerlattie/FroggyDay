@@ -31,7 +31,7 @@ public class AttackScript : MonoBehaviour {
     public int MeleeAttack()
     {
             CheckSpellManager();
-            spellmanager.MakeSpellForward(spellmanager.spellslist[4], gameObject.transform, gameObject.transform.forward);
+            spellmanager.MakeSpellForward(spellmanager.spellslist[5], gameObject.transform, gameObject.transform.forward);
             GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.FireB);
             return 0;
     }
@@ -73,8 +73,6 @@ public class AttackScript : MonoBehaviour {
                         if(GetComponentInChildren<playerMovementSmart>() != null)
                         {
                             GetComponentInChildren<Animator>().SetBool("attack1", true);
-                            //GetComponentInChildren<Animator>().Play("attack1");
-                            //GetComponentInChildren<Animator>().SetBool("attack1", false);
                         }
 
                         NavMeshAgent agent = gameObject.GetComponentInChildren<NavMeshAgent>();
@@ -90,16 +88,16 @@ public class AttackScript : MonoBehaviour {
                         GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(spellmanager.spellslist[index].soundeffect);
                         return 0;
                     }
-                    PlayHudSound(spellmanager.lowOnMana);
+                    GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.LowMana);
                     return 1;
                 }
-                PlayHudSound(spellmanager.SpellNotLearned);
+                //PlayHudSound(spellmanager.SpellNotLearned);
                 return 3;
             }
-            PlayHudSound(spellmanager.OutOfCharges);
+            GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.OutOfPotions);
             return 4;
         }
-        PlayHudSound(spellmanager.Cooldown);
+        GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.Cooldown);
         return 2;
         
     }

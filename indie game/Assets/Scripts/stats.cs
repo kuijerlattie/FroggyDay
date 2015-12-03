@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class stats : MonoBehaviour {
+public abstract class stats : MonoBehaviour {
 
     private int _health;
     public int health { get { return _health; } set { _health = value > 0 ? (value <= maxhealth? value : maxhealth) : 0; } }
@@ -17,13 +17,17 @@ public class stats : MonoBehaviour {
     [HideInInspector]
     public int gold { get { return _gold; } set { _gold = value; } }
 
+    public bool immunity = false;
+
 
     public virtual void Hit(int dmg)
     {
+        if (immunity)
+            return;
         health -= dmg;
         if (health <= 0)
         {
-            //Die();
+            Die();
         }
     }
 
@@ -62,6 +66,6 @@ public class stats : MonoBehaviour {
     */
     public float movespeed { get { return GetComponent<NavMeshAgent>().speed; }
                              set { GetComponent<NavMeshAgent>().speed = value; } }
-    
-    
+
+    public abstract void Die();
 }

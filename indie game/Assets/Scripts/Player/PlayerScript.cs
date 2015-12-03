@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerScript : stats {
 
-    bool fireSpecialISActive = false;
-    bool iceSpecialIsActive = false;
-    bool airSpecialIsActive = false;
     GameObject HUD;
     GameObject pauseMenu;
 
@@ -137,6 +134,7 @@ public class PlayerScript : stats {
         SetSpell(SpellSlots.spell2, spellManaPotion);
         SetSpell(SpellSlots.spell3, spellAbilityRun);
 
+
         enemyManager = GameObject.FindObjectOfType<EnemyManager>();
 
         HUD = GameObject.Find("HUD");
@@ -177,19 +175,19 @@ public class PlayerScript : stats {
 
     void UpdateHud()
     {
-        cooldownOverlayQ.fillAmount = GetComponent<AttackScript>().coolDowns[spellQ] / GetComponent<AttackScript>().spellmanager.spellslist[spellQ].cooldown;
-        cooldownOverlayW.fillAmount = GetComponent<AttackScript>().coolDowns[spellW] / GetComponent<AttackScript>().spellmanager.spellslist[spellW].cooldown;
-        cooldownOverlayE.fillAmount = GetComponent<AttackScript>().coolDowns[spellE] / GetComponent<AttackScript>().spellmanager.spellslist[spellE].cooldown;
-        cooldownOverlayR.fillAmount = GetComponent<AttackScript>().coolDowns[spellR] / GetComponent<AttackScript>().spellmanager.spellslist[spellR].cooldown;
-        cooldownOverlay1.fillAmount = GetComponent<AttackScript>().coolDowns[spell1] / GetComponent<AttackScript>().spellmanager.spellslist[spell1].cooldown;
-        cooldownOverlay2.fillAmount = GetComponent<AttackScript>().coolDowns[spell2] / GetComponent<AttackScript>().spellmanager.spellslist[spell2].cooldown;
-        cooldownOverlay3.fillAmount = GetComponent<AttackScript>().coolDowns[spell3] / GetComponent<AttackScript>().spellmanager.spellslist[spell3].cooldown;
+        cooldownOverlayQ.fillAmount = attackscript.coolDowns[spellQ] / attackscript.spellmanager.spellslist[spellQ].cooldown;
+        cooldownOverlayW.fillAmount = attackscript.coolDowns[spellW] / attackscript.spellmanager.spellslist[spellW].cooldown;
+        cooldownOverlayE.fillAmount = attackscript.coolDowns[spellE] / attackscript.spellmanager.spellslist[spellE].cooldown;
+        cooldownOverlayR.fillAmount = attackscript.coolDowns[spellR] / attackscript.spellmanager.spellslist[spellR].cooldown;
+        cooldownOverlay1.fillAmount = attackscript.coolDowns[spell1] / attackscript.spellmanager.spellslist[spell1].cooldown;
+        cooldownOverlay2.fillAmount = attackscript.coolDowns[spell2] / attackscript.spellmanager.spellslist[spell2].cooldown;
+        cooldownOverlay3.fillAmount = attackscript.coolDowns[spell3] / attackscript.spellmanager.spellslist[spell3].cooldown;
         healthOverlay.fillAmount = ((float)health / (float)maxhealth);
         healthOverlay2.fillAmount = healthOverlay.fillAmount;
         manaOverlay.fillAmount = ((float)mana / (float)maxmana);
         goldText.text = gold.ToString();
-        itemCounter1.text = GetComponent<AttackScript>().spellmanager.spellslist[spell1].uses.ToString();
-        itemCounter2.text = GetComponent<AttackScript>().spellmanager.spellslist[spell2].uses.ToString();
+        itemCounter1.text = attackscript.spellmanager.spellslist[spell1].uses.ToString();
+        itemCounter2.text = attackscript.spellmanager.spellslist[spell2].uses.ToString();
     }
 
     void UpdateInput()

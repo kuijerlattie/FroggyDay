@@ -1,25 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TeleportScript : MonoBehaviour {
+public class TeleportScript : MonoBehaviour
+{
 
     public GameObject TeleportTarget;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	    
-	}
+    Collider[] colliders;
+    float radius = 2;
 
-    void OnCollisionEnter(Collision collision)
+    // Use this for initialization
+    void Start()
     {
-        if(collision.collider.gameObject.tag == "player")
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //this code replaces a trigger, since triggers refuse to work with the navmeshagent
+        colliders = Physics.OverlapSphere(transform.position, radius);
+
+        foreach (Collider col in colliders)
         {
-            collision.collider.gameObject.transform.position = TeleportTarget.transform.position;
+            if (col.gameObject.layer == 9)
+            {
+                col.gameObject.transform.position = TeleportTarget.transform.position;
+            }
         }
     }
 }

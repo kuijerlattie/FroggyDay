@@ -19,6 +19,11 @@ public class MenuScript : MonoBehaviour {
         Application.LoadLevel("mninimapscene");
     }
 
+    public void ShowCredits()
+    {
+
+    }
+
     public void Quit()
     {
         GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.Click);

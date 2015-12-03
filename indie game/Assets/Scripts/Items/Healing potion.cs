@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class Healingpotion : UsableItem {
+public class Healingpotion : Item {
 
     stats playerstats;
     [HideInInspector]

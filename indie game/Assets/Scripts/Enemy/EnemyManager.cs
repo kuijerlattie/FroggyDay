@@ -115,7 +115,7 @@ public class EnemyManager : MonoBehaviour {
         {
             if (timer >= spawnDelay)
             {
-                float i = Random.Range(0, 1);
+                float i = Random.Range(0f, 1f);
                 if (i <= 0.6) //60% chance
                 {
                     SpawnEnemy();
@@ -125,7 +125,7 @@ public class EnemyManager : MonoBehaviour {
                     if (waveLevel > 1)
                         SpawnRangedEnemy();
                 }
-                else if (i <= 1) // 60% chance
+                else if (i <= 1) // 10% chance
                 {
                     if (waveLevel > 4)
                         SpawnStrongEnemy();

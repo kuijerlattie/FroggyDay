@@ -66,7 +66,7 @@ public abstract class EnemyBase : stats {
                 stunnedSeconds -= Time.deltaTime;
                 return;
             }
-            if (Vector2.Distance(this.transform.position, target.transform.position) <= viewdistance)
+            if (Vector2.Distance(this.transform.position, target.transform.position) <= viewdistance) //if the player is too far away, dont chase him anymore
                 agent.SetDestination(target.transform.position);
             else
                 agent.SetDestination(this.transform.position);

@@ -27,7 +27,7 @@ public class AttackScript : MonoBehaviour {
     /// <summary>
     /// start a melee attack
     /// </summary>
-    /// <returns>-1 = programmer error, 0 = succes, 1 = low mana, 2 = cooldown</returns>
+    /// <returns>-1 = programmer error, 0 = succes, 1 = low mana, 2 = cooldown, 3 = spell not learned, 4 = out of charges</returns>
     public int MeleeAttack()
     {
             CheckSpellManager();
@@ -105,7 +105,7 @@ public class AttackScript : MonoBehaviour {
     /// cast a spell at target position
     /// </summary>
     /// <param name="index"></param>
-    /// <returns>-1 = programmer error, 0 = succes, 1 = low mana, 2 = cooldown</returns>
+    /// <returns>-1 = programmer error, 0 = succes, 1 = low mana, 2 = cooldown, 3 = spell not learned, 4 = out of charges</returns>
     public int MageAttackMouse(int index)
     {
         if (!CheckCooldowns())

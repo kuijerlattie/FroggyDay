@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class Manapotion : UsableItem{
+public class Manapotion : Item{
 
     [HideInInspector]
     public int manaValue;
@@ -12,7 +12,7 @@ public class Manapotion : UsableItem{
     public override void Pickup()
     {
 
-        // throw new NotImplementedException();
+        
         Spells spellmanager = GameObject.FindObjectOfType<Spells>();
         spellmanager.spellslist[7].uses++;
     }

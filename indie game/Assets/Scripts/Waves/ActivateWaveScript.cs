@@ -20,13 +20,13 @@ public class ActivateWaveScript : MonoBehaviour {
 	void Update () {
         if (active)
         {
+            //this code replaces a trigger, since triggers refuse to work with the navmeshagent            
             colliders = Physics.OverlapSphere(transform.position, radius);
 
             foreach (Collider col in colliders)
             {
                 if (col.gameObject.layer == 9)
                 {
-                    Debug.Log("got triggered, start wave!");
                     manager.StartWave(AreaNumber);
                     active = false;
                 }

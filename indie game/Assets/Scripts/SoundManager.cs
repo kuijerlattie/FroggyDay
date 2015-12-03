@@ -7,6 +7,8 @@ public class SoundManager : MonoBehaviour {
     [SerializeField]
     GameObject SoundObjectPrefab;
 
+    FmodPlayScript musicPlayer;
+
     Dictionary<Sounds, string> SoundsDatabase = new Dictionary<Sounds, string>();
     void Start () {
         SoundsDatabase.Add(Sounds.FireB, "event:/Sounds/Player/FireB");
@@ -54,7 +56,7 @@ public class SoundManager : MonoBehaviour {
 
 
         if(GameObject.FindObjectOfType<PlayerScript>() != null)
-                GameObject.FindObjectOfType<SoundManager>().MakeSoundObjectLooped(SoundManager.Sounds.Music);
+                musicPlayer = GameObject.FindObjectOfType<SoundManager>().MakeSoundObjectLooped(SoundManager.Sounds.Music);
     }
 
     
@@ -103,18 +105,19 @@ public class SoundManager : MonoBehaviour {
         soundscript.PlaySound(SoundsDatabase[soundeffect]);
     }
 
-    public void StopLooping(FMODUnity.StudioEventEmitter emitter)
+    public void StopLooping(FmodPlayScript fmodplayscript)
     {
-        if (emitter == null)
+        if (fmodplayscript == null)
             return;
-        emitter.gameObject.GetComponent<FmodPlayScript>().StopSoundLooped(emitter);
+        fmodplayscript.StopSoundLooped();
     }
 
-    public FMODUnity.StudioEventEmitter MakeSoundObjectLooped(Sounds soundeffect)
+    public FmodPlayScript MakeSoundObjectLooped(Sounds soundeffect)
     {
         GameObject soundObj = GameObject.Instantiate(SoundObjectPrefab);
         FmodPlayScript soundscript = soundObj.GetComponent<FmodPlayScript>();
-        return soundscript.PlaySoundLooped(SoundsDatabase[soundeffect]);
+        soundscript.PlaySoundLooped(SoundsDatabase[soundeffect]);
+        return soundscript;
     }
 }
 

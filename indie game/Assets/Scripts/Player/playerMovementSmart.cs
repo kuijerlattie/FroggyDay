@@ -9,6 +9,7 @@ public class playerMovementSmart : MonoBehaviour {
     public GameObject targetPosition;
     float Acceleration = 500;
     FMODUnity.StudioEventEmitter emitter;
+    FmodPlayScript footsteps = null;
     bool walking = false;
     PlayerScript player;
 
@@ -24,8 +25,13 @@ public class playerMovementSmart : MonoBehaviour {
 	void Update () {
         if (agent.velocity.magnitude > 0)
         {
-            if(walking == false)
-                emitter = GameObject.FindObjectOfType<SoundManager>().MakeSoundObjectLooped(SoundManager.Sounds.Footstep);
+
+            if (footsteps == null || !footsteps.isPlaying)
+            {
+                footsteps = GameObject.FindObjectOfType<SoundManager>().MakeSoundObjectLooped(SoundManager.Sounds.Footstep);
+                Debug.Log("triggeredonce?: " + footsteps.emitter.TriggerOnce);
+            }
+            
             walking = true;
             GetComponentInChildren<Animator>().SetFloat("speed" , 0.2f);
         }
@@ -33,7 +39,8 @@ public class playerMovementSmart : MonoBehaviour {
         {
             walking = false;
             GetComponentInChildren<Animator>().SetFloat("speed", 0.0f);
-            GameObject.FindObjectOfType<SoundManager>().StopLooping(emitter);
+            if (footsteps != null && footsteps.isPlaying)
+                footsteps.StopSoundLooped();
         }
         if (!player.alive)
         {

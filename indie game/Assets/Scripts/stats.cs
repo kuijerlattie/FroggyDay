@@ -17,9 +17,13 @@ public abstract class stats : MonoBehaviour {
     [HideInInspector]
     public int gold { get { return _gold; } set { _gold = value; } }
 
+    public bool immunity = false;
+
 
     public virtual void Hit(int dmg)
     {
+        if (immunity)
+            return;
         health -= dmg;
         if (health <= 0)
         {

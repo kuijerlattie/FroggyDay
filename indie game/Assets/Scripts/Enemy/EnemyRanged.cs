@@ -86,6 +86,9 @@ public class EnemyRanged : EnemyBase {
         return DestinationDistanceToPlayer() <= maxRange && DestinationDistanceToPlayer() >= minRange;
     }
 
+    /// <summary>
+    /// this is the Update that is based on time, which is set based on the difficulty of this enemy 
+    /// </summary>
     private void Think()
     {
         Vector3 playerVelocity = (target.transform.position - previousPlayerPos).normalized;
@@ -119,6 +122,12 @@ public class EnemyRanged : EnemyBase {
         }
     }
 
+    /// <summary>
+    /// get a position around the target that is never comepletely on the opposite side from the starting point
+    /// </summary>
+    /// <param name="origin"></param>
+    /// <param name="counter"></param>
+    /// <returns></returns>
     private Vector3 GetRandomSide(Vector3 origin, int counter = 0)
     {
         Vector3 newpos = origin + (new Vector3(Random.Range(-1.0f, 1.0f), 0.0f, Random.Range(-1.0f, 1.0f))).normalized * maxRange * 0.9f;
@@ -138,9 +147,5 @@ public class EnemyRanged : EnemyBase {
         currentcooldown = cooldown;
         GetComponent<AttackScript>().MageAttackForward(0, _forward);
     }
-    protected void MeleeAttack()
-    {
-        currentcooldown = cooldown;
-        GetComponent<AttackScript>().MeleeAttack();
-    }
+
 }

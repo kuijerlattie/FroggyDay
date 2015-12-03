@@ -29,7 +29,6 @@ public class playerMovementSmart : MonoBehaviour {
             if (footsteps == null || !footsteps.isPlaying)
             {
                 footsteps = GameObject.FindObjectOfType<SoundManager>().MakeSoundObjectLooped(SoundManager.Sounds.Footstep);
-                Debug.Log("triggeredonce?: " + footsteps.emitter.TriggerOnce);
             }
             
             walking = true;

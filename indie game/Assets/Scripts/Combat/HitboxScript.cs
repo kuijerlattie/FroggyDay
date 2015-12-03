@@ -38,7 +38,6 @@ public class HitboxScript : MonoBehaviour {
         spawned = true;
         if (giveImmunity)
             GameObject.FindObjectOfType<PlayerScript>().immunity = true;
-        //gameObject.GetComponent<MeshRenderer>().enabled = true;   //debug only
         radius = gameObject.transform.localScale.x * 0.5f;
 
         //if it is moving, it has continuous collision checks untill it hits something

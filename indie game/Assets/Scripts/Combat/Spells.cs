@@ -20,11 +20,6 @@ public class Spells : MonoBehaviour {
     [SerializeField]
     GameObject[] particlePrefabs;
 
-    public void MakeSpellSelf(Spells.SpellInfo spell, Transform caster)
-    {
-
-    }
-
     public void MakeSpellForward(Spells.SpellInfo spell, Transform caster, Vector3 forward)
     {
         Vector3 _forward = new Vector3(forward.x, 0, forward.z);
@@ -44,6 +39,7 @@ public class Spells : MonoBehaviour {
             HitboxScript hitboxscript = _gameObject.GetComponent<HitboxScript>();
             hitboxscript.velocity = hitball.velocity.x * _right + hitball.velocity.y * _up + hitball.velocity.z * _forward;
 
+            //hitballs can give immunity to the caster until the hitball is destroyed
             hitboxscript.giveImmunity = hitball.immuneCaster;
             if (hitball.setParent)
             {
@@ -87,15 +83,13 @@ public class Spells : MonoBehaviour {
     void Awake()
     {
         spellslist = new List<SpellInfo>();
+
+        //this empty spell is only used as a placeholder at the start of the game, before other spells are unlocked
         spellslist.Add(new SpellInfo(spellIcons[0], SoundManager.Sounds.FireB, 0, 0, "emptyspell", "enmptyspell", new HitBall[] { }, 0));
 
         spellslist.Add(new SpellInfo(spellIcons[1], SoundManager.Sounds.Spell1, 0, 0.8f, "Q", "description1",
             new HitBall[] {
                 new HitBall(0, new Vector3(0,1,2), 0.0f, 1.0f, 3.0f, Vector3.forward * 100)
-                //new HitBall(new Vector3(0,0,4), 0.4f, 1.0f, 3.0f, Vector3.zero),
-               // new HitBall(new Vector3(0,0,6), 0.6f, 1.0f, 3.0f, Vector3.zero),
-               // new HitBall(new Vector3(0,0,8), 0.8f, 1.0f, 3.0f, Vector3.zero),
-               // new HitBall(new Vector3(0,0,10), 1.0f, 1.0f, 3.0f, Vector3.zero)
             }
             , 30,   //dmg
               0,     //dmg over time
@@ -165,7 +159,7 @@ public class Spells : MonoBehaviour {
 
 
         //Spells dat have a player-following effect
-        spellslist.Add(new SpellInfo(spellIcons[5], SoundManager.Sounds.FireB, 40, 15, "spell id 8", "big AoE fire attack",
+        spellslist.Add(new SpellInfo(spellIcons[2], SoundManager.Sounds.FireB, 40, 15, "spell id 8", "big AoE fire attack",
          new HitBall[] {
                 new HitBall(2, new Vector3(0,0,0), 0.0f, 5.0f, 1.0f, Vector3.zero, true),
 
@@ -176,7 +170,7 @@ public class Spells : MonoBehaviour {
          }
          , 10, 0, 0, 0, 0));
 
-        spellslist.Add(new SpellInfo(spellIcons[5], SoundManager.Sounds.FireB, 40, 15, "spell id 9", "shield",
+        spellslist.Add(new SpellInfo(spellIcons[2], SoundManager.Sounds.FireB, 40, 15, "spell id 9", "shield",
          new HitBall[] {
                 new HitBall(3, new Vector3(0,0,0), 0.0f, 5.0f, 1.0f, Vector3.zero, true, true)
          }
@@ -184,7 +178,9 @@ public class Spells : MonoBehaviour {
 
     }
 
-
+    /// <summary>
+    /// Hitballs are the building blocks of spells, they contain almost all the spell info
+    /// </summary>
     public class HitBall
     {
         public Vector3 position;

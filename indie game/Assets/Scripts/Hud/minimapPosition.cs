@@ -2,6 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 
+/// <summary>
+/// this is only used to place an overlay in front of the minimap
+/// </summary>
 [RequireComponent(typeof(Image))]
 public class minimapPosition : MonoBehaviour {
 

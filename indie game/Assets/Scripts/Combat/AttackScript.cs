@@ -81,9 +81,7 @@ public class AttackScript : MonoBehaviour {
                             GameObject.FindObjectOfType<playerMovementSmart>().targetPosition.transform.position = transform.position;
                         }
                         agent.SetDestination(gameObject.transform.position);
-                        agent.updateRotation = false;
-                        gameObject.transform.LookAt(transform.position + forward);
-                        agent.updateRotation = true;
+                        gameObject.transform.LookAt(transform.position + new Vector3(forward.x, 0, forward.z));
 
                         GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(spellmanager.spellslist[index].soundeffect);
                         return 0;
@@ -108,10 +106,6 @@ public class AttackScript : MonoBehaviour {
     /// <returns>-1 = programmer error, 0 = succes, 1 = low mana, 2 = cooldown</returns>
     public int MageAttackMouse(int index)
     {
-        if (!CheckCooldowns())
-            return -1;
-        CheckSpellManager();
-
         Vector3 _forward = transform.forward;
         LayerMask layermask = (1 << 11);
         RaycastHit hit;

@@ -12,16 +12,6 @@ public class FmodPlayScript : MonoBehaviour {
         emitter = GetComponent<FMODUnity.StudioEventEmitter>();
         
     }
-
-    void Update()
-    {
-        if(emitter != null)
-        {
-         
-
-
-        }
-    }
 	
     public void PlaySound(string eventName)
     {

@@ -31,6 +31,7 @@
         </relationship>
         <relationship name="banks">
             <destination>{f451ed16-012d-496c-8271-dfb07ed9f22c}</destination>
+            <destination>{da51f76d-9c96-4f20-bbe7-8082a9974ab4}</destination>
         </relationship>
         <relationship name="folder">
             <destination>{b06e653c-c3cf-4127-aa63-782e870c9398}</destination>

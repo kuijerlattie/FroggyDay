@@ -55,15 +55,22 @@ public abstract class EnemyBase : stats {
     // Update is called once per frame
     protected void Update()
     {
-        if (stunnedSeconds > 0)
+        if (!agent.enabled)
         {
-            stunnedSeconds -= Time.deltaTime;
-            return;
+            agent.enabled = true;
         }
-        if (Vector2.Distance(this.transform.position, target.transform.position) <= viewdistance)
-            agent.SetDestination(target.transform.position);
         else
-            agent.SetDestination(this.transform.position);
+        {
+            if (stunnedSeconds > 0)
+            {
+                stunnedSeconds -= Time.deltaTime;
+                return;
+            }
+            if (Vector2.Distance(this.transform.position, target.transform.position) <= viewdistance)
+                agent.SetDestination(target.transform.position);
+            else
+                agent.SetDestination(this.transform.position);
+        }
 	}
 
     

@@ -58,6 +58,7 @@ public class EnemyManager : MonoBehaviour {
     void SpawnEnemy()
     {
         GameObject enemy = (GameObject)GameObject.Instantiate(meleeEnemyPrefab);
+        enemy.GetComponent<NavMeshAgent>().enabled = false;
         enemy.transform.position = GetSpawnLocation();
         enemy.GetComponent<EnemyBase>().isWaveEnemy = true;
         enemy.GetComponent<EnemyBase>().area = CurrentArea;
@@ -88,8 +89,8 @@ public class EnemyManager : MonoBehaviour {
 
     Vector3 GetSpawnLocation()
     {
-        Debug.Log("total spawnlocations in area" + spawnlocations[CurrentArea - 1].Count);
-        Vector3 location = spawnlocations[CurrentArea-1][Random.Range(0, spawnlocations[CurrentArea-1].Count)].transform.position;
+        Vector3 location = spawnlocations[CurrentArea - 1][Random.Range(0, spawnlocations[CurrentArea-1].Count)].transform.position;    
+        Debug.Log("spawning enemy in spawnarea: " + (CurrentArea - 1));
         return location;
     }
 	

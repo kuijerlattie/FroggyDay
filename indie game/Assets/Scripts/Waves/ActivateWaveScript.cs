@@ -8,6 +8,9 @@ public class ActivateWaveScript : MonoBehaviour {
     EnemyManager manager;
     bool active = true;
 
+    Collider[] colliders;
+    float radius = 5;
+
 	// Use this for initialization
 	void Start () {
         manager = GameObject.FindObjectOfType<EnemyManager>();
@@ -15,18 +18,21 @@ public class ActivateWaveScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    
-	}
-
-    void OnTriggerEnter(Collider other)
-    {
         if (active)
         {
-            Debug.Log("new wave started");
-            manager.StartWave(AreaNumber);
-            active = false;
+            colliders = Physics.OverlapSphere(transform.position, radius);
+
+            foreach (Collider col in colliders)
+            {
+                if (col.gameObject.layer == 9)
+                {
+                    Debug.Log("got triggered, start wave!");
+                    manager.StartWave(AreaNumber);
+                    active = false;
+                }
+            }
         }
-    }
+	}
 
     public void Reset()
     {

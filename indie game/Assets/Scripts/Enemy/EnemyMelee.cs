@@ -17,27 +17,34 @@ public class EnemyMelee : EnemyBase {
 	
 	// Update is called once per frame
 	void Update () {
-        if(stunnedSeconds > 0)
+        if (!agent.enabled)
         {
-            agent.SetDestination(transform.position);
-            stunnedSeconds -= Time.deltaTime;
-            return;
-        }
-
-        if (Vector3.Distance(transform.position, target.transform.position) <= GetComponent<NavMeshAgent>().stoppingDistance)
-        {
-            if (currentcooldown <= 0)
-            {
-                Attack();
-            }
+            agent.enabled = true;
         }
         else
         {
-            agent.SetDestination(target.transform.position);    
-        }
+            if (stunnedSeconds > 0)
+            {
+                agent.SetDestination(transform.position);
+                stunnedSeconds -= Time.deltaTime;
+                return;
+            }
 
-        if (currentcooldown > 0)
-            currentcooldown -= Time.deltaTime;
+            if (Vector3.Distance(transform.position, target.transform.position) <= GetComponent<NavMeshAgent>().stoppingDistance)
+            {
+                if (currentcooldown <= 0)
+                {
+                    Attack();
+                }
+            }
+            else
+            {
+                agent.SetDestination(target.transform.position);
+            }
+
+            if (currentcooldown > 0)
+                currentcooldown -= Time.deltaTime;
+        }
 	}
 
     protected void Attack()

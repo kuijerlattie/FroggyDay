@@ -30,34 +30,40 @@ public class EnemyRanged : EnemyBase {
     // Update is called once per frame
     void Update()
     {
+        if (!agent.enabled)
+        {
+            agent.enabled = true;
+        }
+        else
+        {
+            if (target == null)
+            {
+                return; //player is dead, AI shouldnt do anything
+            }
+            if (stunnedSeconds > 0)
+            {
+                stunnedSeconds -= Time.deltaTime;
+                return;
+            }
+            if (thinktimer >= thinktime)
+            {
+                Think();
+                thinktimer = 0;
+            }
+            if (currentmoveCooldown > 0)
+            {
+                currentmoveCooldown -= Time.deltaTime;
+            }
+            thinktimer += Time.deltaTime;
+            previousPlayerPos = target.transform.position;
+            if (currentcooldown > 0)
+                currentcooldown -= Time.deltaTime;
 
-        if(target == null)
-        {
-            return; //player is dead, AI shouldnt do anything
-        }
-        if (stunnedSeconds > 0)
-        {
-            stunnedSeconds -= Time.deltaTime;
-            return;
-        }
-        if (thinktimer >= thinktime)
-        {
-            Think();
-            thinktimer = 0;
-        }
-        if(currentmoveCooldown > 0)
-        {
-            currentmoveCooldown -= Time.deltaTime;
-        }
-        thinktimer += Time.deltaTime;
-        previousPlayerPos = target.transform.position;
-        if (currentcooldown > 0)
-            currentcooldown -= Time.deltaTime;
-
-        if(agent.destination != targetpos)
-        {
-            agent.destination = targetpos;
-            return;
+            if (agent.destination != targetpos)
+            {
+                agent.destination = targetpos;
+                return;
+            }
         }
     }
 

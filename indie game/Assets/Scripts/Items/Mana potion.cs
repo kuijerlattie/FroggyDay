@@ -10,9 +10,7 @@ public class Manapotion : Item{
 
 
     public override void Pickup()
-    {
-
-        
+    {   
         Spells spellmanager = GameObject.FindObjectOfType<Spells>();
         spellmanager.spellslist[7].uses++;
     }

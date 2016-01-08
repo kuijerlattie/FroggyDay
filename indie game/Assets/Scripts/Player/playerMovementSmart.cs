@@ -23,6 +23,13 @@ public class playerMovementSmart : MonoBehaviour {
 	
 	// Update is called onc e per frame
 	void Update () {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Debug.Log("scroll dropped");
+            Scroll scroll = new Scroll();
+            scroll.SetSpell(Scroll.Spells.Q);
+            scroll.Drop(new Vector3(0, -1.6f, 270));
+        }
         if (agent.velocity.magnitude > 0)
         {
 
@@ -32,12 +39,12 @@ public class playerMovementSmart : MonoBehaviour {
             }
             
             walking = true;
-            GetComponentInChildren<Animator>().SetFloat("speed" , 0.2f);
+            //GetComponentInChildren<Animator>().SetFloat("speed" , 0.2f);
         }
         else
         {
             walking = false;
-            GetComponentInChildren<Animator>().SetFloat("speed", 0.0f);
+            //GetComponentInChildren<Animator>().SetFloat("speed", 0.0f);
             if (footsteps != null && footsteps.isPlaying)
                 footsteps.StopSoundLooped();
         }

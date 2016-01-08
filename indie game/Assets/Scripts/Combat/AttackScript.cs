@@ -72,7 +72,7 @@ public class AttackScript : MonoBehaviour {
 
                         if(GetComponentInChildren<playerMovementSmart>() != null)
                         {
-                            GetComponentInChildren<Animator>().SetBool("attack1", true);
+                            //GetComponentInChildren<Animator>().SetBool("attack1", true);
                         }
 
                         NavMeshAgent agent = gameObject.GetComponentInChildren<NavMeshAgent>();
@@ -145,8 +145,8 @@ public class AttackScript : MonoBehaviour {
 
     void Update()
     {
-        GetComponentInChildren<Animator>().SetBool("attack1", false);
-        GetComponentInChildren<Animator>().SetBool("attack2", false);
+        //GetComponentInChildren<Animator>().SetBool("attack1", false);
+        //GetComponentInChildren<Animator>().SetBool("attack2", false);
         if (CheckCooldowns())
         {
             for (int i = 0; i < cooldowns.Length; i++)

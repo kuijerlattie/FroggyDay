@@ -20,9 +20,9 @@ public class SoundManager : MonoBehaviour {
 
     public void MakeSoundObject(Sounds soundeffect)
     {
-        GameObject soundObj = GameObject.Instantiate(SoundObjectPrefab);
-        FmodPlayScript soundscript = soundObj.GetComponent<FmodPlayScript>();
-        soundscript.PlaySound(SoundsDatabase[soundeffect]);
+        //GameObject soundObj = GameObject.Instantiate(SoundObjectPrefab);
+        //FmodPlayScript soundscript = soundObj.GetComponent<FmodPlayScript>();
+        //soundscript.PlaySound(SoundsDatabase[soundeffect]);
     }
 
     public void StopLooping(FmodPlayScript fmodplayscript)
@@ -34,10 +34,11 @@ public class SoundManager : MonoBehaviour {
 
     public FmodPlayScript MakeSoundObjectLooped(Sounds soundeffect)
     {
-        GameObject soundObj = GameObject.Instantiate(SoundObjectPrefab);
-        FmodPlayScript soundscript = soundObj.GetComponent<FmodPlayScript>();
-        soundscript.PlaySoundLooped(SoundsDatabase[soundeffect]);
-        return soundscript;
+        //GameObject soundObj = GameObject.Instantiate(SoundObjectPrefab);
+        //FmodPlayScript soundscript = soundObj.GetComponent<FmodPlayScript>();
+        //soundscript.PlaySoundLooped(SoundsDatabase[soundeffect]);
+        //return soundscript;
+        return null;
     }
 
     void SetAllSounds()

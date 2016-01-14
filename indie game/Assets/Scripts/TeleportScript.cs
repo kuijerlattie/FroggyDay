@@ -25,6 +25,7 @@ public class TeleportScript : MonoBehaviour
         {
             if (col.gameObject.layer == 9)
             {
+                Debug.Log("fetch me their souls!");
                 col.gameObject.transform.position = TeleportTarget.transform.position;
             }
         }

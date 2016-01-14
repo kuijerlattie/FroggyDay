@@ -22,6 +22,8 @@ public class EnemyManager : MonoBehaviour {
     GameObject rangedEnemyPrefab;
     float timer = 0;
 
+    float wavedebugtimer = 0;
+
     bool waveActive = false;
     bool spawnEnemies = false;
     public bool waveDone = false;
@@ -69,6 +71,7 @@ public class EnemyManager : MonoBehaviour {
     void SpawnStrongEnemy()
     {
         GameObject enemy = (GameObject)GameObject.Instantiate(meleeEnemyPrefab);
+        enemy.GetComponent<NavMeshAgent>().enabled = false;
         enemy.transform.position = GetSpawnLocation();
         enemy.GetComponent<EnemyBase>().isWaveEnemy = true;
         enemy.GetComponent<EnemyBase>().area = CurrentArea;
@@ -79,6 +82,7 @@ public class EnemyManager : MonoBehaviour {
     void SpawnRangedEnemy()
     {
         GameObject enemy = (GameObject)GameObject.Instantiate(rangedEnemyPrefab);
+        enemy.GetComponent<NavMeshAgent>().enabled = false;
         enemy.transform.position = GetSpawnLocation();
         enemy.GetComponent<EnemyBase>().isWaveEnemy = true;
         enemy.GetComponent<EnemyBase>().area = CurrentArea;
@@ -98,12 +102,18 @@ public class EnemyManager : MonoBehaviour {
 	void Update () {
         if (waveActive)
         {
+            wavedebugtimer -= Time.deltaTime;
             if (spawnCredits < 1)
             {
+                if (wavedebugtimer <= 0)
+                {
+                    Debug.Log("30 seconds over since wave start. there are still " + enemyCount + " enemies left");
+                }
                 spawnEnemies = false;
 
                 if (enemyCount <= 0)
                 {
+
                     waveDone = true;
                     waveActive = false;
                     timer = 0;
@@ -130,7 +140,7 @@ public class EnemyManager : MonoBehaviour {
                     if (waveLevel > 4)
                         SpawnStrongEnemy();
                 }
-                timer = 0;
+                timer = 0; 
             }
         }
 
@@ -145,6 +155,7 @@ public class EnemyManager : MonoBehaviour {
         spawnEnemies = true;
         waveDone = false;
 
+        wavedebugtimer = 40f;
         enemyCount = 0;
         spawnCredits = 3f * Mathf.Pow(1.3f, waveLevel);
 

@@ -37,25 +37,25 @@
 {ea4c8319-59d5-4ab3-a454-48abf8f9a616} event:/Sounds/Player/Spell1
 {60ae0c27-05ad-4e62-b47d-59c0c3e6b915} event:/Sounds/Player/WindB
 {d7663374-6d04-4908-8b3b-df19e0772ead} event:/Sounds/Player/WindS
-{6c0ea7e6-1e5d-4894-933f-1d4344a272a7} event:/VoiceOver/VoiceEffects/OhNo
-{db1c14bc-2874-4040-a4ed-8bdd3427fef5} event:/VoiceOver/VoiceEffects/WatchHP
-{ebb64a37-f0f3-4fac-8025-9d54382eac6f} event:/VoiceOver/VoiceEffects/GoodJob
-{2f51e653-093f-4b90-b6f9-d59f4ea86052} event:/VoiceOver/VoiceEffects/SenseiProud
 {20990c14-1f31-4012-ad37-f2262599baa3} event:/VoiceOver/Tutorial/VO1
 {29187742-cabe-48a4-8669-492a6d1e92de} event:/VoiceOver/Tutorial/VO2
 {2309607c-8221-4a7b-bbb8-a1c0811a883e} event:/VoiceOver/Tutorial/VO3
 {3a7d766a-2c6d-4c56-a902-84ded6c2c467} event:/VoiceOver/Tutorial/VO4
 {dda0dd49-f334-4de5-b98f-6328f38ca11e} event:/VoiceOver/Tutorial/VO5
 {b01399dd-d9ad-427d-b98c-98934b9fae57} event:/VoiceOver/Tutorial/VO6
+{ebb64a37-f0f3-4fac-8025-9d54382eac6f} event:/VoiceOver/VoiceEffects/GoodJob
+{6c0ea7e6-1e5d-4894-933f-1d4344a272a7} event:/VoiceOver/VoiceEffects/OhNo
+{2f51e653-093f-4b90-b6f9-d59f4ea86052} event:/VoiceOver/VoiceEffects/SenseiProud
+{db1c14bc-2874-4040-a4ed-8bdd3427fef5} event:/VoiceOver/VoiceEffects/WatchHP
 {d44e97c9-b710-4574-b5a7-a7adc40b624e} bus:/
 {561d3022-92b2-48b1-a5e7-de6c6b65681f} bus:/SFX
 {2cbf7375-53c7-4e53-9e90-c739c27dfcef} bus:/SFX/Reverb
 {3366b952-93e0-4bb2-9a58-4c69faa6aeb7} bus:/Reverb
-{f451ed16-012d-496c-8271-dfb07ed9f22c} bank:/Master Bank
-{afc80a6a-e9d4-4638-84fe-4a8b9d6336bf} bank:/Music
-{ae1f279e-5899-44d7-b653-546e4f8b39bb} bank:/Menu
 {b8e9731f-0f7a-47bb-9956-a6dbb93cea2e} bank:/Boss
 {da51f76d-9c96-4f20-bbe7-8082a9974ab4} bank:/Enemies
+{fac8ed22-8a35-4729-8a75-ae69916d10c7} bank:/Enviroment
+{ae1f279e-5899-44d7-b653-546e4f8b39bb} bank:/Menu
+{afc80a6a-e9d4-4638-84fe-4a8b9d6336bf} bank:/Music
 {00b37ac2-b44a-48ce-9883-0b48a9385461} bank:/Player
 {98c6bb72-eccb-438f-9c2b-8bc75417c840} bank:/VoiceOver
-{fac8ed22-8a35-4729-8a75-ae69916d10c7} bank:/Enviroment
+{f451ed16-012d-496c-8271-dfb07ed9f22c} bank:/Master Bank

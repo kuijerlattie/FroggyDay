@@ -14,7 +14,7 @@
             <value>$(AUDIO_BIN_DIR)/MenuMusic2 {ee425b7e-d286-46f1-9fc4-3cf5363d76a8}.wav</value>
         </property>
         <relationship name="container">
-            <destination>{7b8e9ec2-fefb-44e6-af95-d3659a812699}</destination>
+            <destination>{65f54ff6-b788-4665-9f30-7fe57e8e1808}</destination>
         </relationship>
     </object>
 </objects>

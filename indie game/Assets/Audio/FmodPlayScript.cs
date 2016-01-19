@@ -21,6 +21,7 @@ public class FmodPlayScript : MonoBehaviour {
         }
         isPlaying = true;
         emitter.Event = eventName;
+        
         emitter.Play();
         StartCoroutine(StopSound());
     }

@@ -7,6 +7,11 @@ public class Manapotion : Item{
     [HideInInspector]
     public int manaValue;
 
+    public Manapotion()
+    {
+        model = GameObject.FindObjectOfType<ItemManager>().manapotionModel;
+    }
+
 
 
     public override void Pickup()

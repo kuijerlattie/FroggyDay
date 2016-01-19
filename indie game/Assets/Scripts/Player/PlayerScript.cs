@@ -8,10 +8,10 @@ public class PlayerScript : stats {
     GameObject HUD;
     GameObject pauseMenu;
 
-    int spellQ = 0;
-    int spellW = 0;
-    int spellE = 0;
-    int spellR = 0;
+    public int spellQ = 0;
+    public int spellW = 0;
+    public int spellE = 0;
+    public int spellR = 0;
     int spell1 = 6;
     int spell2 = 7;
     int spell3 = 0;
@@ -51,6 +51,7 @@ public class PlayerScript : stats {
     Image manaOverlay;
 
     Text goldText;
+    public int Chests = 10;
 
     EnemyManager enemyManager;
 
@@ -64,6 +65,14 @@ public class PlayerScript : stats {
 
     float deathtimer = 0;
     public bool alive = true;
+
+    #region scrolls
+    public bool qscroll = false;
+    public bool wscroll = false;
+    public bool escroll = false;
+    public bool rscroll = false;
+    #endregion
+
 
     public enum SpellSlots
     {
@@ -85,6 +94,7 @@ public class PlayerScript : stats {
         health = 100;
         maxmana = 100;
         mana = 100;
+        gold = 100; //TODO remove this in the end
 
         imageSlotQ = GameObject.Find("SpellQ").GetComponent<Image>();
         imageSlotW = GameObject.Find("SpellW").GetComponent<Image>();
@@ -189,6 +199,8 @@ public class PlayerScript : stats {
         itemCounter1.text = attackscript.spellmanager.spellslist[spell1].uses.ToString();
         itemCounter2.text = attackscript.spellmanager.spellslist[spell2].uses.ToString();
     }
+
+    void RefreshSpells() { }
 
     void UpdateInput()
     {

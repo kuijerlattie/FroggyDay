@@ -23,12 +23,11 @@ public class playerMovementSmart : MonoBehaviour {
 	
 	// Update is called onc e per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.H))
         {
-            Debug.Log("scroll dropped");
             Scroll scroll = new Scroll();
-            scroll.SetSpell(Scroll.Spells.Q);
-            scroll.Drop(new Vector3(0, -1.6f, 270));
+            scroll.SetSpell(Scroll.Spells.W);
+            scroll.Drop(new Vector3(0, -1.8f, 260));
         }
         if (agent.velocity.magnitude > 0)
         {

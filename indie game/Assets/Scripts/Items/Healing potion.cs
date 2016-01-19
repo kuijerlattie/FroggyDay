@@ -9,11 +9,17 @@ public class Healingpotion : Item {
     public int healingValue;
 	// Use this for initialization
 	void Start () {
-        playerstats = GameObject.Find("Player").GetComponent<stats>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        playerstats = GameObject.Find("Player").GetComponent<stats>();  //How can this work??? it is not even monobehaviour????????????????
+        
+    }
+
+    public Healingpotion()
+    {
+        model = GameObject.FindObjectOfType<ItemManager>().healthpotionModel;
+    }
+
+    // Update is called once per frame
+    void Update () {
 	
 	}
 

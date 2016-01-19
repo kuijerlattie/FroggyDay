@@ -159,7 +159,7 @@ public class Spells : MonoBehaviour {
 
 
         //Spells dat have a player-following effect
-        spellslist.Add(new SpellInfo(spellIcons[2], SoundManager.Sounds.FireB, 40, 15, "spell id 8", "big AoE fire attack",
+        spellslist.Add(new SpellInfo(spellIcons[2], SoundManager.Sounds.FireB, 40, 15, "spell id 8", "big AoE fire attack, upgraded W",
          new HitBall[] {
                 new HitBall(2, new Vector3(0,0,0), 0.0f, 5.0f, 1.0f, Vector3.zero, true),
 
@@ -170,11 +170,20 @@ public class Spells : MonoBehaviour {
          }
          , 10, 0, 0, 0, 0));
 
-        spellslist.Add(new SpellInfo(spellIcons[2], SoundManager.Sounds.FireB, 40, 15, "spell id 9", "shield",
+        spellslist.Add(new SpellInfo(spellIcons[2], SoundManager.Sounds.FireB, 40, 15, "spell id 9", "shield, upgraded E",
          new HitBall[] {
                 new HitBall(3, new Vector3(0,0,0), 0.0f, 5.0f, 1.0f, Vector3.zero, true, true)
          }
          , 0, 0, 0, 0, 0));
+
+        //TODO
+        spellslist.Add(new SpellInfo(spellIcons[2], SoundManager.Sounds.FireB, 40, 15, "spell id 10", "bbb, upgraded R",
+         new HitBall[] {
+                new HitBall(3, new Vector3(0,0,0), 0.0f, 5.0f, 1.0f, Vector3.zero, true, true)
+         }
+         , 0, 0, 0, 0, 0));
+
+ 
 
     }
 

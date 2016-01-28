@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.01.05.00">
+<objects serializationModel="Studio.01.07.00">
     <object class="AudioFile" id="{924b3361-7467-4c2f-8df9-d616bbbc6ddd}">
         <property name="frequencyInKHz">
             <value>44.0999985</value>
@@ -14,7 +14,7 @@
             <value>$(AUDIO_BIN_DIR)/MainMenu {22284853-682e-43a9-914d-5705fa5eb974}.wav</value>
         </property>
         <relationship name="container">
-            <destination>{7b8e9ec2-fefb-44e6-af95-d3659a812699}</destination>
+            <destination>{65f54ff6-b788-4665-9f30-7fe57e8e1808}</destination>
         </relationship>
     </object>
 </objects>

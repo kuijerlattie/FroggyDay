@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.07.00">
+    <object class="AudioFile" id="{cc2fca0a-a9dc-48a0-93cb-6c724be84613}">
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>1.3333333333333333</value>
+        </property>
+        <property name="audioFilePath">
+            <value>$(AUDIO_BIN_DIR)/VocieEffect1 {7ddb9a4f-b2ad-4a28-a068-a82b9a9cda19}.wav</value>
+        </property>
+        <relationship name="container">
+            <destination>{43da338f-38a6-4a58-8976-34c2c37df65f}</destination>
+        </relationship>
+    </object>
+</objects>

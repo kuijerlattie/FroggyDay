@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class ScrollTradeSCript : MonoBehaviour {
 
     public GameObject buymenu;
-    PlayerScript pscript = GameObject.FindObjectOfType<PlayerScript>();
-    Spells spellmanager = GameObject.FindObjectOfType<Spells>();
+    PlayerScript pscript;
+    Spells spellmanager;
 
     public Button[] Buttons;
     
@@ -142,7 +142,7 @@ public class ScrollTradeSCript : MonoBehaviour {
     {
         if (boughtW) return;
         if (!Buy(UPGRADE_W_PRICE)) return;
-        pscript.spellFireSpecial = 9;
+        pscript.spellFireSpecial = 8;
         boughtW = true;
         RefreshButtons();
     }
@@ -158,7 +158,7 @@ public class ScrollTradeSCript : MonoBehaviour {
     {
         if (boughtR) return;
         if (!Buy(UPGRADE_R_PRICE)) return;
-        pscript.spellAirSpecial = 9;
+        pscript.spellAirSpecial = 10;
         boughtR = true;
         RefreshButtons();
     }

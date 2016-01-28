@@ -21,6 +21,8 @@ public class EnemyRanged : EnemyBase {
     private float moveCooldown = 5;
     private float currentmoveCooldown = 0;
 
+    System.Random _random = new System.Random();
+
     // Use this for initialization
     void Start()
     {
@@ -30,6 +32,24 @@ public class EnemyRanged : EnemyBase {
     // Update is called once per frame
     void Update()
     {
+
+        if (agent.velocity.magnitude > 0)
+        {
+            GetComponentInChildren<Animator>().SetBool("walk", true);
+        }
+        else
+        {
+            GetComponentInChildren<Animator>().SetBool("walk", false);
+        }
+        if (GetComponentInChildren<Animator>().GetBool("attack1"))
+        {
+            GetComponentInChildren<Animator>().SetBool("attack1", false);
+        }
+        if (GetComponentInChildren<Animator>().GetBool("attack2"))
+        {
+            GetComponentInChildren<Animator>().SetBool("attack2", false);
+        }
+
         if (!agent.enabled)
         {
             agent.enabled = true;
@@ -144,8 +164,22 @@ public class EnemyRanged : EnemyBase {
 
     protected void Attack()
     {
+        if (_random.Next(0, 2) == 0)
+        {
+            GetComponentInChildren<Animator>().SetBool("attack1", true);
+        }
+        else
+        {
+            GetComponentInChildren<Animator>().SetBool("attack2", true);
+        }
         currentcooldown = cooldown;
-        GetComponent<AttackScript>().MageAttackForward(0, _forward);
+        StartCoroutine(WaitForAttack());
+    }
+
+    private IEnumerator WaitForAttack()
+    {
+        yield return new WaitForSeconds(0.8f);
+        GetComponent<AttackScript>().MageAttackForward(1, _forward);
     }
 
 }

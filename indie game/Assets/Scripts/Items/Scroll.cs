@@ -19,9 +19,9 @@ public class Scroll : Item {
     public enum Spells
     {
         None,   //means this item will do nothing
-        W = 8,  //upgrade spell ID
-        E = 9,
-        R = 10
+        W = 2,  //upgrade spell ID
+        E = 3,
+        R = 4
     }
 
     public override void Pickup()

@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour {
 
     public float rotation;
     float rotationspeed = 90f;
-    float maxZoomDistance = 50f; //max distance away from player
+    float maxZoomDistance = 30f; //max distance away from player
     float minZoomDistance = 10f; //min distance away from player
     float oldZoomDistance = 0;
     float targetZoomDistance = 50f;

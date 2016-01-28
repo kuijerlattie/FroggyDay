@@ -132,6 +132,7 @@ public abstract class EnemyBase : stats {
 
     public override void Die()
     {
+        if(manager == null) manager = GameObject.FindObjectOfType<EnemyManager>();
         GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.EMidDeath);
         manager.RemoveEnemy();
 

@@ -27,6 +27,7 @@ public class Healingpotion : Item {
     {
         Spells spellmanager = GameObject.FindObjectOfType<Spells>();
         spellmanager.spellslist[6].uses++;
+       
     }
 
     public override bool Use(stats user)

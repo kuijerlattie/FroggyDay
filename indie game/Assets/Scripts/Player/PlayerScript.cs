@@ -156,6 +156,19 @@ public class PlayerScript : stats {
 	
 	// Update is called once per frame
 	void Update () {
+        if (GetComponentInChildren<Animator>().GetBool("attack1"))
+        {
+            GetComponentInChildren<Animator>().SetBool("attack1", false);
+        }
+        if (GetComponentInChildren<Animator>().GetBool("attack2"))
+        {
+            GetComponentInChildren<Animator>().SetBool("attack2", false);
+        }
+        if (GetComponentInChildren<Animator>().GetBool("potion"))
+        {
+            GetComponentInChildren<Animator>().SetBool("potion", false);
+        }
+
         if (Time.timeScale != 0) //this loop stops when game is paused
         {
             UpdateHud();
@@ -222,31 +235,37 @@ public class PlayerScript : stats {
         if (Input.GetKeyDown(KeyCode.Q))
         {
             CastSpell(spellQ);
+            GetComponentInChildren<Animator>().SetBool("attack1", true);
         }
 
         if (Input.GetKeyDown(KeyCode.W))
         {
             CastSpell(spellW);
+            GetComponentInChildren<Animator>().SetBool("attack2", true);
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
             CastSpell(spellE);
+            GetComponentInChildren<Animator>().SetBool("attack1", true);
         }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
             CastSpell(spellR);
+            GetComponentInChildren<Animator>().SetBool("attack2", true);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             CastSpell(spell1);
+            GetComponentInChildren<Animator>().SetBool("potion", true);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             CastSpell(spell2);
+            GetComponentInChildren<Animator>().SetBool("potion", true);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))

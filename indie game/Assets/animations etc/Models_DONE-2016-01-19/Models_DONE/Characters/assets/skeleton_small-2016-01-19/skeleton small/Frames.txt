@@ -1,0 +1,4 @@
+13-37 idle
+40-70 walk
+80-112 attack1
+120-156 attack2

@@ -1,0 +1,795 @@
+fileFormatVersion: 2
+guid: d1c302bb7eea13644a0918d3991c9566
+timeCreated: 1453209345
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Chest_CTRL
+    100002: Head
+    100004: Head_CTRL
+    100006: Head_End
+    100008: Hip_CTRL
+    100010: Hips
+    100012: L_Arm_CTRL
+    100014: L_Arm_IK
+    100016: L_Collar
+    100018: L_Foot
+    100020: L_Hand
+    100022: L_Hand_End
+    100024: L_Knee
+    100026: L_Leg_CTRL
+    100028: L_Leg_IK
+    100030: L_LWR_Arm
+    100032: L_Toe
+    100034: L_Toe_End
+    100036: L_UPR_Arm
+    100038: L_UPR_Leg
+    100040: Main_CTRL
+    100042: //RootNode
+    100044: Neck
+    100046: nurbsCircle1
+    100048: nurbsCircle2
+    100050: nurbsCircle4
+    100052: nurbsCircle5
+    100054: R_Arm_CTRL
+    100056: R_Arm_IK
+    100058: R_Collar
+    100060: R_Foot
+    100062: R_Hand
+    100064: R_Hand_End
+    100066: R_Knee
+    100068: R_Leg_CTRL
+    100070: R_Leg_IK
+    100072: R_LWR_Arm
+    100074: R_Toe
+    100076: R_Toe_End
+    100078: R_UPR_Arm
+    100080: R_UPR_Leg
+    100082: Spearman:MainCharacter
+    100084: Spine_01
+    100086: Spine_02
+    100088: Spine_03
+    100090: Spine_04
+    100092: Spine_IK
+    100094: Spine_IK_Cruve
+    400000: Chest_CTRL
+    400002: Head
+    400004: Head_CTRL
+    400006: Head_End
+    400008: Hip_CTRL
+    400010: Hips
+    400012: L_Arm_CTRL
+    400014: L_Arm_IK
+    400016: L_Collar
+    400018: L_Foot
+    400020: L_Hand
+    400022: L_Hand_End
+    400024: L_Knee
+    400026: L_Leg_CTRL
+    400028: L_Leg_IK
+    400030: L_LWR_Arm
+    400032: L_Toe
+    400034: L_Toe_End
+    400036: L_UPR_Arm
+    400038: L_UPR_Leg
+    400040: Main_CTRL
+    400042: //RootNode
+    400044: Neck
+    400046: nurbsCircle1
+    400048: nurbsCircle2
+    400050: nurbsCircle4
+    400052: nurbsCircle5
+    400054: R_Arm_CTRL
+    400056: R_Arm_IK
+    400058: R_Collar
+    400060: R_Foot
+    400062: R_Hand
+    400064: R_Hand_End
+    400066: R_Knee
+    400068: R_Leg_CTRL
+    400070: R_Leg_IK
+    400072: R_LWR_Arm
+    400074: R_Toe
+    400076: R_Toe_End
+    400078: R_UPR_Arm
+    400080: R_UPR_Leg
+    400082: Spearman:MainCharacter
+    400084: Spine_01
+    400086: Spine_02
+    400088: Spine_03
+    400090: Spine_04
+    400092: Spine_IK
+    400094: Spine_IK_Cruve
+    4300000: Spearman:MainCharacter
+    7400000: idleMain
+    7400002: potionMain
+    7400004: walkMain
+    7400006: attack1Main
+    7400008: attack2Main
+    9500000: //RootNode
+    13700000: Spearman:MainCharacter
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idleMain
+      takeName: Take 001
+      firstFrame: 3
+      lastFrame: 14
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Chest_CTRL
+        weight: 1
+      - path: Head_CTRL
+        weight: 1
+      - path: Hip_CTRL
+        weight: 1
+      - path: Hips
+        weight: 1
+      - path: Hips/L_UPR_Leg
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee/L_Foot
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee/L_Foot/L_Toe
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee/L_Foot/L_Toe/L_Toe_End
+        weight: 1
+      - path: Hips/R_UPR_Leg
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee/R_Foot
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee/R_Foot/R_Toe
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee/R_Foot/R_Toe/R_Toe_End
+        weight: 1
+      - path: Hips/Spine_01
+        weight: 1
+      - path: Hips/Spine_01/Spine_02
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm/L_LWR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm/L_LWR_Arm/L_Hand
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm/L_LWR_Arm/L_Hand/L_Hand_End
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/Neck
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/Neck/Head
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/Neck/Head/Head_End
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm/R_LWR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm/R_LWR_Arm/R_Hand
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm/R_LWR_Arm/R_Hand/R_Hand_End
+        weight: 1
+      - path: L_Arm_CTRL
+        weight: 1
+      - path: L_Arm_IK
+        weight: 1
+      - path: L_Leg_IK
+        weight: 1
+      - path: Main_CTRL
+        weight: 1
+      - path: Main_CTRL/L_Leg_CTRL
+        weight: 1
+      - path: Main_CTRL/R_Leg_CTRL
+        weight: 1
+      - path: nurbsCircle1
+        weight: 1
+      - path: nurbsCircle2
+        weight: 1
+      - path: nurbsCircle4
+        weight: 1
+      - path: nurbsCircle5
+        weight: 1
+      - path: R_Arm_CTRL
+        weight: 1
+      - path: R_Arm_IK
+        weight: 1
+      - path: R_Leg_IK
+        weight: 1
+      - path: Spearman:MainCharacter
+        weight: 1
+      - path: Spine_IK
+        weight: 1
+      - path: Spine_IK_Cruve
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: potionMain
+      takeName: Take 001
+      firstFrame: 38
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Chest_CTRL
+        weight: 1
+      - path: Head_CTRL
+        weight: 1
+      - path: Hip_CTRL
+        weight: 1
+      - path: Hips
+        weight: 1
+      - path: Hips/L_UPR_Leg
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee/L_Foot
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee/L_Foot/L_Toe
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee/L_Foot/L_Toe/L_Toe_End
+        weight: 1
+      - path: Hips/R_UPR_Leg
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee/R_Foot
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee/R_Foot/R_Toe
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee/R_Foot/R_Toe/R_Toe_End
+        weight: 1
+      - path: Hips/Spine_01
+        weight: 1
+      - path: Hips/Spine_01/Spine_02
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm/L_LWR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm/L_LWR_Arm/L_Hand
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm/L_LWR_Arm/L_Hand/L_Hand_End
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/Neck
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/Neck/Head
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/Neck/Head/Head_End
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm/R_LWR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm/R_LWR_Arm/R_Hand
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm/R_LWR_Arm/R_Hand/R_Hand_End
+        weight: 1
+      - path: L_Arm_CTRL
+        weight: 1
+      - path: L_Arm_IK
+        weight: 1
+      - path: L_Leg_IK
+        weight: 1
+      - path: Main_CTRL
+        weight: 1
+      - path: Main_CTRL/L_Leg_CTRL
+        weight: 1
+      - path: Main_CTRL/R_Leg_CTRL
+        weight: 1
+      - path: nurbsCircle1
+        weight: 1
+      - path: nurbsCircle2
+        weight: 1
+      - path: nurbsCircle4
+        weight: 1
+      - path: nurbsCircle5
+        weight: 1
+      - path: R_Arm_CTRL
+        weight: 1
+      - path: R_Arm_IK
+        weight: 1
+      - path: R_Leg_IK
+        weight: 1
+      - path: Spearman:MainCharacter
+        weight: 1
+      - path: Spine_IK
+        weight: 1
+      - path: Spine_IK_Cruve
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: walkMain
+      takeName: Take 001
+      firstFrame: 18
+      lastFrame: 38
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Chest_CTRL
+        weight: 1
+      - path: Head_CTRL
+        weight: 1
+      - path: Hip_CTRL
+        weight: 1
+      - path: Hips
+        weight: 1
+      - path: Hips/L_UPR_Leg
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee/L_Foot
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee/L_Foot/L_Toe
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee/L_Foot/L_Toe/L_Toe_End
+        weight: 1
+      - path: Hips/R_UPR_Leg
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee/R_Foot
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee/R_Foot/R_Toe
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee/R_Foot/R_Toe/R_Toe_End
+        weight: 1
+      - path: Hips/Spine_01
+        weight: 1
+      - path: Hips/Spine_01/Spine_02
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm/L_LWR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm/L_LWR_Arm/L_Hand
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm/L_LWR_Arm/L_Hand/L_Hand_End
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/Neck
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/Neck/Head
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/Neck/Head/Head_End
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm/R_LWR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm/R_LWR_Arm/R_Hand
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm/R_LWR_Arm/R_Hand/R_Hand_End
+        weight: 1
+      - path: L_Arm_CTRL
+        weight: 1
+      - path: L_Arm_IK
+        weight: 1
+      - path: L_Leg_IK
+        weight: 1
+      - path: Main_CTRL
+        weight: 1
+      - path: Main_CTRL/L_Leg_CTRL
+        weight: 1
+      - path: Main_CTRL/R_Leg_CTRL
+        weight: 1
+      - path: nurbsCircle1
+        weight: 1
+      - path: nurbsCircle2
+        weight: 1
+      - path: nurbsCircle4
+        weight: 1
+      - path: nurbsCircle5
+        weight: 1
+      - path: R_Arm_CTRL
+        weight: 1
+      - path: R_Arm_IK
+        weight: 1
+      - path: R_Leg_IK
+        weight: 1
+      - path: Spearman:MainCharacter
+        weight: 1
+      - path: Spine_IK
+        weight: 1
+      - path: Spine_IK_Cruve
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: attack1Main
+      takeName: Take 001
+      firstFrame: 62
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Chest_CTRL
+        weight: 1
+      - path: Head_CTRL
+        weight: 1
+      - path: Hip_CTRL
+        weight: 1
+      - path: Hips
+        weight: 1
+      - path: Hips/L_UPR_Leg
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee/L_Foot
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee/L_Foot/L_Toe
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee/L_Foot/L_Toe/L_Toe_End
+        weight: 1
+      - path: Hips/R_UPR_Leg
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee/R_Foot
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee/R_Foot/R_Toe
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee/R_Foot/R_Toe/R_Toe_End
+        weight: 1
+      - path: Hips/Spine_01
+        weight: 1
+      - path: Hips/Spine_01/Spine_02
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm/L_LWR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm/L_LWR_Arm/L_Hand
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm/L_LWR_Arm/L_Hand/L_Hand_End
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/Neck
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/Neck/Head
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/Neck/Head/Head_End
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm/R_LWR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm/R_LWR_Arm/R_Hand
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm/R_LWR_Arm/R_Hand/R_Hand_End
+        weight: 1
+      - path: L_Arm_CTRL
+        weight: 1
+      - path: L_Arm_IK
+        weight: 1
+      - path: L_Leg_IK
+        weight: 1
+      - path: Main_CTRL
+        weight: 1
+      - path: Main_CTRL/L_Leg_CTRL
+        weight: 1
+      - path: Main_CTRL/R_Leg_CTRL
+        weight: 1
+      - path: nurbsCircle1
+        weight: 1
+      - path: nurbsCircle2
+        weight: 1
+      - path: nurbsCircle4
+        weight: 1
+      - path: nurbsCircle5
+        weight: 1
+      - path: R_Arm_CTRL
+        weight: 1
+      - path: R_Arm_IK
+        weight: 1
+      - path: R_Leg_IK
+        weight: 1
+      - path: Spearman:MainCharacter
+        weight: 1
+      - path: Spine_IK
+        weight: 1
+      - path: Spine_IK_Cruve
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: attack2Main
+      takeName: Take 001
+      firstFrame: 82
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Chest_CTRL
+        weight: 1
+      - path: Head_CTRL
+        weight: 1
+      - path: Hip_CTRL
+        weight: 1
+      - path: Hips
+        weight: 1
+      - path: Hips/L_UPR_Leg
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee/L_Foot
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee/L_Foot/L_Toe
+        weight: 1
+      - path: Hips/L_UPR_Leg/L_Knee/L_Foot/L_Toe/L_Toe_End
+        weight: 1
+      - path: Hips/R_UPR_Leg
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee/R_Foot
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee/R_Foot/R_Toe
+        weight: 1
+      - path: Hips/R_UPR_Leg/R_Knee/R_Foot/R_Toe/R_Toe_End
+        weight: 1
+      - path: Hips/Spine_01
+        weight: 1
+      - path: Hips/Spine_01/Spine_02
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm/L_LWR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm/L_LWR_Arm/L_Hand
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/L_Collar/L_UPR_Arm/L_LWR_Arm/L_Hand/L_Hand_End
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/Neck
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/Neck/Head
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/Neck/Head/Head_End
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm/R_LWR_Arm
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm/R_LWR_Arm/R_Hand
+        weight: 1
+      - path: Hips/Spine_01/Spine_02/Spine_03/Spine_04/R_Collar/R_UPR_Arm/R_LWR_Arm/R_Hand/R_Hand_End
+        weight: 1
+      - path: L_Arm_CTRL
+        weight: 1
+      - path: L_Arm_IK
+        weight: 1
+      - path: L_Leg_IK
+        weight: 1
+      - path: Main_CTRL
+        weight: 1
+      - path: Main_CTRL/L_Leg_CTRL
+        weight: 1
+      - path: Main_CTRL/R_Leg_CTRL
+        weight: 1
+      - path: nurbsCircle1
+        weight: 1
+      - path: nurbsCircle2
+        weight: 1
+      - path: nurbsCircle4
+        weight: 1
+      - path: nurbsCircle5
+        weight: 1
+      - path: R_Arm_CTRL
+        weight: 1
+      - path: R_Arm_IK
+        weight: 1
+      - path: R_Leg_IK
+        weight: 1
+      - path: Spearman:MainCharacter
+        weight: 1
+      - path: Spine_IK
+        weight: 1
+      - path: Spine_IK_Cruve
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 40
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

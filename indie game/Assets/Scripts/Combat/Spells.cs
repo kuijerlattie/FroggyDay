@@ -89,7 +89,7 @@ public class Spells : MonoBehaviour {
 
         spellslist.Add(new SpellInfo(spellIcons[1], SoundManager.Sounds.Spell1, 0, 0.8f, "Q", "description1",
             new HitBall[] {
-                new HitBall(0, new Vector3(0,1,2), 0.0f, 1.0f, 3.0f, Vector3.forward * 100)
+                new HitBall(0, new Vector3(0,3.5f,2), 0.0f, 1.0f, 5.0f, Vector3.forward * 100)
             }
             , 30,   //dmg
               0,     //dmg over time
@@ -99,31 +99,26 @@ public class Spells : MonoBehaviour {
               0));   //stun seconds
 
         spellslist.Add(new SpellInfo(spellIcons[2], SoundManager.Sounds.FireB, 5, 3, "W", "description1",
-            new HitBall[] {
-                new HitBall(0, new Vector3(0,0,5).normalized, 0.08f, 1.0f, 2.0f, Vector3.forward * 100),
-                new HitBall(0, new Vector3(2.5f,0,2.5f).normalized, 0.04f, 1.0f, 2.0f, new Vector3(1,0,1).normalized * 100),
-                new HitBall(0, new Vector3(-2.5f,0,2.5f).normalized, 0.12f, 1.0f, 2.0f, new Vector3(-1,0,1).normalized * 100),
-                new HitBall(0, new Vector3(5,0,0).normalized, 0.00f, 1.0f, 2.0f, new Vector3(3,0,1).normalized * 100),
-                new HitBall(0, new Vector3(-5,0,0).normalized, 0.16f, 1.0f, 2.0f, new Vector3(-3,0,1).normalized * 100),
-                
-                new HitBall(0, new Vector3(0,0,-5).normalized, 0.24f, 1.0f, 2.0f, -Vector3.forward * 100),
-                new HitBall(0, new Vector3(2.5f,0,-2.5f).normalized, 0.28f, 1.0f, 2.0f, new Vector3(1,0,-1).normalized * 100),
-                new HitBall(0, new Vector3(-2.5f,0,-2.5f).normalized, 0.20f, 1.0f, 2.0f, new Vector3(-1,0,-1).normalized * 100)
+             new HitBall[] {
+                new HitBall(1, new Vector3(0,3.5f,2), 0.0f, 1.0f, 5.0f, Vector3.forward * 100)
             }
-            , 20, 0, 0, 0, 0));
+            , 30,   //dmg
+              0,     //dmg over time
+              0,     //dmg over time seconds
+              0,     //slow percentage
+              0,     //slow seconds
+              0));   //stun seconds
 
         spellslist.Add(new SpellInfo(spellIcons[3], SoundManager.Sounds.IceB, 8, 5, "E", "description2",
-         new HitBall[] {
-                new HitBall(0, new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, Vector3.forward * 100),
-                new HitBall(1, new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, (Vector3.forward + Vector3.right).normalized * 100),
-                new HitBall(1, new Vector3(0,0,1.5f), 0.0f, 1.0f, 4.0f, (Vector3.forward - Vector3.right).normalized * 100)
-         }
-         , 30,   //dmg
-         0,     //dmg over time
-         0,     //dmg over time seconds
-         35,     //slow percentage
-         5,     //slow seconds
-         0));   //stun seconds
+        new HitBall[] {
+                new HitBall(2, new Vector3(0,3.5f,2), 0.0f, 1.0f, 5.0f, Vector3.forward * 100)
+            }
+            , 30,   //dmg
+              0,     //dmg over time
+              0,     //dmg over time seconds
+              0,     //slow percentage
+              0,     //slow seconds
+              0));   //stun seconds
 
 
 
@@ -136,17 +131,14 @@ public class Spells : MonoBehaviour {
             "R",       //spell name
             "description2", //spell description
             new HitBall[] {
-                new HitBall(1, new Vector3(0,0,6), 0.0f, 0.5f, 4.0f, Vector3.zero),  //front
-                new HitBall(1, new Vector3(0,0,12), 0.2f, 0.5f, 8.0f, Vector3.zero),  //front
-                new HitBall(1, new Vector3(0,0,18), 0.4f, 0.5f, 12.0f, Vector3.zero),  //front
-                   
-         }
-          , 30,   //dmg
-          0,     //dmg over time
-          0,     //dmg over time seconds
-          0,     //slow percentage
-          0,     //slow seconds
-          5));   //stun seconds
+                new HitBall(3, new Vector3(0,3.5f,2), 0.0f, 1.0f, 5.0f, Vector3.forward * 100)
+            }
+            , 30,   //dmg
+              0,     //dmg over time
+              0,     //dmg over time seconds
+              0,     //slow percentage
+              0,     //slow seconds
+              0));   //stun seconds
 
         //melee attack only used by enemies
         spellslist.Add(new SpellInfo(spellIcons[5], SoundManager.Sounds.EMidAttack, 0, 3, "melee attack", "description melee",
@@ -154,14 +146,14 @@ public class Spells : MonoBehaviour {
                 new HitBall(0, new Vector3(0,0,1), 0.0f, 0.5f, 3.0f, Vector3.zero)
          }
          , 15, 0, 0, 0, 0));
-        spellslist.Add(new SpellInfo(spellIcons[6], SoundManager.Sounds.Heal, 0, 0, "Healing Potion", "Heal yourself for X amount of health", new HitBall[] { }, 0, 0, 0, 0, 0, 0, 10, 0, 0)); //hp potion
-        spellslist.Add(new SpellInfo(spellIcons[7], SoundManager.Sounds.Mana, 0, 0, "Mana Potion", "Replenish x amount of your mana", new HitBall[] { }, 0, 0, 0, 0, 0, 0, 0, 10, 0)); //mana potion
+        spellslist.Add(new SpellInfo(spellIcons[6], SoundManager.Sounds.Heal, 0, 0, "Healing Potion", "Heal yourself for X amount of health", new HitBall[] { new HitBall(4, Vector3.zero, 0, 1, 1, Vector3.zero, true) }, 0, 0, 0, 0, 0, 0, 10, 0, 0)); //hp potion
+        spellslist.Add(new SpellInfo(spellIcons[7], SoundManager.Sounds.Mana, 0, 0, "Mana Potion", "Replenish x amount of your mana", new HitBall[] { new HitBall(5, Vector3.zero, 0, 1, 1, Vector3.zero, true) }, 0, 0, 0, 0, 0, 0, 0, 10, 0)); //mana potion
 
 
         //Spells dat have a player-following effect
         spellslist.Add(new SpellInfo(spellIcons[2], SoundManager.Sounds.FireB, 40, 15, "spell id 8", "big AoE fire attack, upgraded W",
          new HitBall[] {
-                new HitBall(2, new Vector3(0,0,0), 0.0f, 5.0f, 1.0f, Vector3.zero, true),
+                new HitBall(6, new Vector3(0,0,0), 0.0f, 5.0f, 1.0f, Vector3.zero, true),
 
                 new HitBall(-1, new Vector3(0,0,0), 1.0f, 0.2f, 25.0f, Vector3.zero, true),
                 new HitBall(-1, new Vector3(0,0,0), 2.0f, 0.2f, 25.0f, Vector3.zero, true),
@@ -172,14 +164,14 @@ public class Spells : MonoBehaviour {
 
         spellslist.Add(new SpellInfo(spellIcons[2], SoundManager.Sounds.FireB, 40, 15, "spell id 9", "shield, upgraded E",
          new HitBall[] {
-                new HitBall(3, new Vector3(0,0,0), 0.0f, 5.0f, 1.0f, Vector3.zero, true, true)
+                new HitBall(7, new Vector3(0,0,0), 0.0f, 5.0f, 1.0f, Vector3.zero, true, true)
          }
          , 0, 0, 0, 0, 0));
 
         //TODO
         spellslist.Add(new SpellInfo(spellIcons[2], SoundManager.Sounds.FireB, 40, 15, "spell id 10", "bbb, upgraded R",
          new HitBall[] {
-                new HitBall(3, new Vector3(0,0,0), 0.0f, 5.0f, 1.0f, Vector3.zero, true, true)
+                new HitBall(8, new Vector3(0,0,0), 0.0f, 5.0f, 1.0f, Vector3.zero, true, true)
          }
          , 0, 0, 0, 0, 0));
 
@@ -207,7 +199,7 @@ public class Spells : MonoBehaviour {
             position = pposition;
             spawndelay = pspawndelay;
             duration = pduration;
-            radius = pradius;
+            radius = pradius < 5? 5 : pradius;
             velocity = pvelocity;
             this.setParent = setParent;
             this.immuneCaster = immuneCaster;

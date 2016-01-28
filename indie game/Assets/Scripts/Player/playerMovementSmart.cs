@@ -23,11 +23,19 @@ public class playerMovementSmart : MonoBehaviour {
 	
 	// Update is called onc e per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.H))    //TODO remove this in final build
         {
             Scroll scroll = new Scroll();
             scroll.SetSpell(Scroll.Spells.W);
             scroll.Drop(new Vector3(0, -1.8f, 260));
+
+            Scroll scroll2 = new Scroll();
+            scroll2.SetSpell(Scroll.Spells.E);
+            scroll2.Drop(new Vector3(0, -1.8f, 260));
+
+            Scroll scroll3 = new Scroll();
+            scroll3.SetSpell(Scroll.Spells.R);
+            scroll3.Drop(new Vector3(0, -1.8f, 260));
         }
         if (agent.velocity.magnitude > 0)
         {
@@ -38,12 +46,12 @@ public class playerMovementSmart : MonoBehaviour {
             }
             
             walking = true;
-            //GetComponentInChildren<Animator>().SetFloat("speed" , 0.2f);
+            GetComponentInChildren<Animator>().SetBool("walk" , true);
         }
         else
         {
             walking = false;
-            //GetComponentInChildren<Animator>().SetFloat("speed", 0.0f);
+            GetComponentInChildren<Animator>().SetBool("walk", false);
             if (footsteps != null && footsteps.isPlaying)
                 footsteps.StopSoundLooped();
         }

@@ -17,6 +17,19 @@ public class EnemyMelee : EnemyBase {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if(agent.velocity.magnitude > 0)
+        {
+            GetComponentInChildren<Animator>().SetFloat("walk", 1);
+        }
+        else
+        {
+            GetComponentInChildren<Animator>().SetFloat("walk", 0);
+        }
+        if (GetComponentInChildren<Animator>().GetBool("attack"))
+        {
+        GetComponentInChildren<Animator>().SetBool("attack", false);
+        }
         if (!agent.enabled)
         {
             agent.enabled = true;
@@ -39,6 +52,7 @@ public class EnemyMelee : EnemyBase {
             }
             else
             {
+                
                 agent.SetDestination(target.transform.position);
             }
 
@@ -49,7 +63,9 @@ public class EnemyMelee : EnemyBase {
 
     protected void Attack()
     {
+        GetComponentInChildren<Animator>().SetBool("attack", true);
         currentcooldown = cooldown;
         GetComponent<AttackScript>().MeleeAttack();
+
     }
 }

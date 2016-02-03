@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.07.00">
+    <object class="AudioFile" id="{50a94ed8-6c86-41aa-9487-affbe71d79db}">
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>37.333333333333336</value>
+        </property>
+        <property name="audioFilePath">
+            <value>$(AUDIO_BIN_DIR)/AsiaLead {7e7d03e2-d97a-460c-806a-ec04a141ca93}.wav</value>
+        </property>
+        <relationship name="container">
+            <destination>{bc2176cd-e84e-445a-86ad-52f01e5336d9}</destination>
+        </relationship>
+    </object>
+</objects>

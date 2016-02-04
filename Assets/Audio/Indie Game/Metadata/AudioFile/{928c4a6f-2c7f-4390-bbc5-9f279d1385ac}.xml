@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.07.00">
+    <object class="AudioFile" id="{928c4a6f-2c7f-4390-bbc5-9f279d1385ac}">
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>3.6000000000000001</value>
+        </property>
+        <property name="audioFilePath">
+            <value>$(AUDIO_BIN_DIR)/VoiceOver4 {080259c9-d6f9-4896-bfc2-bb2575b50b06}.wav</value>
+        </property>
+        <relationship name="container">
+            <destination>{43da338f-38a6-4a58-8976-34c2c37df65f}</destination>
+        </relationship>
+    </object>
+</objects>

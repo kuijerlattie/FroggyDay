@@ -3,6 +3,7 @@
 {9c068105-ef6d-4944-a84b-11d76f9e8e77} event:/Menu/MenuMusic
 {295a8732-3938-4bc0-87b0-df11d9df3404} event:/Music/Music1
 {8a1a0a8a-4867-4d8b-b2b7-e942b4781a31} event:/Music/Music2
+{445b49ee-a354-4bb0-b3d7-0509c027c22b} event:/Music/Music3
 {60b765cf-af3c-48a4-9a64-63ee9a05a572} event:/Sounds/EBig/EA3
 {a1e4dcd8-b0c1-4473-a196-d91047439453} event:/Sounds/EBig/EDeath
 {e3ff06c1-151e-4d8b-9c79-d0cdda4a1c6b} event:/Sounds/EBig/Move

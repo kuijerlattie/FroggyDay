@@ -12,6 +12,7 @@ public class playerMovementSmart : MonoBehaviour {
     FmodPlayScript footsteps = null;
     bool walking = false;
     PlayerScript player;
+    public bool lockMovement = false;
 
 	// Use this for initialization
 	void Start () {

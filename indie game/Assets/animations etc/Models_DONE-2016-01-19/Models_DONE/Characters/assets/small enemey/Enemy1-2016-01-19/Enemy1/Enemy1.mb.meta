@@ -4,7 +4,46 @@ timeCreated: 1453202437
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    100000: BodyCtrl
+    100002: Cloak
+    100004: //RootNode
+    100006: Head
+    100008: HeadEnd
+    100010: L_Shoe
+    100012: Legs
+    100014: Main
+    100016: MainIK
+    100018: Mask
+    100020: R_Shoe
+    100022: Spine01
+    100024: Spine02
+    400000: BodyCtrl
+    400002: Cloak
+    400004: //RootNode
+    400006: Head
+    400008: HeadEnd
+    400010: L_Shoe
+    400012: Legs
+    400014: Main
+    400016: MainIK
+    400018: Mask
+    400020: R_Shoe
+    400022: Spine01
+    400024: Spine02
+    2300000: L_Shoe
+    2300002: Mask
+    2300004: R_Shoe
+    3300000: L_Shoe
+    3300002: Mask
+    3300004: R_Shoe
+    4300000: L_Shoe
+    4300002: Cloak
+    4300004: R_Shoe
+    4300006: Mask
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Cloak
   materials:
     importMaterials: 1
     materialName: 0

@@ -44,6 +44,7 @@ public class CameraTutorial : TutorialBase {
         //play monologue
         yield return new WaitForSeconds(WaitTimeInSeconds);
         ShowText("You must get ready for the dangerous journey. Do you see the ancient scroll? Press A and D to rotate the camera");
+        EnableRotation();
         //show buttons onscreen?
         //play monologue
         //say rotation text

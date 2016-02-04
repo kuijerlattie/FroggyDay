@@ -19,22 +19,23 @@ public class TutorialBase : MonoBehaviour {
 
     protected void DisableWalking()
     {
-
+        GameObject.FindObjectOfType<playerMovementSmart>().lockMovement = true;
     }
 
     protected void EnableWalking()
     {
+        GameObject.FindObjectOfType<playerMovementSmart>().lockMovement = false;
 
     }
 
     protected void DisableRotation()
     {
-
+        GameObject.FindObjectOfType<CameraController>().lockRotation = true;
     }
 
     protected void EnableRotation()
     {
-
+        GameObject.FindObjectOfType<CameraController>().lockRotation = false;
     }
 
     protected void CheckSkip()

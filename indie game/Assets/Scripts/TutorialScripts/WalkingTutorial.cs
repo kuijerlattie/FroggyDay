@@ -31,6 +31,7 @@ public class WalkingTutorial : TutorialBase {
         yield return new WaitForSeconds(5f);
         yield return new WaitForSeconds(WaitTimeInSeconds);
         WalkTarget.GetComponent<MeshRenderer>().enabled = true;//turn on walk target
+        EnableWalking();
         walkedInstructions = true;
         yield return new WaitForSeconds(5f);
         NextLevel();

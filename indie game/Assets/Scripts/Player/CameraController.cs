@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour {
     float oldZoomDistance = 0;
     float targetZoomDistance = 50f;
     float zoomDistance = 50f;
+    public bool lockRotation = false;
 
     RaycastHit hit;
     GameObject player;
@@ -32,21 +33,22 @@ public class CameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (Input.GetKey(KeyCode.A))
+        if (!lockRotation)
         {
-            rotation += rotationspeed;
+            if (Input.GetKey(KeyCode.A))
+            {
+                rotation += rotationspeed;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                rotation -= rotationspeed;
+            }
+            if (oldZoomDistance != 0)
+            {
+                targetZoomDistance = oldZoomDistance;
+                oldZoomDistance = 0;
+            }
         }
-        if (Input.GetKey(KeyCode.D))
-        {
-            rotation -= rotationspeed;
-        }
-        if (oldZoomDistance != 0)
-        {
-            targetZoomDistance = oldZoomDistance;
-            oldZoomDistance = 0;
-        }
-
         targetZoomDistance -= Input.GetAxis("Mouse ScrollWheel");
         if (targetZoomDistance < minZoomDistance)
             targetZoomDistance = minZoomDistance;

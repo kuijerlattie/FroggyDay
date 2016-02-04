@@ -54,7 +54,15 @@ public class ScrollTradeSCript : MonoBehaviour {
     private bool Buy(int price)
     {
         bool enoughgold = CheckBuy(price);
-        if (enoughgold) pscript.gold -= price;
+        if (enoughgold)
+        {
+            GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.BuyItem);
+            pscript.gold -= price;
+        }
+        else
+        {
+            GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.NeedMoreGold);
+        }
         RefreshButtons();
         return enoughgold;
     }
@@ -180,18 +188,21 @@ public class ScrollTradeSCript : MonoBehaviour {
 
         if(pscript.wscroll)
         {
+            GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.GoodJob);
             pscript.spellFireNormal = (int)Scroll.Spells.W;
             pscript.SetSpell(PlayerScript.SpellSlots.spellW, pscript.spellFireNormal);
             pscript.wscroll = false;
         }
         if(pscript.escroll)
         {
+            GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.GoodJob);
             pscript.spellIceNormal = (int)Scroll.Spells.E;
             pscript.SetSpell(PlayerScript.SpellSlots.spellE, pscript.spellIceNormal);
             pscript.escroll = false;
         }
         if(pscript.rscroll)
         {
+            GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.GoodJob);
             pscript.spellAirNormal = (int)Scroll.Spells.R;
             pscript.SetSpell(PlayerScript.SpellSlots.spellR, pscript.spellAirNormal);
             pscript.rscroll = false;

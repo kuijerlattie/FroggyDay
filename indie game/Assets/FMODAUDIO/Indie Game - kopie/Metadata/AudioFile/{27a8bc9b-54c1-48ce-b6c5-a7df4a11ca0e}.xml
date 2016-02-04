@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.07.00">
+    <object class="AudioFile" id="{27a8bc9b-54c1-48ce-b6c5-a7df4a11ca0e}">
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>1.1760090702947845</value>
+        </property>
+        <property name="audioFilePath">
+            <value>$(AUDIO_BIN_DIR)/BossStep1 {d1f3669d-4b01-4852-85d1-31d36479f6fd}.wav</value>
+        </property>
+        <relationship name="container">
+            <destination>{65f54ff6-b788-4665-9f30-7fe57e8e1808}</destination>
+        </relationship>
+    </object>
+</objects>

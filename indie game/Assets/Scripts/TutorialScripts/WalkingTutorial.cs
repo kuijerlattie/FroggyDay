@@ -27,6 +27,7 @@ public class WalkingTutorial : TutorialBase {
 
     IEnumerator StartTutorial()
     {
+        GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.VO3, 20);
         ShowText("The ancient scroll is to master the air strike. It  should be around! Please, bring it to me");
         yield return new WaitForSeconds(5f);
         yield return new WaitForSeconds(WaitTimeInSeconds);
@@ -57,6 +58,7 @@ public class WalkingTutorial : TutorialBase {
         if (Vector3.Distance(player.transform.position, WalkTarget.transform.position) <= 0.5)
         {
             WalkTarget.GetComponent<MeshRenderer>().enabled = false;
+            GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.GoodJob);
             return true;
         }
         return false;

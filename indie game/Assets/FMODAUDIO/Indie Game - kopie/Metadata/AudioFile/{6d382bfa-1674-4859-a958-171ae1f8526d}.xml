@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.07.00">
+    <object class="AudioFile" id="{6d382bfa-1674-4859-a958-171ae1f8526d}">
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>1.5</value>
+        </property>
+        <property name="audioFilePath">
+            <value>$(AUDIO_BIN_DIR)/Snow1 {8119e012-f9ce-48f9-82c6-4a8a53dc66a5}.wav</value>
+        </property>
+        <relationship name="container">
+            <destination>{65f54ff6-b788-4665-9f30-7fe57e8e1808}</destination>
+        </relationship>
+    </object>
+</objects>

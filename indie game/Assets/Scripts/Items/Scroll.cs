@@ -26,6 +26,7 @@ public class Scroll : Item {
 
     public override void Pickup()
     {
+        GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.SenseiProud);
         switch (_spell)
         {
             case Spells.W:

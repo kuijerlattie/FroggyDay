@@ -116,6 +116,7 @@ public class IntroScript : MonoBehaviour {
         ShowText("Press Y to skip this tutorial at any time!");
         yield return new WaitForSeconds(5f);
         ShowText("Hello Jian, we will prepare your journey today, to become the master! \r\n Walk to the target that just appeared Jian!");
+        GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.VO1);
         yield return new WaitForSeconds(WaitTimeInSeconds);
         WalkTarget.GetComponent<MeshRenderer>().enabled = true;//turn on walk target
         walkedInstructions = true;
@@ -202,6 +203,7 @@ public class IntroScript : MonoBehaviour {
 
     IEnumerator EndTutorial()
     {
+        GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.VO6);
         ShowText("I will be in the yard if you need me for further guidance.");
         player.SetSpell(PlayerScript.SpellSlots.spellQ, 1);
         player.health = player.maxhealth;

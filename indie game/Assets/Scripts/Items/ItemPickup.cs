@@ -25,7 +25,7 @@ public class ItemPickup : MonoBehaviour {
         if(other.gameObject.layer == 8)
         {
             Debug.Log("Picked up");
-            //GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.PickUpItem);
+            GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.PickUpItem);
             item.Pickup();
             GameObject.Destroy(gameobject);
         }

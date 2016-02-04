@@ -36,6 +36,7 @@ public class AttackTutorial : TutorialBase {
 
     IEnumerator StartEnemy()
     {
+        GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.VO4, 20);
         ShowText("An enemy Jian! Kill him!");
         //add voiceover
         player.SetSpell(PlayerScript.SpellSlots.spellQ, 1);
@@ -59,6 +60,7 @@ public class AttackTutorial : TutorialBase {
         if (enemyInstructions && enemy == null)
         {
             StartCoroutine("StartPotion");
+            GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.GoodJob);
             return true;
         }
         return false;
@@ -68,6 +70,7 @@ public class AttackTutorial : TutorialBase {
     {
         player.Hit(10); //hit player to make sure he is not at full health anymore
         //say potion text
+        GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.VO5, 20);
         ShowText("Drops go to your inventory and can be used or sold. /");
         //add voiceover
         Healingpotion hppot = new Healingpotion();
@@ -81,7 +84,9 @@ public class AttackTutorial : TutorialBase {
     {
         if (player.health >= 100) //cheap way to check if he used the healthpot. remember that we damage him before spawning a healthpot to make sure he isnt on 100% health anymore when we check this
         {
+            GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.GoodJob);
             return true;
+        
         }
         return false;
     }

@@ -7,14 +7,16 @@ public class FmodPlayScript : MonoBehaviour {
 
     public bool isPlaying = false;
     public FMODUnity.StudioEventEmitter emitter;
+    int seconds = 5;
 
 	void Start () {
         emitter = GetComponent<FMODUnity.StudioEventEmitter>();
         
     }
 	
-    public void PlaySound(string eventName)
+    public void PlaySound(string eventName, int pseconds = 4)
     {
+        seconds = pseconds;
         if(emitter == null)
         {
             emitter = GetComponent<FMODUnity.StudioEventEmitter>();
@@ -35,12 +37,19 @@ public class FmodPlayScript : MonoBehaviour {
         isPlaying = true;
         emitter.TriggerOnce = false;
         emitter.Event = eventName;
+        emitter.AllowFadeout = true;
         emitter.Play();
         return emitter;
     }
 
     public void StopSoundLooped()
     {
+        StartCoroutine(StopSoundloop());
+    }
+
+    private IEnumerator StopSoundloop()
+    {
+        yield return new WaitForSeconds(1);
         isPlaying = false;
         emitter.Stop();
         GameObject.Destroy(gameObject);
@@ -48,7 +57,7 @@ public class FmodPlayScript : MonoBehaviour {
 
     private IEnumerator StopSound()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(seconds);
         isPlaying = false;
         emitter.Stop();
         GameObject.Destroy(gameObject);

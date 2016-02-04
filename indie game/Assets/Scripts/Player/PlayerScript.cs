@@ -73,6 +73,9 @@ public class PlayerScript : stats {
     public bool rscroll = false;
     #endregion
 
+    GameObject lowhpPlayer = null;
+    GameObject lowmpPlayer = null;
+
 
     public enum SpellSlots
     {
@@ -167,6 +170,35 @@ public class PlayerScript : stats {
         if (GetComponentInChildren<Animator>().GetBool("potion"))
         {
             GetComponentInChildren<Animator>().SetBool("potion", false);
+        }
+
+        if(health < 33 && lowhpPlayer == null)
+        {
+
+            lowhpPlayer = GameObject.FindObjectOfType<SoundManager>().MakeSoundObjectLooped(SoundManager.Sounds.LowHP).gameObject;
+            GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.WatchHP);
+        }
+        else
+        {
+            if(lowhpPlayer != null && health >= 33)
+            {
+                lowhpPlayer.GetComponent<FmodPlayScript>().StopSoundLooped();
+                lowhpPlayer = null;
+            }
+        }
+
+        if (mana < 33 && lowmpPlayer == null)
+        {
+
+            lowhpPlayer = GameObject.FindObjectOfType<SoundManager>().MakeSoundObjectLooped(SoundManager.Sounds.LowMana).gameObject;
+        }
+        else
+        {
+            if (lowmpPlayer != null && mana >= 33)
+            {
+                lowmpPlayer.GetComponent<FmodPlayScript>().StopSoundLooped();
+                lowmpPlayer = null;
+            }
         }
 
         if (Time.timeScale != 0) //this loop stops when game is paused

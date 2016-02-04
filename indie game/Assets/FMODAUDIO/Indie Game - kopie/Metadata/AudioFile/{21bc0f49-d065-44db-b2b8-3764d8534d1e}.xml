@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.05.00">
+    <object class="AudioFile" id="{21bc0f49-d065-44db-b2b8-3764d8534d1e}">
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>56.888888888888886</value>
+        </property>
+        <property name="audioFilePath">
+            <value>$(AUDIO_BIN_DIR)/Orchestra_Layer_4 {2bad5530-6688-4ba0-b32e-e38c82014d34}.ogg</value>
+        </property>
+        <relationship name="container">
+            <destination>{bca8f715-c8e5-4501-b793-5a2500eeed90}</destination>
+        </relationship>
+    </object>
+</objects>

@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour {
     GameObject SoundObjectPrefab;
 
     FmodPlayScript musicPlayer;
+    bool playerhealthdown = false;
 
     Dictionary<Sounds, string> SoundsDatabase = new Dictionary<Sounds, string>();
     void Start () {
@@ -15,14 +16,31 @@ public class SoundManager : MonoBehaviour {
 
         //if the player is in the scene (so not the menu) the ingame music is played instead
         if(GameObject.FindObjectOfType<PlayerScript>() != null)
-                musicPlayer = GameObject.FindObjectOfType<SoundManager>().MakeSoundObjectLooped(SoundManager.Sounds.Music);
+                musicPlayer = MakeSoundObjectLooped(SoundManager.Sounds.Music1);
     }
 
-    public void MakeSoundObject(Sounds soundeffect)
+    public void MakeSoundObject(Sounds soundeffect, int seconds = 4)
     {
-        //GameObject soundObj = GameObject.Instantiate(SoundObjectPrefab);
-        //FmodPlayScript soundscript = soundObj.GetComponent<FmodPlayScript>();
-        //soundscript.PlaySound(SoundsDatabase[soundeffect]);
+        GameObject soundObj = GameObject.Instantiate(SoundObjectPrefab);
+        FmodPlayScript soundscript = soundObj.GetComponent<FmodPlayScript>();
+        soundscript.PlaySound(SoundsDatabase[soundeffect], seconds);
+    }
+
+    void Update()
+    {
+        if (GameObject.FindObjectOfType<PlayerScript>().health <= 99 && !playerhealthdown)
+        {
+            musicPlayer.StopSoundLooped();
+            musicPlayer = MakeSoundObjectLooped(SoundManager.Sounds.Music2);
+            playerhealthdown = true;
+        }
+
+        if (GameObject.FindObjectOfType<PlayerScript>().health > 99 && playerhealthdown)
+        {
+            musicPlayer.StopSoundLooped();
+            musicPlayer = MakeSoundObjectLooped(SoundManager.Sounds.Music1);
+            playerhealthdown = false;
+        }
     }
 
     public void StopLooping(FmodPlayScript fmodplayscript)
@@ -34,11 +52,10 @@ public class SoundManager : MonoBehaviour {
 
     public FmodPlayScript MakeSoundObjectLooped(Sounds soundeffect)
     {
-        //GameObject soundObj = GameObject.Instantiate(SoundObjectPrefab);
-        //FmodPlayScript soundscript = soundObj.GetComponent<FmodPlayScript>();
-        //soundscript.PlaySoundLooped(SoundsDatabase[soundeffect]);
-        //return soundscript;
-        return null;
+        GameObject soundObj = GameObject.Instantiate(SoundObjectPrefab);
+        FmodPlayScript soundscript = soundObj.GetComponent<FmodPlayScript>();
+        soundscript.PlaySoundLooped(SoundsDatabase[soundeffect]);
+        return soundscript;
     }
 
     void SetAllSounds()
@@ -64,7 +81,7 @@ public class SoundManager : MonoBehaviour {
         SoundsDatabase.Add(Sounds.ESmallDeath, "event:/Sounds/ESmall/EDeath");
         SoundsDatabase.Add(Sounds.ESsmallMove, "event:/Sounds/ESmall/Move");
 
-        SoundsDatabase.Add(Sounds.EMidAttack, "event:/Sounds/EMid/AE2");
+        SoundsDatabase.Add(Sounds.EMidAttack, "event:/Sounds/EMid/EA2");
         SoundsDatabase.Add(Sounds.EMidDeath, "event:/Sounds/EMid/EDeath");
         SoundsDatabase.Add(Sounds.EMidMove, "event:/Sounds/EMid/Move");
 
@@ -78,13 +95,26 @@ public class SoundManager : MonoBehaviour {
         SoundsDatabase.Add(Sounds.BuyItem, "event:/Sounds/Enviroment/Buy an Item");
 
         SoundsDatabase.Add(Sounds.MenuMusic, "event:/Menu/MenuMusic");
-        SoundsDatabase.Add(Sounds.Click, "event:/Menu/Click");
-        SoundsDatabase.Add(Sounds.Music, "event:/Music/Music");
+        SoundsDatabase.Add(Sounds.Click, "event:/Menu/Click");  
+        SoundsDatabase.Add(Sounds.Music1, "event:/Music/Music1");
+        SoundsDatabase.Add(Sounds.Music2, "event:/Music/Music2");
 
         SoundsDatabase.Add(Sounds.NeedMoreGold, "event:/Sounds/Player/FireB");
         SoundsDatabase.Add(Sounds.OutOfPotions, "event:/Sounds/Player/FireS");
 
         SoundsDatabase.Add(Sounds.Footstep, "event:/Sounds/Player/Footstep");
+
+        SoundsDatabase.Add(Sounds.VO1, "event:/VoiceOver/Tutorial/VO1");
+        SoundsDatabase.Add(Sounds.VO2, "event:/VoiceOver/Tutorial/VO2");
+        SoundsDatabase.Add(Sounds.VO3, "event:/VoiceOver/Tutorial/VO3");
+        SoundsDatabase.Add(Sounds.VO4, "event:/VoiceOver/Tutorial/VO4");
+        SoundsDatabase.Add(Sounds.VO5, "event:/VoiceOver/Tutorial/VO5");
+        SoundsDatabase.Add(Sounds.VO6, "event:/VoiceOver/Tutorial/VO6");
+
+        SoundsDatabase.Add(Sounds.SenseiProud, "event:/VoiceOver/VoiceEffects/SenseiProud");
+        SoundsDatabase.Add(Sounds.OhNo, "event:/VoiceOver/VoiceEffects/OhNo");
+        SoundsDatabase.Add(Sounds.WatchHP, "event:/VoiceOver/VoiceEffects/WatchHP");
+        SoundsDatabase.Add(Sounds.GoodJob, "event:/VoiceOver/VoiceEffects/GoodJob");
     }
 
 
@@ -120,10 +150,25 @@ public class SoundManager : MonoBehaviour {
         BuyItem,
         MenuMusic,
         Click,
-        Music,
+        Music1,
+        Music2,
         NeedMoreGold,
-        OutOfPotions,
-        Footstep
+        OutOfPotions,   //
+        Footstep,   //
+
+        VO1,    //
+        VO2,    //
+        VO3,    //
+        VO4,    //
+        VO5,    //
+        VO6,    //
+
+        SenseiProud,
+        OhNo,   //
+        WatchHP,    //
+        GoodJob //
+
+
     }
 
 

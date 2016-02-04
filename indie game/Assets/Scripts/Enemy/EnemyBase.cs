@@ -84,7 +84,7 @@ public abstract class EnemyBase : stats {
         }
     }
 
-    private Item GetRandomPickup()
+    protected Item GetRandomPickup()
     {
         Item item = null;   //returning null means no item 
         dropChance = dropChance > 0 ? (dropChance < 100 ? dropChance : 100) : 0;    //keep between 0 and 100
@@ -101,7 +101,7 @@ public abstract class EnemyBase : stats {
         return item;
     }
 
-    private Item DropAlwaysDrop()
+    protected Item DropAlwaysDrop()
     {
         Item item = null;
         switch (AlwaysDrops)
@@ -122,7 +122,7 @@ public abstract class EnemyBase : stats {
         return item;
     }
 
-    private Item DropRandomPickup(Vector3 position)
+    protected Item DropRandomPickup(Vector3 position)
     {
         Item item = GetRandomPickup();
         if (item != null)

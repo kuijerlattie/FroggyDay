@@ -43,6 +43,7 @@ public class CameraTutorial : TutorialBase {
         ShowText("Hello Jian, I will help you prepare your exam today, to become the master!");
         //play monologue
         yield return new WaitForSeconds(WaitTimeInSeconds);
+        GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.VO2, 20);
         ShowText("You must get ready for the dangerous journey. Do you see the ancient scroll? Press A and D to rotate the camera");
         EnableRotation();
         //show buttons onscreen?
@@ -70,6 +71,7 @@ public class CameraTutorial : TutorialBase {
 
             if (rotationD >= rotationTreshold && rotationA >= rotationTreshold)
             {
+                GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.GoodJob);
                 return true;
             }
         }

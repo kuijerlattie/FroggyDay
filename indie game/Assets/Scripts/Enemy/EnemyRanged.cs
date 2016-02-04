@@ -32,7 +32,10 @@ public class EnemyRanged : EnemyBase {
     // Update is called once per frame
     void Update()
     {
-
+        if (target.GetComponent<PlayerScript>().health <= 0)
+        {
+            stunnedSeconds = 2;
+        }
         if (agent.velocity.magnitude > 0)
         {
             GetComponentInChildren<Animator>().SetBool("walk", true);
@@ -153,6 +156,7 @@ public class EnemyRanged : EnemyBase {
         Vector3 newpos = origin + (new Vector3(Random.Range(-1.0f, 1.0f), 0.0f, Random.Range(-1.0f, 1.0f))).normalized * maxRange * 0.9f;
         if(counter >= 5)
         {
+            stunnedSeconds = 2;
             return newpos;
         }
         if((newpos - transform.position).magnitude > (target.transform.position - transform.position).magnitude * 1.5f)
@@ -164,6 +168,7 @@ public class EnemyRanged : EnemyBase {
 
     protected void Attack()
     {
+        GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.Spell1);
         if (_random.Next(0, 2) == 0)
         {
             GetComponentInChildren<Animator>().SetBool("attack1", true);
@@ -180,6 +185,22 @@ public class EnemyRanged : EnemyBase {
     {
         yield return new WaitForSeconds(0.8f);
         GetComponent<AttackScript>().MageAttackForward(1, _forward);
+    }
+
+    public override void Die()
+    {
+        if (manager == null) manager = GameObject.FindObjectOfType<EnemyManager>();
+        GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.EBigDeath);
+        manager.RemoveEnemy();
+        if (canDrop)
+        {
+            DropRandomPickup(transform.position);
+            DropAlwaysDrop();
+        }
+
+
+        GameObject.FindObjectOfType<PlayerScript>().LootGold(gold);
+        GameObject.Destroy(gameObject);
     }
 
 }

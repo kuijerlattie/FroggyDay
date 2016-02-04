@@ -18,7 +18,11 @@ public class EnemyMelee : EnemyBase {
 	// Update is called once per frame
 	void Update () {
 
-        if(agent.velocity.magnitude > 0)
+        if (target.GetComponent<PlayerScript>().health <= 0)
+        {
+            stunnedSeconds = 2;
+        }
+        if (agent.velocity.magnitude > 0)
         {
             GetComponentInChildren<Animator>().SetFloat("walk", 1);
         }
@@ -63,9 +67,26 @@ public class EnemyMelee : EnemyBase {
 
     protected void Attack()
     {
+        GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.ESmallAttack);
         GetComponentInChildren<Animator>().SetBool("attack", true);
         currentcooldown = cooldown;
         GetComponent<AttackScript>().MeleeAttack();
 
+    }
+
+    public override void Die()
+    {
+        if (manager == null) manager = GameObject.FindObjectOfType<EnemyManager>();
+        GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.ESmallDeath);
+        manager.RemoveEnemy();
+        if (canDrop)
+        {
+            DropRandomPickup(transform.position);
+            DropAlwaysDrop();
+        }
+
+
+        GameObject.FindObjectOfType<PlayerScript>().LootGold(gold);
+        GameObject.Destroy(gameObject);
     }
 }

@@ -81,6 +81,7 @@ public class HitboxScript : MonoBehaviour {
            if(col.gameObject.layer == 8)
             {
                 _stats = GameObject.FindObjectOfType<PlayerScript>();
+               
             }
             else
             {
@@ -98,7 +99,9 @@ public class HitboxScript : MonoBehaviour {
                     _stats.ApplySlow(slowpercentage, slowseconds);
                 }
                 tempcollider = col;
-               _stats.Hit(dmg);
+                if (col.gameObject.layer == 8)
+                    GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.OhNo);
+                _stats.Hit(dmg);
                 if (dmgot != 0)
                 {
                     _stats.HitOverTime(dmgot, dmgottime);

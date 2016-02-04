@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.07.00">
+    <object class="AudioFile" id="{69f0433d-3244-47ce-871b-e9536f102f76}">
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>6.4680045351473927</value>
+        </property>
+        <property name="audioFilePath">
+            <value>$(AUDIO_BIN_DIR)/BossDeath {f3814255-87d0-4519-adb9-25c6352bbe3e}.wav</value>
+        </property>
+        <relationship name="container">
+            <destination>{65f54ff6-b788-4665-9f30-7fe57e8e1808}</destination>
+        </relationship>
+    </object>
+</objects>

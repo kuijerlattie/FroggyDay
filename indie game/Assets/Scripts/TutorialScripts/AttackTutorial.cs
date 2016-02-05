@@ -12,6 +12,7 @@ public class AttackTutorial : TutorialBase {
     public GameObject HealthpotionSpawn;
     bool killedEnemy = false;
     bool potionInstruction = false;
+    bool startedPotion = false;
 
 	// Use this for initialization
 	void Start () {
@@ -47,7 +48,8 @@ public class AttackTutorial : TutorialBase {
         enemy.GetComponent<EnemyBase>().isWaveEnemy = false;
         enemy.GetComponent<EnemyBase>().area = 1;
         enemy.GetComponent<EnemyBase>().health = 1;
-        enemy.GetComponent<EnemyBase>().canDrop = false;
+        //enemy.GetComponent<EnemyBase>().canDrop = false;
+        enemy.GetComponent<EnemyBase>().AlwaysDrops = EnemyBase.Dropables.HealthPotion;
         yield return new WaitForSeconds(2f);
         enemy.GetComponent<EnemyBase>().Stun(600);
         enemyInstructions = true;
@@ -57,10 +59,10 @@ public class AttackTutorial : TutorialBase {
 
     bool CheckEnemy()
     {
-        if (enemyInstructions && enemy == null)
+        if (enemyInstructions && enemy == null && !startedPotion)
         {
             StartCoroutine("StartPotion");
-            GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.GoodJob);
+            //GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.GoodJob);
             return true;
         }
         return false;
@@ -68,14 +70,15 @@ public class AttackTutorial : TutorialBase {
 
     IEnumerator StartPotion()
     {
+        startedPotion = true;
         player.Hit(10); //hit player to make sure he is not at full health anymore
         //say potion text
         GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.VO5, 20);
         ShowText("Drops go to your inventory and can be used or sold. /");
         //add voiceover
-        Healingpotion hppot = new Healingpotion();
-        hppot.healingValue = 100;
-        hppot.Drop(HealthpotionSpawn.transform.position);
+        //Healingpotion hppot = new Healingpotion();
+        //hppot.healingValue = 100;
+        //hppot.Drop(HealthpotionSpawn.transform.position);
         potionInstruction = true;
         yield return new WaitForSeconds(0.01f);
     }
@@ -84,7 +87,7 @@ public class AttackTutorial : TutorialBase {
     {
         if (player.health >= 100) //cheap way to check if he used the healthpot. remember that we damage him before spawning a healthpot to make sure he isnt on 100% health anymore when we check this
         {
-            GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.GoodJob);
+            //GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.GoodJob);
             return true;
         
         }

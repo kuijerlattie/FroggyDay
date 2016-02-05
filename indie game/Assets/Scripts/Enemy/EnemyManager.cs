@@ -19,6 +19,8 @@ public class EnemyManager : MonoBehaviour {
     [SerializeField]
     GameObject meleeEnemyPrefab;
     [SerializeField]
+    GameObject meleeEnemyPrefab2;
+    [SerializeField]
     GameObject rangedEnemyPrefab;
     float timer = 0;
 
@@ -70,7 +72,7 @@ public class EnemyManager : MonoBehaviour {
 
     void SpawnStrongEnemy()
     {
-        GameObject enemy = (GameObject)GameObject.Instantiate(meleeEnemyPrefab);
+        GameObject enemy = (GameObject)GameObject.Instantiate(meleeEnemyPrefab2);
         enemy.GetComponent<NavMeshAgent>().enabled = false;
         enemy.transform.position = GetSpawnLocation();
         enemy.GetComponent<EnemyBase>().isWaveEnemy = true;

@@ -11,7 +11,7 @@ public class ItemPickup : MonoBehaviour {
         GetComponent<Collider>().isTrigger = true;
         Rigidbody rigid = gameObject.AddComponent<Rigidbody>();
         rigid.isKinematic = true;
-        transform.localScale = new Vector3(2, 2, 2);
+        transform.localScale = new Vector3(50, 50, 50);
 	}
 	
 	// Update is called once per frame

@@ -17,27 +17,14 @@ public class playerMovementSmart : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         agent = GetComponent<NavMeshAgent>();
-        targetPosition = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        //targetPosition = GameObject.CreatePrimitive(PrimitiveType.Cube);
         targetPosition.transform.position = transform.position;
         player = GetComponent<PlayerScript>();
     }
 	
 	// Update is called onc e per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.H))    //TODO remove this in final build
-        {
-            Scroll scroll = new Scroll();
-            scroll.SetSpell(Scroll.Spells.W);
-            scroll.Drop(new Vector3(0, -1.8f, 260));
-
-            Scroll scroll2 = new Scroll();
-            scroll2.SetSpell(Scroll.Spells.E);
-            scroll2.Drop(new Vector3(0, -1.8f, 260));
-
-            Scroll scroll3 = new Scroll();
-            scroll3.SetSpell(Scroll.Spells.R);
-            scroll3.Drop(new Vector3(0, -1.8f, 260));
-        }
+      
         if (agent.velocity.magnitude > 0)
         {
 

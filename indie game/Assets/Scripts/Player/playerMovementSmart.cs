@@ -17,7 +17,7 @@ public class playerMovementSmart : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         agent = GetComponent<NavMeshAgent>();
-        targetPosition = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        //targetPosition = GameObject.CreatePrimitive(PrimitiveType.Cube);
         targetPosition.transform.position = transform.position;
         player = GetComponent<PlayerScript>();
     }

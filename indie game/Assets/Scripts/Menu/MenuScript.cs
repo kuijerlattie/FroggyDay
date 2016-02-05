@@ -24,7 +24,7 @@ public class MenuScript : MonoBehaviour {
     public void Play()
     {
         soundmanager.MakeSoundObject(SoundManager.Sounds.Click);
-        Application.LoadLevel("mninimapscene");
+        Application.LoadLevel("mninimapscene"); 
         Settings.SetActive(false);
         Credits.SetActive(false);
     }

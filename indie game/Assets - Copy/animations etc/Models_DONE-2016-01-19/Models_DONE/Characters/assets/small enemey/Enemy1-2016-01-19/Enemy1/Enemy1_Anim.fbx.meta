@@ -1,0 +1,274 @@
+fileFormatVersion: 2
+guid: fa4ae2f7ef7958d46bf6b96da51de6df
+timeCreated: 1453202440
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: BodyCtrl
+    100002: Cloak
+    100004: //RootNode
+    100006: Head
+    100008: HeadEnd
+    100010: L_Shoe
+    100012: Legs
+    100014: Main
+    100016: MainIK
+    100018: Mask
+    100020: R_Shoe
+    100022: Spine01
+    100024: Spine02
+    400000: BodyCtrl
+    400002: Cloak
+    400004: //RootNode
+    400006: Head
+    400008: HeadEnd
+    400010: L_Shoe
+    400012: Legs
+    400014: Main
+    400016: MainIK
+    400018: Mask
+    400020: R_Shoe
+    400022: Spine01
+    400024: Spine02
+    2300000: L_Shoe
+    2300002: Mask
+    2300004: R_Shoe
+    3300000: L_Shoe
+    3300002: Mask
+    3300004: R_Shoe
+    4300000: L_Shoe
+    4300002: Cloak
+    4300004: R_Shoe
+    4300006: Mask
+    7400000: walk
+    7400002: idle
+    7400004: attack
+    9500000: //RootNode
+    13700000: Cloak
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 45
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Cloak
+        weight: 1
+      - path: L_Shoe
+        weight: 1
+      - path: Main
+        weight: 1
+      - path: Main/BodyCtrl
+        weight: 1
+      - path: Main/Legs
+        weight: 1
+      - path: Main/Legs/Spine01
+        weight: 1
+      - path: Main/Legs/Spine01/Spine02
+        weight: 1
+      - path: Main/Legs/Spine01/Spine02/Head
+        weight: 1
+      - path: Main/Legs/Spine01/Spine02/Head/HeadEnd
+        weight: 1
+      - path: Main/Legs/Spine01/Spine02/Head/Mask
+        weight: 1
+      - path: MainIK
+        weight: 1
+      - path: R_Shoe
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: walk
+      takeName: Take 001
+      firstFrame: 50
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Cloak
+        weight: 1
+      - path: L_Shoe
+        weight: 1
+      - path: Main
+        weight: 1
+      - path: Main/BodyCtrl
+        weight: 1
+      - path: Main/Legs
+        weight: 1
+      - path: Main/Legs/Spine01
+        weight: 1
+      - path: Main/Legs/Spine01/Spine02
+        weight: 1
+      - path: Main/Legs/Spine01/Spine02/Head
+        weight: 1
+      - path: Main/Legs/Spine01/Spine02/Head/HeadEnd
+        weight: 1
+      - path: Main/Legs/Spine01/Spine02/Head/Mask
+        weight: 1
+      - path: MainIK
+        weight: 1
+      - path: R_Shoe
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: attack
+      takeName: Take 001
+      firstFrame: 105
+      lastFrame: 150
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Cloak
+        weight: 1
+      - path: L_Shoe
+        weight: 1
+      - path: Main
+        weight: 1
+      - path: Main/BodyCtrl
+        weight: 1
+      - path: Main/Legs
+        weight: 1
+      - path: Main/Legs/Spine01
+        weight: 1
+      - path: Main/Legs/Spine01/Spine02
+        weight: 1
+      - path: Main/Legs/Spine01/Spine02/Head
+        weight: 1
+      - path: Main/Legs/Spine01/Spine02/Head/HeadEnd
+        weight: 1
+      - path: Main/Legs/Spine01/Spine02/Head/Mask
+        weight: 1
+      - path: MainIK
+        weight: 1
+      - path: R_Shoe
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 80
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

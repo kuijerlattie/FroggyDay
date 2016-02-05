@@ -1,0 +1,162 @@
+fileFormatVersion: 2
+guid: 3e30decf36322be46aac0d8b7fc1f78a
+timeCreated: 1453209344
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Chest_CTRL
+    100002: Head
+    100004: Head_CTRL
+    100006: Head_End
+    100008: Hip_CTRL
+    100010: Hips
+    100012: L_Arm_CTRL
+    100014: L_Arm_IK
+    100016: L_Collar
+    100018: L_Foot
+    100020: L_Hand
+    100022: L_Hand_End
+    100024: L_Knee
+    100026: L_Leg_CTRL
+    100028: L_Leg_IK
+    100030: L_LWR_Arm
+    100032: L_Toe
+    100034: L_Toe_End
+    100036: L_UPR_Arm
+    100038: L_UPR_Leg
+    100040: Main_CTRL
+    100042: //RootNode
+    100044: Neck
+    100046: R_Arm_CTRL
+    100048: R_Arm_IK
+    100050: R_Collar
+    100052: R_Foot
+    100054: R_Hand
+    100056: R_Hand_End
+    100058: R_Knee
+    100060: R_Leg_CTRL
+    100062: R_Leg_IK
+    100064: R_LWR_Arm
+    100066: R_Toe
+    100068: R_Toe_End
+    100070: R_UPR_Arm
+    100072: R_UPR_Leg
+    100074: Spearman:MainCharacter
+    100076: Spine_01
+    100078: Spine_02
+    100080: Spine_03
+    100082: Spine_04
+    100084: Spine_IK
+    100086: Spine_IK_Cruve
+    400000: Chest_CTRL
+    400002: Head
+    400004: Head_CTRL
+    400006: Head_End
+    400008: Hip_CTRL
+    400010: Hips
+    400012: L_Arm_CTRL
+    400014: L_Arm_IK
+    400016: L_Collar
+    400018: L_Foot
+    400020: L_Hand
+    400022: L_Hand_End
+    400024: L_Knee
+    400026: L_Leg_CTRL
+    400028: L_Leg_IK
+    400030: L_LWR_Arm
+    400032: L_Toe
+    400034: L_Toe_End
+    400036: L_UPR_Arm
+    400038: L_UPR_Leg
+    400040: Main_CTRL
+    400042: //RootNode
+    400044: Neck
+    400046: R_Arm_CTRL
+    400048: R_Arm_IK
+    400050: R_Collar
+    400052: R_Foot
+    400054: R_Hand
+    400056: R_Hand_End
+    400058: R_Knee
+    400060: R_Leg_CTRL
+    400062: R_Leg_IK
+    400064: R_LWR_Arm
+    400066: R_Toe
+    400068: R_Toe_End
+    400070: R_UPR_Arm
+    400072: R_UPR_Leg
+    400074: Spearman:MainCharacter
+    400076: Spine_01
+    400078: Spine_02
+    400080: Spine_03
+    400082: Spine_04
+    400084: Spine_IK
+    400086: Spine_IK_Cruve
+    4300000: Spearman:MainCharacter
+    9500000: //RootNode
+    13700000: Spearman:MainCharacter
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

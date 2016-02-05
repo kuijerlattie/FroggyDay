@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.05.00">
+    <object class="Workspace" id="{65c7e192-db3d-4ef1-b219-7f9c91083e8a}">
+        <property name="outputFormat">
+            <value>6</value>
+        </property>
+        <relationship name="masterEventFolder">
+            <destination>{21c27227-c358-413c-82c6-d0756d6dccd7}</destination>
+        </relationship>
+        <relationship name="masterTagFolder">
+            <destination>{c4ff3109-858f-4e6c-86ba-07a14843d07f}</destination>
+        </relationship>
+        <relationship name="masterBankFolder">
+            <destination>{3ec6a4b8-45e8-4bae-a484-3ef4e6be2f33}</destination>
+        </relationship>
+        <relationship name="audioBinManager">
+            <destination>{0435a54d-1e98-49b1-8ea2-016813738b91}</destination>
+        </relationship>
+        <relationship name="mixer">
+            <destination>{e91d2fd8-b383-4ee5-89f8-2640a92b3188}</destination>
+        </relationship>
+    </object>
+    <object class="AudioBinManager" id="{0435a54d-1e98-49b1-8ea2-016813738b91}">
+        <relationship name="masterAudioBinFolder">
+            <destination>{7b8e9ec2-fefb-44e6-af95-d3659a812699}</destination>
+        </relationship>
+    </object>
+</objects>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.05.00">
+    <object class="AudioFile" id="{89f56cda-08f1-46e6-a1d4-e197d1fed864}">
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>1.5</value>
+        </property>
+        <property name="audioFilePath">
+            <value>$(AUDIO_BIN_DIR)/Grass3 {68691212-d1f5-4455-960e-38e194210659}.wav</value>
+        </property>
+        <relationship name="container">
+            <destination>{20322cde-adbd-489f-b7f8-c14a48c33da8}</destination>
+        </relationship>
+    </object>
+</objects>

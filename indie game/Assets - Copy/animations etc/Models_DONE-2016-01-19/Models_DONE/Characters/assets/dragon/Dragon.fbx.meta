@@ -1,0 +1,219 @@
+fileFormatVersion: 2
+guid: 63185e74734af5f409dd5e14d887c0bd
+timeCreated: 1453202438
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Butt
+    100002: //RootNode
+    100004: Dragon1
+    100006: Dragon3
+    100008: Dragon7
+    100010: Front
+    100012: Head
+    100014: Head_CTRL
+    100016: IK_Head
+    100018: IK_Neck
+    100020: IK_Tail
+    100022: imagePlane1
+    100024: imagePlane2
+    100026: joint1
+    100028: L_BackFoot
+    100030: L_BackLeg_CTRL
+    100032: L_BackLowerLeg
+    100034: L_BackLowerLeg 1
+    100036: L_BackToes
+    100038: L_BackUpperLeg
+    100040: L_Foot
+    100042: L_FrontLeg_CTRL
+    100044: L_FrontLowerLeg
+    100046: L_FrontUpperLeg
+    100048: L_IK_BackLeg
+    100050: L_IK_FrontLeg
+    100052: L_IK_Wing
+    100054: L_Toes
+    100056: L_Wing1
+    100058: L_Wing2
+    100060: L_Wing3
+    100062: L_Wing4
+    100064: L_Wing5
+    100066: L_Wing_CTRL
+    100068: Main_CTRL
+    100070: Nail10
+    100072: Neck1
+    100074: Neck2
+    100076: Neck3
+    100078: Neck_CTRL
+    100080: Pelvis
+    100082: R_BackFoot
+    100084: R_BackLeg_CTRL
+    100086: R_BackLowerLeg
+    100088: R_BackLowerLeg2
+    100090: R_BackToes
+    100092: R_BackUpperLeg
+    100094: R_Foot
+    100096: R_FrontLeg_CTRL
+    100098: R_FrontLowerLeg
+    100100: R_FrontUpperLeg
+    100102: R_IK_BackLeg
+    100104: R_IK_FrontLeg
+    100106: R_IK_Wing
+    100108: R_Toes
+    100110: R_Wing1
+    100112: R_Wing1_5
+    100114: R_Wing2
+    100116: R_Wing3
+    100118: R_Wing4
+    100120: R_Wing_CTRL
+    100122: Spine1
+    100124: Spine2
+    100126: Tail
+    100128: Tail1
+    100130: Tail2
+    100132: Tail3
+    100134: transform2
+    100136: transform6
+    100138: transform7
+    100140: transform8
+    100142: Wings3
+    400000: Butt
+    400002: //RootNode
+    400004: Dragon1
+    400006: Dragon3
+    400008: Dragon7
+    400010: Front
+    400012: Head
+    400014: Head_CTRL
+    400016: IK_Head
+    400018: IK_Neck
+    400020: IK_Tail
+    400022: imagePlane1
+    400024: imagePlane2
+    400026: joint1
+    400028: L_BackFoot
+    400030: L_BackLeg_CTRL
+    400032: L_BackLowerLeg
+    400034: L_BackLowerLeg 1
+    400036: L_BackToes
+    400038: L_BackUpperLeg
+    400040: L_Foot
+    400042: L_FrontLeg_CTRL
+    400044: L_FrontLowerLeg
+    400046: L_FrontUpperLeg
+    400048: L_IK_BackLeg
+    400050: L_IK_FrontLeg
+    400052: L_IK_Wing
+    400054: L_Toes
+    400056: L_Wing1
+    400058: L_Wing2
+    400060: L_Wing3
+    400062: L_Wing4
+    400064: L_Wing5
+    400066: L_Wing_CTRL
+    400068: Main_CTRL
+    400070: Nail10
+    400072: Neck1
+    400074: Neck2
+    400076: Neck3
+    400078: Neck_CTRL
+    400080: Pelvis
+    400082: R_BackFoot
+    400084: R_BackLeg_CTRL
+    400086: R_BackLowerLeg
+    400088: R_BackLowerLeg2
+    400090: R_BackToes
+    400092: R_BackUpperLeg
+    400094: R_Foot
+    400096: R_FrontLeg_CTRL
+    400098: R_FrontLowerLeg
+    400100: R_FrontUpperLeg
+    400102: R_IK_BackLeg
+    400104: R_IK_FrontLeg
+    400106: R_IK_Wing
+    400108: R_Toes
+    400110: R_Wing1
+    400112: R_Wing1_5
+    400114: R_Wing2
+    400116: R_Wing3
+    400118: R_Wing4
+    400120: R_Wing_CTRL
+    400122: Spine1
+    400124: Spine2
+    400126: Tail
+    400128: Tail1
+    400130: Tail2
+    400132: Tail3
+    400134: transform2
+    400136: transform6
+    400138: transform7
+    400140: transform8
+    400142: Wings3
+    4300000: Dragon7
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Dragon7
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,62 @@
+{ac47801d-ddf3-4e88-97b2-f5fb3e8a930d} event:/Ambient/Weather
+{eebb0db7-4d87-4998-bb73-44d23d6d16db} event:/Menu/Click
+{9c068105-ef6d-4944-a84b-11d76f9e8e77} event:/Menu/MenuMusic
+{295a8732-3938-4bc0-87b0-df11d9df3404} event:/Music/Music1
+{8a1a0a8a-4867-4d8b-b2b7-e942b4781a31} event:/Music/Music2
+{445b49ee-a354-4bb0-b3d7-0509c027c22b} event:/Music/Music3
+{60b765cf-af3c-48a4-9a64-63ee9a05a572} event:/Sounds/EBig/EA3
+{a1e4dcd8-b0c1-4473-a196-d91047439453} event:/Sounds/EBig/EDeath
+{e3ff06c1-151e-4d8b-9c79-d0cdda4a1c6b} event:/Sounds/EBig/Move
+{91ff05a0-c7ef-4a89-a780-e39878fea731} event:/Sounds/EBoss/EA4
+{40e4bd58-a025-4446-9003-e109c7092f36} event:/Sounds/EBoss/EDeath
+{60940c2b-23d3-4a99-b112-a5158944aa61} event:/Sounds/EBoss/Move
+{1ff3b970-23c8-4482-ab73-a56d8ab94059} event:/Sounds/EMid/EA2
+{988a9fff-5b18-4b7a-82d5-11c8a99f4041} event:/Sounds/EMid/EDeath
+{5d5cbcf4-8061-46bc-95c5-d9ace3825633} event:/Sounds/EMid/Move
+{e96eab38-613b-48d2-bcf6-009de501a105} event:/Sounds/Enviroment/Buy an Item
+{2f5ecaf3-bdcc-413f-9c0e-d5d21f80a44a} event:/Sounds/Enviroment/Need More Gold
+{a0835253-ff85-4ffe-b72a-74b2436c9b90} event:/Sounds/Enviroment/OpenChest
+{577598d4-0462-45e3-b453-d4a8a5107b88} event:/Sounds/Enviroment/PickUpCoin
+{83f10007-bf2f-4b9b-abc2-f2a5f6abd0ec} event:/Sounds/Enviroment/PickUpItem
+{afc73cc4-cf7e-4c69-b443-62186b18b2da} event:/Sounds/ESmall/EA1
+{8c129c2d-cd17-4da3-8021-452d4bcfd6c8} event:/Sounds/ESmall/EDeath
+{be3713f6-70a6-4822-9e60-5c498fd8246f} event:/Sounds/ESmall/Move
+{6c74ed3d-363f-4701-9e3f-093035fd62bc} event:/Sounds/Player/Abiltiy_Buff
+{e49369f0-56a9-4319-8cfd-7564b327a9f8} event:/Sounds/Player/Damage
+{5a60e42d-235b-41e0-a360-83fdc01c84cc} event:/Sounds/Player/Death
+{95b9b35a-a454-4bec-88e4-f7c3d37b6bc7} event:/Sounds/Player/FireB
+{372bca27-08cc-4131-b8ed-8b7789c72443} event:/Sounds/Player/FireS
+{f3872525-7ddf-4782-ada6-7eb52a4e6ee0} event:/Sounds/Player/Footstep
+{9288b35e-a2bf-4984-918d-3ed18ce351a0} event:/Sounds/Player/Heal
+{82423f8d-117e-4b66-bed5-37792cfd1a72} event:/Sounds/Player/IceB
+{68e94a1e-80f5-44d8-9afe-6414a5e8d44c} event:/Sounds/Player/IceS
+{a416ab24-d883-4bee-bdaf-a0f3c166e4a3} event:/Sounds/Player/Low on Health
+{785f0337-6d3f-47d0-95a3-71df7f4664b8} event:/Sounds/Player/Low on mana
+{843f794e-d140-44c2-9011-34b3f9f08e42} event:/Sounds/Player/Mana
+{276ff450-843f-417c-9c7c-a7ce045b62c4} event:/Sounds/Player/Out of Potions
+{a8c38c79-197c-48eb-ac52-9009f9da31f5} event:/Sounds/Player/Spell on CD
+{ea4c8319-59d5-4ab3-a454-48abf8f9a616} event:/Sounds/Player/Spell1
+{60ae0c27-05ad-4e62-b47d-59c0c3e6b915} event:/Sounds/Player/WindB
+{d7663374-6d04-4908-8b3b-df19e0772ead} event:/Sounds/Player/WindS
+{20990c14-1f31-4012-ad37-f2262599baa3} event:/VoiceOver/Tutorial/VO1
+{29187742-cabe-48a4-8669-492a6d1e92de} event:/VoiceOver/Tutorial/VO2
+{2309607c-8221-4a7b-bbb8-a1c0811a883e} event:/VoiceOver/Tutorial/VO3
+{3a7d766a-2c6d-4c56-a902-84ded6c2c467} event:/VoiceOver/Tutorial/VO4
+{dda0dd49-f334-4de5-b98f-6328f38ca11e} event:/VoiceOver/Tutorial/VO5
+{b01399dd-d9ad-427d-b98c-98934b9fae57} event:/VoiceOver/Tutorial/VO6
+{ebb64a37-f0f3-4fac-8025-9d54382eac6f} event:/VoiceOver/VoiceEffects/GoodJob
+{6c0ea7e6-1e5d-4894-933f-1d4344a272a7} event:/VoiceOver/VoiceEffects/OhNo
+{2f51e653-093f-4b90-b6f9-d59f4ea86052} event:/VoiceOver/VoiceEffects/SenseiProud
+{db1c14bc-2874-4040-a4ed-8bdd3427fef5} event:/VoiceOver/VoiceEffects/WatchHP
+{d44e97c9-b710-4574-b5a7-a7adc40b624e} bus:/
+{561d3022-92b2-48b1-a5e7-de6c6b65681f} bus:/SFX
+{2cbf7375-53c7-4e53-9e90-c739c27dfcef} bus:/SFX/Reverb
+{3366b952-93e0-4bb2-9a58-4c69faa6aeb7} bus:/Reverb
+{b8e9731f-0f7a-47bb-9956-a6dbb93cea2e} bank:/Boss
+{da51f76d-9c96-4f20-bbe7-8082a9974ab4} bank:/Enemies
+{fac8ed22-8a35-4729-8a75-ae69916d10c7} bank:/Enviroment
+{ae1f279e-5899-44d7-b653-546e4f8b39bb} bank:/Menu
+{afc80a6a-e9d4-4638-84fe-4a8b9d6336bf} bank:/Music
+{00b37ac2-b44a-48ce-9883-0b48a9385461} bank:/Player
+{98c6bb72-eccb-438f-9c2b-8bc75417c840} bank:/VoiceOver
+{f451ed16-012d-496c-8271-dfb07ed9f22c} bank:/Master Bank

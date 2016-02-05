@@ -48,7 +48,7 @@ public class AttackTutorial : TutorialBase {
         enemy.GetComponent<EnemyBase>().isWaveEnemy = false;
         enemy.GetComponent<EnemyBase>().area = 1;
         enemy.GetComponent<EnemyBase>().health = 1;
-        enemy.GetComponent<EnemyBase>().canDrop = false;
+        //enemy.GetComponent<EnemyBase>().canDrop = false;
         enemy.GetComponent<EnemyBase>().AlwaysDrops = EnemyBase.Dropables.HealthPotion;
         yield return new WaitForSeconds(2f);
         enemy.GetComponent<EnemyBase>().Stun(600);

@@ -24,15 +24,15 @@ public class EnemyMelee : EnemyBase {
         }
         if (agent.velocity.magnitude > 0)
         {
-            GetComponentInChildren<Animator>().SetFloat("walk", 1);
+            GetComponentInChildren<Animator>().SetFloat("speed", 1);
         }
         else
         {
-            GetComponentInChildren<Animator>().SetFloat("walk", 0);
+            GetComponentInChildren<Animator>().SetFloat("speed", 0);
         }
-        if (GetComponentInChildren<Animator>().GetBool("attack"))
+        if (GetComponentInChildren<Animator>().GetBool("attack1"))
         {
-        GetComponentInChildren<Animator>().SetBool("attack", false);
+        GetComponentInChildren<Animator>().SetBool("attack1", false);
         }
         if (!agent.enabled)
         {
@@ -68,7 +68,7 @@ public class EnemyMelee : EnemyBase {
     protected void Attack()
     {
         GameObject.FindObjectOfType<SoundManager>().MakeSoundObject(SoundManager.Sounds.ESmallAttack);
-        GetComponentInChildren<Animator>().SetBool("attack", true);
+        GetComponentInChildren<Animator>().SetBool("attack1", true);
         currentcooldown = cooldown;
         GetComponent<AttackScript>().MeleeAttack();
 

@@ -103,6 +103,7 @@ public abstract class EnemyBase : stats {
 
     protected Item DropAlwaysDrop()
     {
+        Debug.Log("DROPPED");
         Item item = null;
         switch (AlwaysDrops)
         {

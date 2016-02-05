@@ -19,13 +19,15 @@ public class RemoveAfterEnemyTreshold : MonoBehaviour {
             if (manager.waveLevel >= waves && manager.waveDone)
             {
                 GetComponent<NavMeshObstacle>().enabled = false;
-                GetComponent<MeshRenderer>().enabled = false;
+                //GetComponent<MeshRenderer>().enabled = false;
+                transform.GetChild(0).gameObject.SetActive(false);
             }
         }
         if (!manager.waveDone)
         {
+            transform.GetChild(0).gameObject.SetActive(true);
             GetComponent<NavMeshObstacle>().enabled = true;
-            GetComponent<MeshRenderer>().enabled = true;
+            //GetComponent<MeshRenderer>().enabled = true;
         }
 	}
 }

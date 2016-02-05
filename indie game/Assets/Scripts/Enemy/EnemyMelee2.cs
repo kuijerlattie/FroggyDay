@@ -53,7 +53,7 @@ public class EnemyMelee2 : EnemyBase
                 return;
             }
 
-            if (Vector3.Distance(transform.position, target.transform.position) <= GetComponent<NavMeshAgent>().stoppingDistance)
+            if (Vector3.Distance(transform.position, target.transform.position) <= GetComponent<NavMeshAgent>().stoppingDistance * 2)
             {
                 if (currentcooldown <= 0)
                 {

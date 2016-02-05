@@ -10,6 +10,7 @@ public class minimapPosition : MonoBehaviour {
 
     public float xoffset = 0;
     public float yoffset = 0;
+    public bool AnchorLeft = false;
 
     private float previousWidth;
     private float previousHeight;
@@ -34,7 +35,15 @@ public class minimapPosition : MonoBehaviour {
     {
         previousWidth = Screen.width;
         previousHeight = Screen.height;
-        Vector2 pos = new Vector2(previousWidth - 250 + xoffset, previousHeight - 250 + yoffset);
+        Vector2 pos;
+        if (!AnchorLeft)
+        {
+            pos = new Vector2(previousWidth - 250 + xoffset, previousHeight - 250 + yoffset);
+        }
+        else
+        {
+            pos = new Vector2(xoffset, previousHeight - 250 + yoffset);
+        }
         overlay.rectTransform.position = pos;
         overlay.rectTransform.pivot = Vector2.zero;
     }

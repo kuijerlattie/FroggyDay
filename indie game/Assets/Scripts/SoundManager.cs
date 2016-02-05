@@ -28,18 +28,21 @@ public class SoundManager : MonoBehaviour {
 
     void Update()
     {
-        if (GameObject.FindObjectOfType<PlayerScript>().health <= 99 && !playerhealthdown)
+        if (GameObject.FindObjectOfType<PlayerScript>() != null)
         {
-            musicPlayer.StopSoundLooped();
-            musicPlayer = MakeSoundObjectLooped(SoundManager.Sounds.Music2);
-            playerhealthdown = true;
-        }
+            if (GameObject.FindObjectOfType<PlayerScript>().health <= 99 && !playerhealthdown)
+            {
+                musicPlayer.StopSoundLooped();
+                musicPlayer = MakeSoundObjectLooped(SoundManager.Sounds.Music2);
+                playerhealthdown = true;
+            }
 
-        if (GameObject.FindObjectOfType<PlayerScript>().health > 99 && playerhealthdown)
-        {
-            musicPlayer.StopSoundLooped();
-            musicPlayer = MakeSoundObjectLooped(SoundManager.Sounds.Music1);
-            playerhealthdown = false;
+            if (GameObject.FindObjectOfType<PlayerScript>().health > 99 && playerhealthdown)
+            {
+                musicPlayer.StopSoundLooped();
+                musicPlayer = MakeSoundObjectLooped(SoundManager.Sounds.Music1);
+                playerhealthdown = false;
+            }
         }
     }
 

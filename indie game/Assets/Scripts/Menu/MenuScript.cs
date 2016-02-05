@@ -11,6 +11,9 @@ public class MenuScript : MonoBehaviour {
     public Slider VolumeSlider;
     public SoundManager soundmanager;
 
+    GameObject playselect;
+    
+
 	// Use this for initialization
 	void Start () {
         soundmanager = GameObject.FindObjectOfType<SoundManager>();
